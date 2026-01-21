@@ -48,7 +48,7 @@ const TrailCard = ({ trail }) => {
       badges.push({
         type: 'guide-required',
         text: t('Guide Required', '需要嚮導', 'ガイド必須'),
-        icon: '❌',
+        icon: '🧭',
         color: '#ffc107'
       })
     }
