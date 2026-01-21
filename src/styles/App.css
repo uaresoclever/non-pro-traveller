@@ -2268,6 +2268,22 @@
   font-style: italic;
 }
 
+.no-filters-message {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.no-filters-message p {
+  margin: 0;
+  color: #856404;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
 /* Mobile Responsive for Trail Picker */
 @media (max-width: 768px) {
   .trail-picker {

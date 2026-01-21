@@ -51,6 +51,16 @@ const TrailPicker = () => {
   const getRecommendedTrails = () => {
     const data = trailData[currentLang]
     
+    // Check if ALL filters are selected (all 4 criteria must be chosen)
+    const allFiltersSelected = selectedFilters.difficulty && 
+                              selectedFilters.time && 
+                              selectedFilters.guide && 
+                              selectedFilters.experience
+    
+    if (!allFiltersSelected) {
+      return [] // No recommendations if not all filters selected
+    }
+    
     // Define trail characteristics for proper filtering
     const trailCharacteristics = {
       '1': { difficulty: 'beginner', time: 'short', guide: 'self', experience: 'first-time' },
@@ -72,11 +82,9 @@ const TrailPicker = () => {
       let isMatch = true
       
       // Check each filter - trail must match ALL selected filters
-      if (selectedFilters.difficulty) {
-        if (characteristics.difficulty !== selectedFilters.difficulty) {
-          isMatch = false
-          return
-        }
+      if (selectedFilters.difficulty !== characteristics.difficulty) {
+        isMatch = false
+      } else {
         score += 1
         if (selectedFilters.difficulty === 'beginner') {
           reasons.push(t('Perfect for beginners', '非常適合新手', '初心者に最適'))
@@ -87,11 +95,9 @@ const TrailPicker = () => {
         }
       }
       
-      if (selectedFilters.time) {
-        if (characteristics.time !== selectedFilters.time) {
-          isMatch = false
-          return
-        }
+      if (isMatch && selectedFilters.time !== characteristics.time) {
+        isMatch = false
+      } else if (isMatch) {
         score += 1
         if (selectedFilters.time === 'short') {
           reasons.push(t('Quick hike (1-2 hours)', '快速健行（1-2小時）', 'クイックハイク（1-2時間）'))
@@ -102,13 +108,12 @@ const TrailPicker = () => {
         }
       }
       
-      if (selectedFilters.guide) {
+      if (isMatch) {
         if (selectedFilters.guide === 'any') {
           score += 1
           reasons.push(t('Flexible guide options', '靈活嚮導選擇', '柔軟なガイドオプション'))
-        } else if (characteristics.guide !== selectedFilters.guide) {
+        } else if (selectedFilters.guide !== characteristics.guide) {
           isMatch = false
-          return
         } else {
           score += 1
           if (selectedFilters.guide === 'self') {
@@ -119,11 +124,9 @@ const TrailPicker = () => {
         }
       }
       
-      if (selectedFilters.experience) {
-        if (characteristics.experience !== selectedFilters.experience) {
-          isMatch = false
-          return
-        }
+      if (isMatch && selectedFilters.experience !== characteristics.experience) {
+        isMatch = false
+      } else if (isMatch) {
         score += 1
         if (selectedFilters.experience === 'first-time') {
           reasons.push(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
@@ -135,16 +138,15 @@ const TrailPicker = () => {
       }
       
       // Add special reasons for specific trails
-      if (trail.no === '1') {
+      if (trail.no === '1' && isMatch) {
         reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
       }
       
       if (isMatch && score > 0) {
-        const selectedFilterCount = Object.values(selectedFilters).filter(v => v).length
         recommendations.push({
           ...trail,
           score,
-          maxScore: selectedFilterCount,
+          maxScore: 4, // Always 4 since all filters are required
           reasons
         })
       }
@@ -241,7 +243,7 @@ const TrailPicker = () => {
             <button 
               className="get-recommendations-btn"
               onClick={handleGetRecommendations}
-              disabled={Object.values(selectedFilters).every(v => !v)}
+              disabled={!selectedFilters.difficulty || !selectedFilters.time || !selectedFilters.guide || !selectedFilters.experience}
             >
               {t('Get My Trail Recommendations', '獲取我的步道推薦', '私のトレイル推奨を取得')}
             </button>
@@ -249,6 +251,16 @@ const TrailPicker = () => {
               {t('Reset', '重置', 'リセット')}
             </button>
           </div>
+
+          {(!selectedFilters.difficulty || !selectedFilters.time || !selectedFilters.guide || !selectedFilters.experience) && (
+            <div className="no-filters-message">
+              <p>{t(
+                '👆 Please select one option from each category above to get accurate trail recommendations!',
+                '👆 請從上方每個類別中選擇一個選項以獲得準確的步道推薦！',
+                '👆 正確なトレイル推奨を取得するには、上記の各カテゴリから1つのオプションを選択してください！'
+              )}</p>
+            </div>
+          )}
 
           {showResults && (
             <div className="trail-recommendations">
@@ -294,9 +306,9 @@ const TrailPicker = () => {
               ) : (
                 <div className="no-recommendations">
                   <p>{t(
-                    'No perfect matches found. Try adjusting your preferences or check out Trail #1 - our beginner favorite!',
-                    '沒有找到完美匹配。嘗試調整您的偏好或查看步道#1 - 我們的新手最愛！',
-                    '完璧なマッチが見つかりませんでした。設定を調整するか、トレイル#1をチェックしてください - 初心者のお気に入りです！'
+                    'No trails match your selected criteria. Please try different filter combinations or check out Trail #1 - our beginner favorite!',
+                    '沒有步道符合您選擇的條件。請嘗試不同的篩選組合或查看步道#1 - 我們的新手最愛！',
+                    '選択した条件に一致するトレイルがありません。異なるフィルターの組み合わせを試すか、トレイル#1をチェックしてください - 初心者のお気に入りです！'
                   )}</p>
                 </div>
               )}

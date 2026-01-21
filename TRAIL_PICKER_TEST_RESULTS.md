@@ -9,88 +9,60 @@
 - **Trail 6**: Challenging, Long (6hrs), Guide required, Experienced
 - **Trail 7**: Beginner, Short (1.5hrs), Self-guided, First-time friendly
 
-## Expected Results by Filter Combination
+## NEW REQUIREMENT: ALL 4 FILTERS MUST BE SELECTED
 
-### Single Filter Tests
+Users must select one option from each of the 4 categories:
+1. **Difficulty Level** (Beginner/Moderate/Challenging)
+2. **Available Time** (1-2 hours/2-4 hours/4+ hours)  
+3. **Guide Preference** (Self-guided only/Guided tours OK/Either is fine)
+4. **Hiking Experience** (First time hiker/Some experience/Very experienced)
 
-#### Difficulty Only
-- **Beginner**: Should show Trails 1, 2, 7
-- **Moderate**: Should show Trails 3, 4
-- **Challenging**: Should show Trails 5, 6
+## Expected Results by Complete Filter Combination
 
-#### Time Only
-- **Short (1-2 hours)**: Should show Trails 1, 7
-- **Medium (2-4 hours)**: Should show Trails 2, 3, 4
-- **Long (4+ hours)**: Should show Trails 5, 6
-
-#### Guide Preference Only
-- **Self-guided only**: Should show Trails 1, 2, 7
-- **Guided tours OK**: Should show Trails 3, 4, 5, 6
-- **Either is fine**: Should show all trails 1-7
-
-#### Experience Only
-- **First-time hiker**: Should show Trails 1, 7
-- **Some experience**: Should show Trails 2, 3, 4
-- **Very experienced**: Should show Trails 5, 6
-
-### Multiple Filter Tests
-
-#### Beginner + Self-guided
-- **Expected**: Trails 1, 2, 7
-- **Reasoning**: Only beginner trails that don't require guides
-
-#### Beginner + Guided tours OK
-- **Expected**: No results (no beginner trails require guides)
-- **Reasoning**: All beginner trails are self-guided
-
-#### Moderate + Self-guided
-- **Expected**: No results
-- **Reasoning**: All moderate trails require guides
-
-#### Moderate + Guided tours OK
-- **Expected**: Trails 3, 4
-- **Reasoning**: Both moderate trails require guides
-
-#### Challenging + Guided tours OK
-- **Expected**: Trails 5, 6
-- **Reasoning**: Both challenging trails require guides
-
-#### Short time + Self-guided
-- **Expected**: Trails 1, 7
-- **Reasoning**: Both are short and self-guided
-
-#### Medium time + Guided tours OK
-- **Expected**: Trails 3, 4
-- **Reasoning**: Medium duration trails that require guides
-
-#### First-time + Self-guided
-- **Expected**: Trails 1, 7
-- **Reasoning**: Perfect match for beginners
-
-#### Some experience + Guided tours OK
-- **Expected**: Trails 3, 4
-- **Reasoning**: Intermediate trails with guides
-
-#### Experienced + Guided tours OK
-- **Expected**: Trails 5, 6
-- **Reasoning**: Advanced trails with guides
-
-### Complex Filter Tests
+### Perfect Matches (Score 4/4)
 
 #### Beginner + Short + Self-guided + First-time
-- **Expected**: Trails 1, 7 (score 4/4 each)
-- **Reasoning**: Perfect matches for all criteria
+- **Expected**: Trails 1, 7 (both score 4/4)
+- **Reasoning**: Both trails match all 4 criteria perfectly
+
+#### Beginner + Medium + Self-guided + Some experience  
+- **Expected**: Trail 2 (score 4/4)
+- **Reasoning**: Perfect match for all criteria
 
 #### Moderate + Medium + Guided + Some experience
-- **Expected**: Trails 3, 4 (score 4/4 each)
-- **Reasoning**: Perfect matches for all criteria
+- **Expected**: Trails 3, 4 (both score 4/4)
+- **Reasoning**: Both trails match all 4 criteria perfectly
 
 #### Challenging + Long + Guided + Experienced
-- **Expected**: Trails 5, 6 (score 4/4 each)
-- **Reasoning**: Perfect matches for all criteria
+- **Expected**: Trails 5, 6 (both score 4/4)
+- **Reasoning**: Both trails match all 4 criteria perfectly
+
+### Partial Matches with "Either is fine" Guide Option
+
+#### Beginner + Short + Either + First-time
+- **Expected**: Trails 1, 7 (both score 4/4)
+- **Reasoning**: "Either is fine" matches both self-guided trails
+
+#### Moderate + Medium + Either + Some experience
+- **Expected**: Trails 3, 4 (both score 4/4)
+- **Reasoning**: "Either is fine" matches guide-required trails
+
+### No Match Scenarios
+
+#### Beginner + Short + Guided + First-time
+- **Expected**: No results
+- **Reasoning**: No beginner trails require guides
+
+#### Moderate + Medium + Self-guided + Some experience
+- **Expected**: No results  
+- **Reasoning**: All moderate trails require guides
+
+#### Challenging + Long + Self-guided + Experienced
+- **Expected**: No results
+- **Reasoning**: All challenging trails require guides
 
 ## Scoring System
-- Each matching filter adds 1 point
-- Maximum score = number of selected filters
-- Score X/Y means trail matches X out of Y selected criteria
-- Trails that don't match ALL criteria are excluded completely
+- **Maximum Score**: Always 4/4 (all criteria must match)
+- **Minimum Requirements**: All 4 filters must be selected
+- **Perfect Match**: Trail matches all selected criteria exactly
+- **No Partial Matches**: Trails either match completely or don't appear
