@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import TrailGrid from './TrailGrid'
+import TrailPicker from './TrailPicker'
 import { trackTagClick, trackExternalLink } from '../utils/analytics'
 import { journeys } from '../data/journeys'
 
@@ -190,6 +191,9 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
               </div>
             </div>
           )}
+          
+          {/* Trail Picker - Interactive Trail Recommendation */}
+          <TrailPicker />
           
           <TrailGrid />
 

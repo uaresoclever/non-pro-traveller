@@ -23,10 +23,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km 33 – Nong Pak Chi</strong> Trail<br><small>90th Anniversary Thai‑Switzerland Friendship Trail</small>",
       distance: "4.2 km one way, 2.5–3 hours",
-      selfGuided: '<span class="badge-guide">❌ Guide required</span>',
-      startEnd: "Start: Road marker Km 33 entrance (roadside parking)<br>End: Km 35, near Nong Pak Chi Observation Tower (usually picked up by guide vehicle)",
+      selfGuided: '<span class="badge-easy">✅ Self-walkable</span>',
+      startEnd: "Start: Road marker Km 33 entrance (roadside parking)<br>End: Km 35, near Nong Pak Chi Observation Tower (parking available at both ends)",
       highlights: "Through mature dry forest, secondary forest and grasslands, popular wildlife viewing: elephants, gaur, gibbons, hornbills; final Nong Pak Chi observation tower overlooking grasslands + pond.",
-      rating: '<div class="rating">★★★☆☆<br><small>Guide + shuttle required, but fun for drivers</small></div>'
+      rating: '<div class="rating">★★★★☆<br><small>Self-walkable with good parking at both ends</small></div>'
     },
     {
       no: "4",
@@ -88,10 +88,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km 33 – Nong Pak Chi</strong> Trail<br><small>90th Anniversary Thai‑Switzerland Friendship Trail</small>",
       distance: "約 3.3–4.2 km 單程，2.5–3 小時",
-      selfGuided: '<span class="badge-guide">❌ 必須嚮導</span>',
-      startEnd: "起：公路公里牌 Km 33 旁入口（可路邊泊車）<br>終：Km 35，近 Nong Pak Chi Observation Tower（通常由嚮導車接走）",
+      selfGuided: '<span class="badge-easy">✅ 可自行走</span>',
+      startEnd: "起：公路公里牌 Km 33 旁入口（可路邊泊車）<br>終：Km 35，近 Nong Pak Chi Observation Tower（兩端都有停車位）",
       highlights: "穿成熟乾林、次生林及大草原，是看野生動物熱門線：大象、野牛、長臂猿、犀鳥等；最後上 Nong Pak Chi 觀景塔睇草原＋水塘。",
-      rating: '<div class="rating">★★★☆☆<br><small>必須嚮導＋接送，但自駕好玩</small></div>'
+      rating: '<div class="rating">★★★★☆<br><small>可自行走，兩端都有停車位</small></div>'
     },
     {
       no: "4",
@@ -153,10 +153,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km33 – ノンパクチー</strong> トレイル<br><small>タイ・スイス友好90周年記念トレイル</small>",
       distance: "約3.3-4.2km片道、2.5-3時間",
-      selfGuided: '<span class="badge-guide">❌ ガイド必須</span>',
-      startEnd: "開始：道路標識Km33入口（路肩駐車）<br>終了：Km35、ノンパクチー展望台近く（通常ガイド車でピックアップ）",
+      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
+      startEnd: "開始：道路標識Km33入口（路肩駐車）<br>終了：Km35、ノンパクチー展望台近く（両端に駐車場あり）",
       highlights: "成熟した乾燥林、二次林、草原を通る、人気の野生動物観察：象、ガウル、テナガザル、サイチョウなど；最後にノンパクチー展望台から草原＋池を見下ろす。",
-      rating: '<div class="rating">★★★☆☆<br><small>ガイド＋シャトル必要、でも運転者には楽しい</small></div>'
+      rating: '<div class="rating">★★★★☆<br><small>セルフウォーク可能、両端駐車場あり</small></div>'
     },
     {
       no: "4",
