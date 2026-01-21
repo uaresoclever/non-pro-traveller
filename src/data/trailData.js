@@ -128,5 +128,70 @@ export const trailData = {
       highlights: "圍繞 Sai Sorn 水庫高地，可俯瞰水庫與山景，是睇日出／日落、影倒影、觀鳥的熱門輕鬆步道。",
       rating: '<div class="rating">★★★★★<br><small>自駕最無壓力＋景靚</small></div>'
     }
+  ],
+  ja: [
+    {
+      no: "1",
+      name: "ビジターセンター – <strong>コンケーオ滝</strong> トレイル",
+      distance: "約1.2km（ループ）、45-60分",
+      selfGuided: '<span class="badge-easy">✅ ガイド不要</span>',
+      startEnd: "開始：ビジターセンター後方の吊り橋（十分な駐車場）<br>終了：同じビジターセンターの場所に戻る",
+      highlights: "間近で見る熱帯雨林＋乾燥常緑林、沈香の木、テナガザルの鳴き声、バードウォッチング；終点は小さなコンケーオ滝＋吊り橋の撮影スポット。",
+      rating: '<div class="rating">★★★★★<br><small>最も簡単な駐車場＋ルート</small></div>'
+    },
+    {
+      no: "2",
+      name: "<strong>パークルアイマイキャンプ場 – ヘーウスワット滝</strong> トレイル<br><small>タイ・ドイツ友好160周年記念トレイル</small>",
+      distance: "約3km片道、約2時間",
+      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
+      startEnd: "開始：パークルアイマイキャンプ場駐車場<br>終了：ヘーウスワット滝メイン駐車場（両端に駐車場あり）",
+      highlights: "ラムタコン川沿い、パークルアイマイ小滝経由、竹林＋雨林の雰囲気；終点は映画「ザ・ビーチ」のヘーウスワット滝。",
+      rating: '<div class="rating">★★★★☆<br><small>両端駐車場簡単、シャトル計画必要</small></div>'
+    },
+    {
+      no: "3",
+      name: "<strong>Km33 – ノンパクチー</strong> トレイル<br><small>タイ・スイス友好90周年記念トレイル</small>",
+      distance: "約3.3-4.2km片道、2.5-3時間",
+      selfGuided: '<span class="badge-guide">❌ ガイド必須</span>',
+      startEnd: "開始：道路標識Km33入口（路肩駐車）<br>終了：Km35、ノンパクチー展望台近く（通常ガイド車でピックアップ）",
+      highlights: "成熟した乾燥林、二次林、草原を通る、人気の野生動物観察：象、ガウル、テナガザル、サイチョウなど；最後にノンパクチー展望台から草原＋池を見下ろす。",
+      rating: '<div class="rating">★★★☆☆<br><small>ガイド＋シャトル必要、でも運転者には楽しい</small></div>'
+    },
+    {
+      no: "4",
+      name: "<strong>ドンティウ – サイソーン貯水池</strong> トレイル",
+      distance: "約2.7-2.8km片道、1.5-2時間",
+      selfGuided: '<span class="badge-guide">❌ ガイド必須</span>',
+      startEnd: "開始：タナラート道路沿い（ビジターセンター西約200m、サイソーン近く）<br>終了：サイソーン貯水池展望台（駐車場あり、有名な日の出/日の入りスポット）",
+      highlights: "乾燥常緑林と二次林を通り、途中で鹿、猿、鳥類；終点はサイソーン貯水池の古典的な日の出/日の入り展望台。",
+      rating: '<div class="rating">★★★★☆<br><small>片端駐車場＋ガイドシャトルで他端スタート</small></div>'
+    },
+    {
+      no: "5",
+      name: "<strong>ドンティウ – ノンパクチー</strong> トレイル",
+      distance: "約5.5km片道、約3時間",
+      selfGuided: '<span class="badge-guide">❌ ガイド必須</span>',
+      startEnd: "開始：トレイル4と同じ場所（タナラート道路沿い、ビジターセンター近く）<br>終了：Km35、ノンパクチー展望台近く（通常ガイド車でピックアップ）",
+      highlights: "乾燥林、二次林、草原が交互に現れ、百年のガジュマルの木、雨季のキノコ；象、ツキノワグマ、サイチョウ、テナガザルなどの採餌エリア、最終区間はノンパクチー展望台に接続。",
+      rating: '<div class="rating">★★★☆☆<br><small>長距離、シャトル手配必要</small></div>'
+    },
+    {
+      no: "6",
+      name: "ビジターセンター – <strong>ヘーウスワット滝</strong> トレイル",
+      distance: "約8km片道、約6時間",
+      selfGuided: '<span class="badge-guide">❌ ガイド必須（長距離トレイル）</span>',
+      startEnd: "開始：ビジターセンター後方吊り橋<br>終了：ヘーウスワット滝駐車場（両端に駐車場、通常片端に駐車、ガイドシャトルで他端スタート）",
+      highlights: "雨林、乾燥林、竹林を通り、途中で貴重な樹種とシダ植物；象、テナガザル、ツキノワグマ、サイチョウの活動が頻繁、「一日ジャングル深部トレイル」、ヘーウスワット滝で終了。",
+      rating: '<div class="rating">★★★☆☆<br><small>最長トレイル、一日＋シャトル必要</small></div>'
+    },
+    {
+      no: "7",
+      name: "<strong>サイソーン貯水池ネイチャートレイル</strong><br><small>タイ・アメリカ友好トレイル</small>",
+      distance: "約1.9-2km湖周り、45-90分",
+      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
+      startEnd: "開始：サイソーン貯水池駐車場<br>終了：一周して同じ駐車場に戻る",
+      highlights: "サイソーン貯水池高地周辺、貯水池と山の景色を見下ろす、日の出/日の入り観賞、反射、バードウォッチングの人気の簡単トレイル。",
+      rating: '<div class="rating">★★★★★<br><small>最もストレスフリーな運転＋美しい景色</small></div>'
+    }
   ]
 }

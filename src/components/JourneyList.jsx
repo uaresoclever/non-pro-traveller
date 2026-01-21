@@ -55,11 +55,12 @@ const JourneyList = ({ onJourneySelect }) => {
   return (
     <div className="journey-list-container">
       <div className="journey-list-header">
-        <h2>{t('All Journeys', '所有旅程')}</h2>
+        <h2>{t('All Journeys', '所有旅程', 'すべての旅')}</h2>
         <p className="journey-count">
           {t(
             `${publishedJourneys.length} journey${publishedJourneys.length !== 1 ? 's' : ''} found`,
-            `找到 ${publishedJourneys.length} 個旅程`
+            `找到 ${publishedJourneys.length} 個旅程`,
+            `${publishedJourneys.length}つの旅が見つかりました`
           )}
         </p>
       </div>
@@ -73,7 +74,7 @@ const JourneyList = ({ onJourneySelect }) => {
       {publishedJourneys.length > 0 && (
         <div className="journey-section">
           <h3 className="section-title">
-            {t('Published Adventures', '已發布的冒險')}
+            {t('Published Adventures', '已發布的冒險', '公開された冒険')}
           </h3>
           <div className="journey-grid">
             {publishedJourneys.map(journey => (
@@ -91,7 +92,7 @@ const JourneyList = ({ onJourneySelect }) => {
       {draftJourneys.length > 0 && (
         <div className="journey-section">
           <h3 className="section-title">
-            {t('Coming Soon', '即將推出')}
+            {t('Coming Soon', '即將推出', '近日公開')}
           </h3>
           <div className="journey-grid">
             {draftJourneys.map(journey => (

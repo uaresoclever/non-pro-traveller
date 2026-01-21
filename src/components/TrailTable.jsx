@@ -11,13 +11,13 @@ const TrailTable = () => {
       <table className="trail-table">
         <thead>
           <tr>
-            <th>{t("No.", "編號")}</th>
-            <th>{t("Trail Name", "英文官方路名 / 常用稱呼")}</th>
-            <th>{t("Distance / Time", "大約距離 / 時間")}</th>
-            <th>{t("Self-Guided", "可否自行行走")}</th>
-            <th>{t("Start / End Point", "起點 / 終點（是否易泊車）")}</th>
-            <th>{t("Highlights", "主要觀光重點")}</th>
-            <th>{t("Driving Rating", "自駕便利評分*")}</th>
+            <th>{t("No.", "編號", "番号")}</th>
+            <th>{t("Trail Name", "英文官方路名 / 常用稱呼", "トレイル名")}</th>
+            <th>{t("Distance / Time", "大約距離 / 時間", "距離 / 時間")}</th>
+            <th>{t("Self-Guided", "可否自行行走", "セルフガイド")}</th>
+            <th>{t("Start / End Point", "起點 / 終點（是否易泊車）", "開始 / 終了地点")}</th>
+            <th>{t("Highlights", "主要觀光重點", "ハイライト")}</th>
+            <th>{t("Driving Rating", "自駕便利評分*", "運転評価")}</th>
           </tr>
         </thead>
         <tbody>

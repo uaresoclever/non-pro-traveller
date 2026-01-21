@@ -38,7 +38,7 @@ const JourneyCard = ({ journey, onClick }) => {
         </div>
         {journey.featured && (
           <span className="featured-badge">
-            ⭐ {t('Featured', '精選')}
+            ⭐ {t('Featured', '精選', '注目')}
           </span>
         )}
       </div>
@@ -49,17 +49,17 @@ const JourneyCard = ({ journey, onClick }) => {
 
         <div className="journey-details">
           <div className="detail-item">
-            <span className="detail-label">{t('Duration', '時長')}:</span>
+            <span className="detail-label">{t('Duration', '時長', '期間')}:</span>
             <span className="detail-value">
               {journey.duration.min === journey.duration.max 
-                ? `${journey.duration.min} ${t('day', '天')}${journey.duration.min > 1 ? 's' : ''}`
-                : `${journey.duration.min}-${journey.duration.max} ${t('days', '天')}`
+                ? `${journey.duration.min} ${t('day', '天', '日')}${journey.duration.min > 1 ? 's' : ''}`
+                : `${journey.duration.min}-${journey.duration.max} ${t('days', '天', '日間')}`
               }
             </span>
           </div>
 
           <div className="detail-item">
-            <span className="detail-label">{t('Difficulty', '難度')}:</span>
+            <span className="detail-label">{t('Difficulty', '難度', '難易度')}:</span>
             <span 
               className="difficulty-badge"
               style={{ backgroundColor: getDifficultyColor(journey.difficulty) }}
@@ -68,19 +68,22 @@ const JourneyCard = ({ journey, onClick }) => {
                 journey.difficulty.charAt(0).toUpperCase() + journey.difficulty.slice(1),
                 journey.difficulty === 'easy' ? '簡單' :
                 journey.difficulty === 'moderate' ? '中等' :
-                journey.difficulty === 'hard' ? '困難' : '極難'
+                journey.difficulty === 'hard' ? '困難' : '極難',
+                journey.difficulty === 'easy' ? '簡単' :
+                journey.difficulty === 'moderate' ? '中級' :
+                journey.difficulty === 'hard' ? '困難' : '極困難'
               )}
             </span>
           </div>
 
           <div className="detail-item">
-            <span className="detail-label">{t('Best Time', '最佳時間')}:</span>
+            <span className="detail-label">{t('Best Time', '最佳時間', 'ベストシーズン')}:</span>
             <span className="detail-value">{journey.bestTime[currentLang]}</span>
           </div>
 
           {journey.budget && (
             <div className="detail-item">
-              <span className="detail-label">{t('Budget', '預算')}:</span>
+              <span className="detail-label">{t('Budget', '預算', '予算')}:</span>
               <span className="detail-value">{journey.budget[currentLang]}</span>
             </div>
           )}
@@ -98,7 +101,7 @@ const JourneyCard = ({ journey, onClick }) => {
 
       {journey.status === 'draft' && (
         <div className="draft-overlay">
-          <span className="draft-label">{t('Coming Soon', '即將推出')}</span>
+          <span className="draft-label">{t('Coming Soon', '即將推出', '近日公開')}</span>
         </div>
       )}
     </div>

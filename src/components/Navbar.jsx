@@ -10,7 +10,8 @@ const Navbar = ({ onHomeClick, onJourneysClick, currentView }) => {
         <h1 className="nav-title" onClick={onHomeClick} style={{ cursor: 'pointer' }}>
           {t(
             "Oh! A Non-Professional Traveller LOL",
-            "非專業旅人冒險"
+            "非專業旅人冒險",
+            "ノンプロ旅行者の冒険"
           )}
         </h1>
         
@@ -19,13 +20,13 @@ const Navbar = ({ onHomeClick, onJourneysClick, currentView }) => {
             className={`nav-link ${currentView === 'home' ? 'active' : ''}`}
             onClick={onHomeClick}
           >
-            {t('Home', '首頁')}
+            {t('Home', '首頁', 'ホーム')}
           </button>
           <button 
             className={`nav-link ${currentView === 'journeys' ? 'active' : ''}`}
             onClick={onJourneysClick}
           >
-            {t('All Journeys', '所有旅程')}
+            {t('All Journeys', '所有旅程', 'すべての旅')}
           </button>
         </div>
 
@@ -41,6 +42,12 @@ const Navbar = ({ onHomeClick, onJourneysClick, currentView }) => {
             onClick={() => switchLanguage('zh')}
           >
             中文
+          </button>
+          <button 
+            className={`lang-btn ${currentLang === 'ja' ? 'active' : ''}`}
+            onClick={() => switchLanguage('ja')}
+          >
+            日本語
           </button>
         </div>
       </div>
