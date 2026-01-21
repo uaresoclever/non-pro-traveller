@@ -35,7 +35,7 @@ const TrailGrid = () => {
               <span>{t('Self-guided (No guide needed)', '自助式（無需嚮導）', 'セルフガイド（ガイド不要）')}</span>
             </div>
             <div className="legend-item">
-              <span className="legend-badge guide">❌</span>
+              <span className="legend-badge guide">🧭</span>
               <span>{t('Guide required', '需要嚮導', 'ガイド必要')}</span>
             </div>
           </div>
