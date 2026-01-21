@@ -5,10 +5,10 @@ export const trailData = {
       name: "Visitor Center – <strong>Kong Kaew Waterfall</strong> Trail",
       distance: "~1.2 km (loop), 45–60 minutes",
       type: "loop",
-      selfGuided: '<span class="badge-easy">✅ No guide needed</span>',
+      selfGuided: '<span class="badge-easy">✅ No guide needed</span> <span class="badge-easy">👤 Author visited</span>',
       startEnd: "Start: Behind Visitor Center suspension bridge (ample parking)<br>End: Return to same Visitor Center location",
-      highlights: "Close-up tropical rainforest + dry evergreen forest, agarwood trees, gibbon calls, birdwatching; endpoint small Kong Kaew waterfall + suspension bridge photo spot.",
-      rating: '<div class="rating">★★★★★<br><small>Easiest parking + route</small></div>'
+      highlights: "Close-up tropical rainforest + dry evergreen forest, agarwood trees, gibbon calls, birdwatching; endpoint small Kong Kaew waterfall + suspension bridge photo spot. <strong>Perfect for beginners!</strong>",
+      rating: '<div class="rating">★★★★★<br><small>Easiest parking + route + beginner-friendly</small></div>'
     },
     {
       no: "2",
@@ -70,10 +70,10 @@ export const trailData = {
       no: "1",
       name: "Visitor Center – <strong>Kong Kaew Waterfall</strong> Trail",
       distance: "約 1.2 km（環狀），45–60 分鐘",
-      selfGuided: '<span class="badge-easy">✅ 無需嚮導</span>',
+      selfGuided: '<span class="badge-easy">✅ 無需嚮導</span> <span class="badge-easy">👤 作者已到訪</span>',
       startEnd: "起：Visitor Center 後方吊橋（大量車位）<br>終：回到 Visitor Center 同一位置",
-      highlights: "近距離熱帶雨林＋乾性常綠林、沉香樹、長臂猿叫聲、觀鳥；終點小巧的 Kong Kaew 瀑布＋吊橋影相位。",
-      rating: '<div class="rating">★★★★★<br><small>泊車＋路線最無腦</small></div>'
+      highlights: "近距離熱帶雨林＋乾性常綠林、沉香樹、長臂猿叫聲、觀鳥；終點小巧的 Kong Kaew 瀑布＋吊橋影相位。<strong>新手首選！</strong>",
+      rating: '<div class="rating">★★★★★<br><small>泊車＋路線最無腦＋新手友善</small></div>'
     },
     {
       no: "2",
@@ -135,10 +135,10 @@ export const trailData = {
       no: "1",
       name: "ビジターセンター – <strong>コンケーオ滝</strong> トレイル",
       distance: "約1.2km（ループ）、45-60分",
-      selfGuided: '<span class="badge-easy">✅ ガイド不要</span>',
+      selfGuided: '<span class="badge-easy">✅ ガイド不要</span> <span class="badge-easy">👤 著者訪問済み</span>',
       startEnd: "開始：ビジターセンター後方の吊り橋（十分な駐車場）<br>終了：同じビジターセンターの場所に戻る",
-      highlights: "間近で見る熱帯雨林＋乾燥常緑林、沈香の木、テナガザルの鳴き声、バードウォッチング；終点は小さなコンケーオ滝＋吊り橋の撮影スポット。",
-      rating: '<div class="rating">★★★★★<br><small>最も簡単な駐車場＋ルート</small></div>'
+      highlights: "間近で見る熱帯雨林＋乾燥常緑林、沈香の木、テナガザルの鳴き声、バードウォッチング；終点は小さなコンケーオ滝＋吊り橋の撮影スポット。<strong>初心者に最適！</strong>",
+      rating: '<div class="rating">★★★★★<br><small>最も簡単な駐車場＋ルート＋初心者向け</small></div>'
     },
     {
       no: "2",

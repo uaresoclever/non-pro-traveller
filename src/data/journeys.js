@@ -54,9 +54,9 @@ export const journeys = [
     },
     
     tags: {
-      en: ['hiking', 'national park', 'wildlife', 'waterfalls', 'nature', 'self-drive', 'KhaoYai'],
-      zh: ['健行', '國家公園', '野生動物', '瀑布', '自然', '自駕', 'KhaoYai'],
-      ja: ['ハイキング', '国立公園', '野生動物', '滝', '自然', 'セルフドライブ', 'KhaoYai']
+      en: ['hiking', 'national park', 'wildlife', 'waterfalls', 'nature', 'self-drive', 'beginner', 'KhaoYai'],
+      zh: ['健行', '國家公園', '野生動物', '瀑布', '自然', '自駕', '新手', 'KhaoYai'],
+      ja: ['ハイキング', '国立公園', '野生動物', '滝', '自然', 'セルフドライブ', '初心者', 'KhaoYai']
     },
     
     status: 'published',
