@@ -161,8 +161,8 @@ function switchLanguage(lang) {
     
     // Update page title
     const title = lang === 'en' 
-        ? 'Non Pro Traveller - Khao Yai National Park Hiking Guide'
-        : '非專業旅人 - 考艾國家公園健行指南';
+        ? 'Oh! A Non-Professional Traveller LOL - Khao Yai National Park Hiking Guide'
+        : '非專業旅人冒險 - 考艾國家公園健行指南';
     document.title = title;
     
     // Update meta description
