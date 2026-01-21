@@ -81,9 +81,17 @@ const TrailPicker = () => {
       let reasons = []
       let isMatch = true
       
+      // Debug logging
+      console.log(`Checking Trail ${trail.no}:`, {
+        characteristics,
+        selectedFilters,
+        trailName: trail.name.replace(/<[^>]*>/g, '')
+      })
+      
       // Check each filter - trail must match ALL selected filters
       if (selectedFilters.difficulty !== characteristics.difficulty) {
         isMatch = false
+        console.log(`Trail ${trail.no} filtered out by difficulty: ${characteristics.difficulty} vs ${selectedFilters.difficulty}`)
       } else {
         score += 1
         if (selectedFilters.difficulty === 'beginner') {
@@ -158,14 +166,19 @@ const TrailPicker = () => {
       }
       
       if (isMatch && score > 0) {
+        console.log(`Trail ${trail.no} MATCHED with score ${score}`)
         recommendations.push({
           ...trail,
           score,
           maxScore: 4, // Always 4 since all filters are required
           reasons
         })
+      } else if (!isMatch) {
+        console.log(`Trail ${trail.no} did not match`)
       }
     })
+
+    console.log('Final recommendations:', recommendations.map(r => ({ no: r.no, name: r.name.replace(/<[^>]*>/g, ''), score: r.score })))
 
     // Sort by score (highest first), then by trail number
     return recommendations
