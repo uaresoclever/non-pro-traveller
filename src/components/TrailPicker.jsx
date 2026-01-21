@@ -214,7 +214,14 @@ const TrailPicker = () => {
     <div className="trail-picker">
       <div className="trail-picker-header" onClick={toggleExpanded}>
         <div className="picker-title-section">
-          <div className="picker-icon">💡</div>
+          <div className="picker-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+              <path d="M19.5 3.5L20.4 6.5L23.5 7.4L20.4 8.3L19.5 11.5L18.6 8.3L15.5 7.4L18.6 6.5L19.5 3.5Z" fill="currentColor"/>
+              <path d="M19.5 15.5L20.4 18.5L23.5 19.4L20.4 20.3L19.5 23.5L18.6 20.3L15.5 19.4L18.6 18.5L19.5 15.5Z" fill="currentColor"/>
+              <path d="M4.5 10.5L5.4 13.5L8.5 14.4L5.4 15.3L4.5 18.5L3.6 15.3L0.5 14.4L3.6 13.5L4.5 10.5Z" fill="currentColor"/>
+            </svg>
+          </div>
           <div className="picker-text">
             <h3>{t('AI Trail Picker', 'AI 步道選擇器', 'AI トレイルピッカー')}</h3>
             <p className="picker-subtitle">
@@ -294,7 +301,6 @@ const TrailPicker = () => {
                         <div className="recommendation-info">
                           <h5>{trail.name.replace(/<[^>]*>/g, '')}</h5>
                           <div className="recommendation-meta">
-                            <span className="trail-number">Trail #{trail.no}</span>
                             <span className="recommendation-score">
                               {t('Match Score', '匹配分數', 'マッチスコア')}: {trail.score}/{trail.maxScore}
                             </span>

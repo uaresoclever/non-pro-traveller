@@ -2018,13 +2018,31 @@
 }
 
 .picker-icon {
-  font-size: 2.5rem;
-  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  animation: aiPulse 3s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+@keyframes aiPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  }
+}
+
+.picker-icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .picker-text h3 {
@@ -2422,7 +2440,13 @@
   }
   
   .picker-icon {
-    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .picker-icon svg {
+    width: 32px;
+    height: 32px;
   }
   
   .picker-text h3 {
