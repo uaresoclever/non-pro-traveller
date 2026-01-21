@@ -387,6 +387,11 @@
   color: #333;
 }
 
+.legend-badge.beginner {
+  background: #e91e63;
+  color: white;
+}
+
 .rating-info {
   cursor: default;
 }
@@ -1909,6 +1914,10 @@
 
 .trail-badge-author-visited {
   background: #136a8a;
+}
+
+.trail-badge-beginner-choice {
+  background: #e91e63;
 }
 
 .badge-icon {

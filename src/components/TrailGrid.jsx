@@ -38,6 +38,10 @@ const TrailGrid = () => {
               <span className="legend-badge guide">🧭</span>
               <span>{t('Guide required', '需要嚮導', 'ガイド必要')}</span>
             </div>
+            <div className="legend-item">
+              <span className="legend-badge beginner">🌟</span>
+              <span>{t('Beginner Choice', '新手首選', '初心者おすすめ')}</span>
+            </div>
           </div>
         </div>
         

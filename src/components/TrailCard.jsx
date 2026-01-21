@@ -63,6 +63,16 @@ const TrailCard = ({ trail }) => {
       })
     }
     
+    // Special badge for Trail #1 - Beginner Choice
+    if (trail.no === '1') {
+      badges.push({
+        type: 'beginner-choice',
+        text: t('Beginner Choice', '新手首選', '初心者おすすめ'),
+        icon: '🌟',
+        color: '#e91e63'
+      })
+    }
+    
     return badges
   }
 
