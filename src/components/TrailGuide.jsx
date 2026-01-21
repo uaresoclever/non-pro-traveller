@@ -210,8 +210,13 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 <h4>{t('Booking & Accommodation', '預訂與住宿', '予約・宿泊')}</h4>
                 <ul className="links-list">
                   <li>
-                    <a href="https://nps.dnp.go.th/reservation.php" target="_blank" rel="noopener noreferrer">
-                      🏕️ {t('Park Accommodation Booking', '公園住宿預訂', '公園宿泊予約')}
+                    <a 
+                      href="https://khaoyainationalpark.com/en/plan-your-visit/staying" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://khaoyainationalpark.com/en/plan-your-visit/staying', 'Park Accommodation')}
+                    >
+                      🏕️ {t('Park Accommodation & Camping', '公園住宿與露營', '公園宿泊・キャンプ')}
                     </a>
                   </li>
                   <li>
@@ -236,7 +241,12 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://12go.asia/en/travel/bangkok/khao-yai" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://khaoyainationalpark.com/en/plan-your-visit/getting-here" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://khaoyainationalpark.com/en/plan-your-visit/getting-here', 'Bus Transport from Bangkok')}
+                    >
                       🚌 {t('Bus & Transport from Bangkok', '從曼谷的巴士與交通', 'バンコクからのバス・交通')}
                     </a>
                   </li>
