@@ -64,7 +64,7 @@ const TrailPicker = () => {
     // Define trail characteristics for proper filtering
     const trailCharacteristics = {
       '1': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' },
-      '2': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' }, // Changed from medium to short
+      '2': { difficulty: 'beginner', time: 'medium', guide: 'self', minExperience: 'first-time' }, // 2 hours = medium
       '3': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
       '4': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
       '5': { difficulty: 'challenging', time: 'long', guide: 'guided', minExperience: 'experienced' },
@@ -158,7 +158,14 @@ const TrailPicker = () => {
       
       // Add special reasons for specific trails
       if (trail.no === '1' && isMatch) {
-        reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
+        // Only add if not already present to avoid duplicates
+        const hasBeginnerReason = reasons.some(reason => 
+          reason.includes(t('Perfect for beginners', '非常適合新手', '初心者に最適')) ||
+          reason.includes(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
+        )
+        if (!hasBeginnerReason) {
+          reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
+        }
       }
       
       if (isMatch && score > 0) {
@@ -216,10 +223,10 @@ const TrailPicker = () => {
         <div className="picker-title-section">
           <div className="picker-icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
-              <path d="M19.5 3.5L20.4 6.5L23.5 7.4L20.4 8.3L19.5 11.5L18.6 8.3L15.5 7.4L18.6 6.5L19.5 3.5Z" fill="currentColor"/>
-              <path d="M19.5 15.5L20.4 18.5L23.5 19.4L20.4 20.3L19.5 23.5L18.6 20.3L15.5 19.4L18.6 18.5L19.5 15.5Z" fill="currentColor"/>
-              <path d="M4.5 10.5L5.4 13.5L8.5 14.4L5.4 15.3L4.5 18.5L3.6 15.3L0.5 14.4L3.6 13.5L4.5 10.5Z" fill="currentColor"/>
+              <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L13 3L15 5V7H9V5L11 3L9 1L3 7V9H21ZM3 19V21H21V19H3ZM5 11H19C19.6 11 20 11.4 20 12V17H4V12C4 11.4 4.4 11 5 11ZM7 13V15H17V13H7Z" fill="currentColor"/>
+              <circle cx="12" cy="14" r="1.5" fill="currentColor" opacity="0.7"/>
+              <path d="M8 14L10 12L8 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.8"/>
+              <path d="M16 10L14 12L16 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.8"/>
             </svg>
           </div>
           <div className="picker-text">
@@ -323,6 +330,10 @@ const TrailPicker = () => {
                           {trail.selfGuided.includes('✅') ? '✅ ' + t('Self-walkable', '可自行走', 'セルフウォーク可能') : 
                            trail.selfGuided.includes('🧭') ? '🧭 ' + t('Guide required', '需要嚮導', 'ガイド必要') : 
                            trail.selfGuided}
+                        </span>
+                        <span className="detail-item">
+                          {trail.type === 'loop' ? '↻ ' + t('Loop trail', '環狀步道', 'ループトレイル') : 
+                           '→ ' + t('One-way trail', '單程步道', '片道トレイル')}
                         </span>
                       </div>
                     </div>
