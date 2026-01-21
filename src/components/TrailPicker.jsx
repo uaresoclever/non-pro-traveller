@@ -64,6 +64,17 @@ const TrailPicker = () => {
       let score = 0
       let reasons = []
 
+      // First, check guide requirement compatibility - if incompatible, skip this trail entirely
+      if (selectedFilters.guide === 'self') {
+        if (!trail.selfGuided.includes('✅') && !trail.selfGuided.includes('No guide') && !trail.selfGuided.includes('Self-walkable')) {
+          return // Skip this trail completely if it requires a guide but user wants self-guided only
+        }
+      } else if (selectedFilters.guide === 'guided') {
+        if (!trail.selfGuided.includes('🧭') && !trail.selfGuided.includes('Guide required')) {
+          return // Skip this trail completely if it doesn't require a guide but user wants guided only
+        }
+      }
+
       // Difficulty scoring
       if (selectedFilters.difficulty === 'beginner') {
         if (trail.no === '1' || trail.no === '7') {
@@ -103,9 +114,9 @@ const TrailPicker = () => {
         }
       }
 
-      // Guide preference scoring
+      // Guide preference scoring (only if trail passed the compatibility check above)
       if (selectedFilters.guide === 'self') {
-        if (trail.selfGuided.includes('✅') || trail.selfGuided.includes('No guide')) {
+        if (trail.selfGuided.includes('✅') || trail.selfGuided.includes('No guide') || trail.selfGuided.includes('Self-walkable')) {
           score += 2
           reasons.push(t('Self-guided available', '可自助', 'セルフガイド可能'))
         }
