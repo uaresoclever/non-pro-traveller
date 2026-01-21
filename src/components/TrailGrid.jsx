@@ -46,12 +46,12 @@ const TrailGrid = () => {
         </div>
         
         <div className="rating-info">
-          <h4>{t('Driving Convenience Rating', '自駕便利評分', '運転利便性評価')}</h4>
+          <h4><span style={{color: '#ffc107'}}>★</span> {t('Driving Convenience Rating', '自駕便利評分', '運転利便性評価')}</h4>
           <p>
             {t(
-              'Based on parking availability, route accessibility, and shuttle requirements.',
-              '基於停車便利性、路線可達性及接駁需求評分。',
-              '駐車の利便性、ルートのアクセス性、シャトルの必要性に基づく評価。'
+              <>Star ratings (<span style={{color: '#ffc107'}}>★★★★★</span>) based on parking availability, route accessibility, and shuttle requirements.</>,
+              <>星級評分（<span style={{color: '#ffc107'}}>★★★★★</span>）基於停車便利性、路線可達性及接駁需求。</>,
+              <>星評価（<span style={{color: '#ffc107'}}>★★★★★</span>）駐車の利便性、ルートのアクセス性、シャトルの必要性に基づく。</>
             )}
           </p>
         </div>
