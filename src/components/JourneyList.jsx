@@ -58,8 +58,8 @@ const JourneyList = ({ onJourneySelect }) => {
         <h2>{t('All Journeys', '所有旅程')}</h2>
         <p className="journey-count">
           {t(
-            `${filteredJourneys.length} journey${filteredJourneys.length !== 1 ? 's' : ''} found`,
-            `找到 ${filteredJourneys.length} 個旅程`
+            `${publishedJourneys.length} journey${publishedJourneys.length !== 1 ? 's' : ''} found`,
+            `找到 ${publishedJourneys.length} 個旅程`
           )}
         </p>
       </div>
@@ -106,10 +106,18 @@ const JourneyList = ({ onJourneySelect }) => {
       )}
 
       {/* No Results */}
-      {filteredJourneys.length === 0 && (
+      {publishedJourneys.length === 0 && draftJourneys.length === 0 && (
         <div className="no-results">
           <h3>{t('No journeys found', '找不到旅程')}</h3>
           <p>{t('Try adjusting your filters or search terms', '嘗試調整篩選條件或搜尋詞')}</p>
+        </div>
+      )}
+
+      {/* Only drafts found */}
+      {publishedJourneys.length === 0 && draftJourneys.length > 0 && (
+        <div className="no-results">
+          <h3>{t('No published journeys match your search', '沒有已發布的旅程符合您的搜尋')}</h3>
+          <p>{t('But there are some exciting adventures coming soon!', '但有一些令人興奮的冒險即將推出！')}</p>
         </div>
       )}
     </div>
