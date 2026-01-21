@@ -50,120 +50,112 @@ const TrailPicker = () => {
 
   const getRecommendedTrails = () => {
     const data = trailData[currentLang]
+    
+    // Define trail characteristics for proper filtering
+    const trailCharacteristics = {
+      '1': { difficulty: 'beginner', time: 'short', guide: 'self', experience: 'first-time' },
+      '2': { difficulty: 'beginner', time: 'medium', guide: 'self', experience: 'some' },
+      '3': { difficulty: 'moderate', time: 'medium', guide: 'guided', experience: 'some' },
+      '4': { difficulty: 'moderate', time: 'medium', guide: 'guided', experience: 'some' },
+      '5': { difficulty: 'challenging', time: 'long', guide: 'guided', experience: 'experienced' },
+      '6': { difficulty: 'challenging', time: 'long', guide: 'guided', experience: 'experienced' },
+      '7': { difficulty: 'beginner', time: 'short', guide: 'self', experience: 'first-time' }
+    }
+    
     let recommendations = []
     
-    // Calculate maximum possible score based on selected filters
-    let maxPossibleScore = 0
-    if (selectedFilters.difficulty) maxPossibleScore += 3
-    if (selectedFilters.time) maxPossibleScore += 2
-    if (selectedFilters.guide) maxPossibleScore += 2
-    if (selectedFilters.experience) maxPossibleScore += 3
-
-    // Trail scoring based on filters
+    // Filter trails based on selected criteria
     data.forEach(trail => {
+      const characteristics = trailCharacteristics[trail.no]
       let score = 0
       let reasons = []
-
-      // First, check guide requirement compatibility - if incompatible, skip this trail entirely
-      if (selectedFilters.guide === 'self') {
-        if (!trail.selfGuided.includes('✅') && !trail.selfGuided.includes('No guide') && !trail.selfGuided.includes('Self-walkable')) {
-          return // Skip this trail completely if it requires a guide but user wants self-guided only
+      let isMatch = true
+      
+      // Check each filter - trail must match ALL selected filters
+      if (selectedFilters.difficulty) {
+        if (characteristics.difficulty !== selectedFilters.difficulty) {
+          isMatch = false
+          return
         }
-      } else if (selectedFilters.guide === 'guided') {
-        if (!trail.selfGuided.includes('🧭') && !trail.selfGuided.includes('Guide required')) {
-          return // Skip this trail completely if it doesn't require a guide but user wants guided only
-        }
-      }
-
-      // Difficulty scoring
-      if (selectedFilters.difficulty === 'beginner') {
-        if (trail.no === '1' || trail.no === '7') {
-          score += 3
+        score += 1
+        if (selectedFilters.difficulty === 'beginner') {
           reasons.push(t('Perfect for beginners', '非常適合新手', '初心者に最適'))
-        } else if (trail.no === '2') {
-          score += 2
-          reasons.push(t('Good for beginners', '適合新手', '初心者に良い'))
-        }
-      } else if (selectedFilters.difficulty === 'moderate') {
-        if (trail.no === '3' || trail.no === '4') {
-          score += 3
+        } else if (selectedFilters.difficulty === 'moderate') {
           reasons.push(t('Good moderate challenge', '適度挑戰', '適度なチャレンジ'))
-        }
-      } else if (selectedFilters.difficulty === 'challenging') {
-        if (trail.no === '5' || trail.no === '6') {
-          score += 3
+        } else if (selectedFilters.difficulty === 'challenging') {
           reasons.push(t('Challenging adventure', '具挑戰性冒險', 'チャレンジングな冒険'))
         }
       }
-
-      // Time scoring
-      if (selectedFilters.time === 'short') {
-        if (trail.distance.includes('45') || trail.distance.includes('60') || trail.distance.includes('1.2')) {
-          score += 2
-          reasons.push(t('Quick hike', '快速健行', 'クイックハイク'))
+      
+      if (selectedFilters.time) {
+        if (characteristics.time !== selectedFilters.time) {
+          isMatch = false
+          return
         }
-      } else if (selectedFilters.time === 'medium') {
-        if (trail.distance.includes('2 hours') || trail.distance.includes('3 hours')) {
-          score += 2
-          reasons.push(t('Perfect timing', '完美時間', '完璧なタイミング'))
-        }
-      } else if (selectedFilters.time === 'long') {
-        if (trail.distance.includes('6 hours') || trail.distance.includes('8 km')) {
-          score += 2
-          reasons.push(t('Full day adventure', '全日冒險', '一日冒険'))
-        }
-      }
-
-      // Guide preference scoring (only if trail passed the compatibility check above)
-      if (selectedFilters.guide === 'self') {
-        if (trail.selfGuided.includes('✅') || trail.selfGuided.includes('No guide') || trail.selfGuided.includes('Self-walkable')) {
-          score += 2
-          reasons.push(t('Self-guided available', '可自助', 'セルフガイド可能'))
-        }
-      } else if (selectedFilters.guide === 'guided') {
-        if (trail.selfGuided.includes('🧭') || trail.selfGuided.includes('Guide required')) {
-          score += 2
-          reasons.push(t('Professional guide included', '專業嚮導', 'プロガイド付き'))
-        }
-      } else if (selectedFilters.guide === 'any') {
         score += 1
-        reasons.push(t('Flexible guide options', '靈活嚮導選擇', '柔軟なガイドオプション'))
+        if (selectedFilters.time === 'short') {
+          reasons.push(t('Quick hike (1-2 hours)', '快速健行（1-2小時）', 'クイックハイク（1-2時間）'))
+        } else if (selectedFilters.time === 'medium') {
+          reasons.push(t('Perfect timing (2-4 hours)', '完美時間（2-4小時）', '完璧なタイミング（2-4時間）'))
+        } else if (selectedFilters.time === 'long') {
+          reasons.push(t('Full day adventure (4+ hours)', '全日冒險（4小時以上）', '一日冒険（4時間以上）'))
+        }
       }
-
-      // Experience scoring
-      if (selectedFilters.experience === 'first-time') {
-        if (trail.no === '1') {
-          score += 3
-          reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
-        } else if (trail.no === '7') {
-          score += 2
-          reasons.push(t('Easy and scenic', '簡單且風景優美', '簡単で景色が良い'))
+      
+      if (selectedFilters.guide) {
+        if (selectedFilters.guide === 'any') {
+          score += 1
+          reasons.push(t('Flexible guide options', '靈活嚮導選擇', '柔軟なガイドオプション'))
+        } else if (characteristics.guide !== selectedFilters.guide) {
+          isMatch = false
+          return
+        } else {
+          score += 1
+          if (selectedFilters.guide === 'self') {
+            reasons.push(t('Self-guided available', '可自助', 'セルフガイド可能'))
+          } else if (selectedFilters.guide === 'guided') {
+            reasons.push(t('Professional guide included', '專業嚮導', 'プロガイド付き'))
+          }
         }
-      } else if (selectedFilters.experience === 'some') {
-        if (trail.no === '2' || trail.no === '3' || trail.no === '4') {
-          score += 2
+      }
+      
+      if (selectedFilters.experience) {
+        if (characteristics.experience !== selectedFilters.experience) {
+          isMatch = false
+          return
+        }
+        score += 1
+        if (selectedFilters.experience === 'first-time') {
+          reasons.push(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
+        } else if (selectedFilters.experience === 'some') {
           reasons.push(t('Good for intermediate hikers', '適合中級健行者', '中級ハイカーに適している'))
-        }
-      } else if (selectedFilters.experience === 'experienced') {
-        if (trail.no === '5' || trail.no === '6') {
-          score += 3
+        } else if (selectedFilters.experience === 'experienced') {
           reasons.push(t('Perfect for experienced hikers', '經驗豐富健行者的完美選擇', '経験豊富なハイカーに最適'))
         }
       }
-
-      if (score > 0) {
+      
+      // Add special reasons for specific trails
+      if (trail.no === '1') {
+        reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
+      }
+      
+      if (isMatch && score > 0) {
+        const selectedFilterCount = Object.values(selectedFilters).filter(v => v).length
         recommendations.push({
           ...trail,
           score,
-          maxScore: maxPossibleScore,
+          maxScore: selectedFilterCount,
           reasons
         })
       }
     })
 
-    // Sort by score and return top 3
+    // Sort by score (highest first), then by trail number
     return recommendations
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score
+        return parseInt(a.no) - parseInt(b.no)
+      })
       .slice(0, 3)
   }
 
