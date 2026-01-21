@@ -144,6 +144,9 @@ const trailTableBody = document.getElementById('trail-data');
 function switchLanguage(lang) {
     currentLang = lang;
     
+    // Update HTML lang attribute
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-TW';
+    
     // Update button states
     langEnBtn.classList.toggle('active', lang === 'en');
     langZhBtn.classList.toggle('active', lang === 'zh');
@@ -151,8 +154,25 @@ function switchLanguage(lang) {
     // Update all text elements
     const elements = document.querySelectorAll('[data-en][data-zh]');
     elements.forEach(element => {
-        element.textContent = element.getAttribute(`data-${lang}`);
+        const newText = element.getAttribute(`data-${lang}`);
+        element.textContent = newText;
+        element.lang = lang === 'en' ? 'en' : 'zh-TW';
     });
+    
+    // Update page title
+    const title = lang === 'en' 
+        ? 'Non Pro Traveller - Khao Yai National Park Hiking Guide'
+        : '非專業旅人 - 考艾國家公園健行指南';
+    document.title = title;
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        const description = lang === 'en'
+            ? 'Complete hiking guide to Khao Yai National Park trails with detailed information on 7 major routes, difficulty levels, and wildlife viewing opportunities.'
+            : '考艾國家公園完整健行指南，包含7條主要步道詳細資訊，難度等級及野生動物觀察機會。';
+        metaDesc.content = description;
+    }
     
     // Update trail table
     updateTrailTable();
