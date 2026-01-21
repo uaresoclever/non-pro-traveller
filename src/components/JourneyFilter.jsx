@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import { journeyCategories, difficultyLevels } from '../data/journeyStructure'
+import { trackSearch, trackFilter } from '../utils/analytics'
 
 const JourneyFilter = ({ onFilterChange, journeys }) => {
   const { currentLang, t } = useLanguage()
@@ -19,6 +20,20 @@ const JourneyFilter = ({ onFilterChange, journeys }) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
+    
+    // Track filter usage
+    if (value) {
+      if (key === 'search') {
+        // Track search after a short delay to avoid tracking every keystroke
+        setTimeout(() => {
+          if (value.length >= 3) {
+            trackSearch(value, 0, currentLang) // Results count will be updated by parent component
+          }
+        }, 1000)
+      } else {
+        trackFilter(key, value, currentLang)
+      }
+    }
   }
 
   const clearFilters = () => {

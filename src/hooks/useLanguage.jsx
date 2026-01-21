@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import { trackLanguageSwitch } from '../utils/analytics'
 
 const LanguageContext = createContext()
 
@@ -14,7 +15,13 @@ export const LanguageProvider = ({ children }) => {
   const [currentLang, setCurrentLang] = useState('en')
 
   const switchLanguage = (lang) => {
+    const previousLang = currentLang
     setCurrentLang(lang)
+    
+    // Track language switch
+    if (previousLang !== lang) {
+      trackLanguageSwitch(previousLang, lang)
+    }
     
     // Update HTML lang attribute
     const langMap = {

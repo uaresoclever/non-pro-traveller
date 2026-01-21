@@ -4,14 +4,23 @@ import JourneyCard from './JourneyCard'
 import JourneyFilter from './JourneyFilter'
 import { journeys, searchJourneys } from '../data/journeys'
 
-const JourneyList = ({ onJourneySelect }) => {
+const JourneyList = ({ onJourneySelect, initialFilters = {}, onTagClick }) => {
   const { currentLang, t } = useLanguage()
   const [filters, setFilters] = useState({
     country: '',
     category: '',
     difficulty: '',
-    search: ''
+    search: '',
+    ...initialFilters
   })
+
+  // Update filters when initialFilters change
+  React.useEffect(() => {
+    setFilters(prev => ({
+      ...prev,
+      ...initialFilters
+    }))
+  }, [initialFilters])
 
   // Filter journeys based on current filters
   const filteredJourneys = useMemo(() => {
@@ -82,6 +91,7 @@ const JourneyList = ({ onJourneySelect }) => {
                 key={journey.id}
                 journey={journey}
                 onClick={handleJourneyClick}
+                onTagClick={onTagClick}
               />
             ))}
           </div>
@@ -100,6 +110,7 @@ const JourneyList = ({ onJourneySelect }) => {
                 key={journey.id}
                 journey={journey}
                 onClick={null} // No click for drafts
+                onTagClick={onTagClick}
               />
             ))}
           </div>

@@ -1,8 +1,28 @@
 import React from 'react'
 import { useLanguage } from '../hooks/useLanguage'
+import { trackTagClick, trackJourneyCardClick } from '../utils/analytics'
 
-const JourneyCard = ({ journey, onClick }) => {
+const JourneyCard = ({ journey, onClick, onTagClick }) => {
   const { currentLang, t } = useLanguage()
+
+  const handleTagClick = (tag, event) => {
+    event.stopPropagation() // Prevent card click when clicking tag
+    
+    // Track tag click
+    trackTagClick(tag, currentLang)
+    
+    if (onTagClick) {
+      onTagClick(tag)
+    }
+  }
+
+  const handleCardClick = () => {
+    if (onClick) {
+      // Track journey card click
+      trackJourneyCardClick(journey.id, journey.title[currentLang], 'journey_list')
+      onClick(journey)
+    }
+  }
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
@@ -29,7 +49,7 @@ const JourneyCard = ({ journey, onClick }) => {
   }
 
   return (
-    <div className="journey-card" onClick={() => onClick && onClick(journey)}>
+    <div className="journey-card" onClick={handleCardClick}>
       <div className="journey-card-header">
         <div className="journey-meta">
           <span className="country-flag">{journey.country.flag}</span>
@@ -87,11 +107,35 @@ const JourneyCard = ({ journey, onClick }) => {
               <span className="detail-value">{journey.budget[currentLang]}</span>
             </div>
           )}
+
+          {journey.publishDate && journey.status === 'published' && (
+            <div className="detail-item">
+              <span className="detail-label">{t('Published', '發布日期', '公開日')}:</span>
+              <span className="detail-value">
+                {new Date(journey.publishDate).toLocaleDateString(
+                  currentLang === 'ja' ? 'ja-JP' : 
+                  currentLang === 'zh' ? 'zh-TW' : 'en-US',
+                  { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                  }
+                )}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="journey-tags">
           {journey.tags[currentLang].slice(0, 4).map((tag, index) => (
-            <span key={index} className="tag">#{tag}</span>
+            <span 
+              key={index} 
+              className="tag clickable-tag"
+              onClick={(e) => handleTagClick(tag, e)}
+              title={t('Click to filter by this tag', '點擊以此標籤篩選', 'このタグでフィルター')}
+            >
+              #{tag}
+            </span>
           ))}
           {journey.tags[currentLang].length > 4 && (
             <span className="tag-more">+{journey.tags[currentLang].length - 4}</span>
