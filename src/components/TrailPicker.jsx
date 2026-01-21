@@ -11,6 +11,7 @@ const TrailPicker = () => {
     experience: ''
   })
   const [showResults, setShowResults] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const filterOptions = {
     difficulty: {
@@ -176,95 +177,126 @@ const TrailPicker = () => {
     setShowResults(false)
   }
 
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded)
+    if (!isExpanded) {
+      setShowResults(false)
+    }
+  }
+
   const recommendedTrails = showResults ? getRecommendedTrails() : []
 
   return (
     <div className="trail-picker">
-      <div className="trail-picker-header">
-        <h3>{t('🎯 Trail Picker', '🎯 步道選擇器', '🎯 トレイルピッカー')}</h3>
-        <p>{t(
-          'Answer a few questions to find the perfect trail for you!',
-          '回答幾個問題，找到最適合您的步道！',
-          'いくつかの質問に答えて、あなたにぴったりのトレイルを見つけましょう！'
-        )}</p>
-      </div>
-
-      <div className="trail-picker-filters">
-        {Object.entries(filterOptions).map(([category, config]) => (
-          <div key={category} className="filter-group">
-            <label className="filter-label">{config.label}</label>
-            <div className="filter-options">
-              {config.options.map(option => (
-                <button
-                  key={option.value}
-                  className={`filter-option ${selectedFilters[category] === option.value ? 'active' : ''}`}
-                  onClick={() => handleFilterChange(category, option.value)}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
+      <div className="trail-picker-header" onClick={toggleExpanded}>
+        <div className="picker-title-section">
+          <div className="picker-icon">💡</div>
+          <div className="picker-text">
+            <h3>{t('AI Trail Picker', 'AI 步道選擇器', 'AI トレイルピッカー')}</h3>
+            <p className="picker-subtitle">
+              {t(
+                "Don't know which trail to pick? Let AI give you a hand!",
+                "不知道選哪條步道？讓AI幫你一把！",
+                "どのトレイルを選べばいいかわからない？AIにお任せください！"
+              )}
+            </p>
           </div>
-        ))}
-      </div>
-
-      <div className="trail-picker-actions">
-        <button 
-          className="get-recommendations-btn"
-          onClick={handleGetRecommendations}
-          disabled={Object.values(selectedFilters).every(v => !v)}
-        >
-          {t('Get My Trail Recommendations', '獲取我的步道推薦', '私のトレイル推奨を取得')}
-        </button>
-        <button className="reset-btn" onClick={resetFilters}>
-          {t('Reset', '重置', 'リセット')}
+        </div>
+        <button className="expand-btn">
+          <span className={`expand-icon ${isExpanded ? 'expanded' : ''}`}>▼</span>
+          <span className="expand-text">
+            {isExpanded ? 
+              t('Hide Picker', '隱藏選擇器', 'ピッカーを隠す') : 
+              t('Try AI Picker', '試試AI選擇器', 'AIピッカーを試す')
+            }
+          </span>
         </button>
       </div>
 
-      {showResults && (
-        <div className="trail-recommendations">
-          <h4>{t('🌟 Recommended Trails for You', '🌟 為您推薦的步道', '🌟 あなたにおすすめのトレイル')}</h4>
-          
-          {recommendedTrails.length > 0 ? (
-            <div className="recommendations-list">
-              {recommendedTrails.map((trail, index) => (
-                <div key={trail.no} className="recommendation-card">
-                  <div className="recommendation-header">
-                    <div className="recommendation-rank">#{index + 1}</div>
-                    <div className="recommendation-info">
-                      <h5 dangerouslySetInnerHTML={{ __html: trail.name }} />
-                      <div className="recommendation-meta">
-                        <span className="trail-number">Trail #{trail.no}</span>
-                        <span className="recommendation-score">
-                          {t('Match Score', '匹配分數', 'マッチスコア')}: {trail.score}/{trail.maxScore}
+      {isExpanded && (
+        <div className="trail-picker-content">
+          <div className="trail-picker-filters">
+            {Object.entries(filterOptions).map(([category, config]) => (
+              <div key={category} className="filter-group">
+                <label className="filter-label">{config.label}</label>
+                <div className="filter-options">
+                  {config.options.map(option => (
+                    <button
+                      key={option.value}
+                      className={`filter-option ${selectedFilters[category] === option.value ? 'active' : ''}`}
+                      onClick={() => handleFilterChange(category, option.value)}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="trail-picker-actions">
+            <button 
+              className="get-recommendations-btn"
+              onClick={handleGetRecommendations}
+              disabled={Object.values(selectedFilters).every(v => !v)}
+            >
+              {t('Get My Trail Recommendations', '獲取我的步道推薦', '私のトレイル推奨を取得')}
+            </button>
+            <button className="reset-btn" onClick={resetFilters}>
+              {t('Reset', '重置', 'リセット')}
+            </button>
+          </div>
+
+          {showResults && (
+            <div className="trail-recommendations">
+              <h4>{t('🌟 Recommended Trails for You', '🌟 為您推薦的步道', '🌟 あなたにおすすめのトレイル')}</h4>
+              
+              {recommendedTrails.length > 0 ? (
+                <div className="recommendations-list">
+                  {recommendedTrails.map((trail, index) => (
+                    <div key={trail.no} className="recommendation-card">
+                      <div className="recommendation-header">
+                        <div className="recommendation-rank">#{index + 1}</div>
+                        <div className="recommendation-info">
+                          <h5>{trail.name.replace(/<[^>]*>/g, '')}</h5>
+                          <div className="recommendation-meta">
+                            <span className="trail-number">Trail #{trail.no}</span>
+                            <span className="recommendation-score">
+                              {t('Match Score', '匹配分數', 'マッチスコア')}: {trail.score}/{trail.maxScore}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="recommendation-reasons">
+                        <strong>{t('Why this trail:', '為什麼選這條步道：', 'なぜこのトレイル：')}</strong>
+                        <ul>
+                          {trail.reasons.map((reason, idx) => (
+                            <li key={idx}>{reason}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="recommendation-details">
+                        <span className="detail-item">📏 {trail.distance}</span>
+                        <span className="detail-item">
+                          {trail.selfGuided.includes('✅') ? '✅ ' + t('Self-walkable', '可自行走', 'セルフウォーク可能') : 
+                           trail.selfGuided.includes('🧭') ? '🧭 ' + t('Guide required', '需要嚮導', 'ガイド必要') : 
+                           trail.selfGuided}
                         </span>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="recommendation-reasons">
-                    <strong>{t('Why this trail:', '為什麼選這條步道：', 'なぜこのトレイル：')}</strong>
-                    <ul>
-                      {trail.reasons.map((reason, idx) => (
-                        <li key={idx}>{reason}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="recommendation-details">
-                    <span className="detail-item">📏 {trail.distance}</span>
-                    <span className="detail-item" dangerouslySetInnerHTML={{ __html: trail.selfGuided }} />
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="no-recommendations">
-              <p>{t(
-                'No perfect matches found. Try adjusting your preferences or check out Trail #1 - our beginner favorite!',
-                '沒有找到完美匹配。嘗試調整您的偏好或查看步道#1 - 我們的新手最愛！',
-                '完璧なマッチが見つかりませんでした。設定を調整するか、トレイル#1をチェックしてください - 初心者のお気に入りです！'
-              )}</p>
+              ) : (
+                <div className="no-recommendations">
+                  <p>{t(
+                    'No perfect matches found. Try adjusting your preferences or check out Trail #1 - our beginner favorite!',
+                    '沒有找到完美匹配。嘗試調整您的偏好或查看步道#1 - 我們的新手最愛！',
+                    '完璧なマッチが見つかりませんでした。設定を調整するか、トレイル#1をチェックしてください - 初心者のお気に入りです！'
+                  )}</p>
+                </div>
+              )}
             </div>
           )}
         </div>

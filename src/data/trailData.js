@@ -5,7 +5,7 @@ export const trailData = {
       name: "Visitor Center – <strong>Kong Kaew Waterfall</strong> Trail",
       distance: "~1.2 km (loop), 45–60 minutes",
       type: "loop",
-      selfGuided: '<span class="badge-easy">✅ No guide needed</span> <span class="badge-easy">👤 Author visited</span>',
+      selfGuided: '<span class="badge-easy">✅ No guide needed</span> <span class="badge-easy">👤 Author visited</span> <span class="badge-beginner">🌟 Beginner Choice</span>',
       startEnd: "Start: Behind Visitor Center suspension bridge (ample parking)<br>End: Return to same Visitor Center location",
       highlights: "Close-up tropical rainforest + dry evergreen forest, agarwood trees, gibbon calls, birdwatching; endpoint small Kong Kaew waterfall + suspension bridge photo spot. <strong>Perfect for beginners!</strong>",
       rating: '<div class="rating">★★★★★<br><small>Easiest parking + route + beginner-friendly</small></div>'
@@ -23,10 +23,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km 33 – Nong Pak Chi</strong> Trail<br><small>90th Anniversary Thai‑Switzerland Friendship Trail</small>",
       distance: "4.2 km one way, 2.5–3 hours",
-      selfGuided: '<span class="badge-easy">✅ Self-walkable</span>',
-      startEnd: "Start: Road marker Km 33 entrance (roadside parking)<br>End: Km 35, near Nong Pak Chi Observation Tower (parking available at both ends)",
+      selfGuided: '<span class="badge-guide">🧭 Guide required</span>',
+      startEnd: "Start: Road marker Km 33 entrance (roadside parking)<br>End: Km 35, near Nong Pak Chi Observation Tower (guide pickup required)",
       highlights: "Through mature dry forest, secondary forest and grasslands, popular wildlife viewing: elephants, gaur, gibbons, hornbills; final Nong Pak Chi observation tower overlooking grasslands + pond.",
-      rating: '<div class="rating">★★★★☆<br><small>Self-walkable with good parking at both ends</small></div>'
+      rating: '<div class="rating">★★★☆☆<br><small>Guide required + shuttle arrangement needed</small></div>'
     },
     {
       no: "4",
@@ -58,7 +58,7 @@ export const trailData = {
     {
       no: "7",
       name: "<strong>Sai Sorn Reservoir Nature Trail</strong><br><small>Thai‑American Friendship Trail</small>",
-      distance: "~1.9–2 km around lake, 45–90 minutes",
+      distance: "~2 km around lake, 1.5 hours",
       selfGuided: '<span class="badge-easy">✅ Self-walkable</span>',
       startEnd: "Start: Sai Sorn Reservoir parking<br>End: Complete loop back to same parking",
       highlights: "Around Sai Sorn reservoir highlands, overlooking reservoir and mountain views, popular easy trail for sunrise/sunset viewing, reflections, and birdwatching.",
@@ -70,7 +70,7 @@ export const trailData = {
       no: "1",
       name: "Visitor Center – <strong>Kong Kaew Waterfall</strong> Trail",
       distance: "約 1.2 km（環狀），45–60 分鐘",
-      selfGuided: '<span class="badge-easy">✅ 無需嚮導</span> <span class="badge-easy">👤 作者已到訪</span>',
+      selfGuided: '<span class="badge-easy">✅ 無需嚮導</span> <span class="badge-easy">👤 作者已到訪</span> <span class="badge-beginner">🌟 新手首選</span>',
       startEnd: "起：Visitor Center 後方吊橋（大量車位）<br>終：回到 Visitor Center 同一位置",
       highlights: "近距離熱帶雨林＋乾性常綠林、沉香樹、長臂猿叫聲、觀鳥；終點小巧的 Kong Kaew 瀑布＋吊橋影相位。<strong>新手首選！</strong>",
       rating: '<div class="rating">★★★★★<br><small>泊車＋路線最無腦＋新手友善</small></div>'
@@ -88,10 +88,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km 33 – Nong Pak Chi</strong> Trail<br><small>90th Anniversary Thai‑Switzerland Friendship Trail</small>",
       distance: "約 3.3–4.2 km 單程，2.5–3 小時",
-      selfGuided: '<span class="badge-easy">✅ 可自行走</span>',
-      startEnd: "起：公路公里牌 Km 33 旁入口（可路邊泊車）<br>終：Km 35，近 Nong Pak Chi Observation Tower（兩端都有停車位）",
+      selfGuided: '<span class="badge-guide">🧭 必須嚮導</span>',
+      startEnd: "起：公路公里牌 Km 33 旁入口（可路邊泊車）<br>終：Km 35，近 Nong Pak Chi Observation Tower（需嚮導接送）",
       highlights: "穿成熟乾林、次生林及大草原，是看野生動物熱門線：大象、野牛、長臂猿、犀鳥等；最後上 Nong Pak Chi 觀景塔睇草原＋水塘。",
-      rating: '<div class="rating">★★★★☆<br><small>可自行走，兩端都有停車位</small></div>'
+      rating: '<div class="rating">★★★☆☆<br><small>必須嚮導＋接送安排</small></div>'
     },
     {
       no: "4",
@@ -123,7 +123,7 @@ export const trailData = {
     {
       no: "7",
       name: "<strong>Sai Sorn Reservoir Nature Trail</strong><br><small>Thai‑American Friendship Trail</small>",
-      distance: "約 1.9–2 km 環湖，45–90 分鐘",
+      distance: "約 2 km 環湖，1.5 小時",
       selfGuided: '<span class="badge-easy">✅ 可自行走</span>',
       startEnd: "起：Sai Sorn Reservoir 停車場<br>終：環湖一圈回到同一停車場",
       highlights: "圍繞 Sai Sorn 水庫高地，可俯瞰水庫與山景，是睇日出／日落、影倒影、觀鳥的熱門輕鬆步道。",
@@ -135,7 +135,7 @@ export const trailData = {
       no: "1",
       name: "ビジターセンター – <strong>コンケーオ滝</strong> トレイル",
       distance: "約1.2km（ループ）、45-60分",
-      selfGuided: '<span class="badge-easy">✅ ガイド不要</span> <span class="badge-easy">👤 著者訪問済み</span>',
+      selfGuided: '<span class="badge-easy">✅ ガイド不要</span> <span class="badge-easy">👤 著者訪問済み</span> <span class="badge-beginner">🌟 初心者おすすめ</span>',
       startEnd: "開始：ビジターセンター後方の吊り橋（十分な駐車場）<br>終了：同じビジターセンターの場所に戻る",
       highlights: "間近で見る熱帯雨林＋乾燥常緑林、沈香の木、テナガザルの鳴き声、バードウォッチング；終点は小さなコンケーオ滝＋吊り橋の撮影スポット。<strong>初心者に最適！</strong>",
       rating: '<div class="rating">★★★★★<br><small>最も簡単な駐車場＋ルート＋初心者向け</small></div>'
@@ -153,10 +153,10 @@ export const trailData = {
       no: "3",
       name: "<strong>Km33 – ノンパクチー</strong> トレイル<br><small>タイ・スイス友好90周年記念トレイル</small>",
       distance: "約3.3-4.2km片道、2.5-3時間",
-      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
-      startEnd: "開始：道路標識Km33入口（路肩駐車）<br>終了：Km35、ノンパクチー展望台近く（両端に駐車場あり）",
+      selfGuided: '<span class="badge-guide">🧭 ガイド必須</span>',
+      startEnd: "開始：道路標識Km33入口（路肩駐車）<br>終了：Km35、ノンパクチー展望台近く（ガイドピックアップ必要）",
       highlights: "成熟した乾燥林、二次林、草原を通る、人気の野生動物観察：象、ガウル、テナガザル、サイチョウなど；最後にノンパクチー展望台から草原＋池を見下ろす。",
-      rating: '<div class="rating">★★★★☆<br><small>セルフウォーク可能、両端駐車場あり</small></div>'
+      rating: '<div class="rating">★★★☆☆<br><small>ガイド必須＋シャトル手配必要</small></div>'
     },
     {
       no: "4",
@@ -188,7 +188,7 @@ export const trailData = {
     {
       no: "7",
       name: "<strong>サイソーン貯水池ネイチャートレイル</strong><br><small>タイ・アメリカ友好トレイル</small>",
-      distance: "約1.9-2km湖周り、45-90分",
+      distance: "約2km湖周り、1.5時間",
       selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
       startEnd: "開始：サイソーン貯水池駐車場<br>終了：一周して同じ駐車場に戻る",
       highlights: "サイソーン貯水池高地周辺、貯水池と山の景色を見下ろす、日の出/日の入り観賞、反射、バードウォッチングの人気の簡単トレイル。",
