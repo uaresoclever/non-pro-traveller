@@ -4,13 +4,6 @@ import { useLanguage } from '../hooks/useLanguage'
 const TrailCard = ({ trail }) => {
   const { t } = useLanguage()
 
-  const getDifficultyColor = (selfGuided) => {
-    if (selfGuided.includes('✅') || selfGuided.includes('No guide') || selfGuided.includes('Self-walkable')) {
-      return '#28a745' // Green for easy/self-guided
-    }
-    return '#ffc107' // Yellow for guide required
-  }
-
   const getRatingStars = (rating) => {
     // Extract star rating from HTML string
     const match = rating.match(/★+/)
@@ -38,6 +31,42 @@ const TrailCard = ({ trail }) => {
     }
     return t('One-way Trail', '單程步道', '片道トレイル')
   }
+
+  // Parse badges from selfGuided field
+  const parseBadges = (selfGuided) => {
+    const badges = []
+    
+    // Check for guide requirement
+    if (selfGuided.includes('✅') || selfGuided.includes('No guide') || selfGuided.includes('Self-walkable')) {
+      badges.push({
+        type: 'no-guide',
+        text: t('No Guide Needed', '無需嚮導', 'ガイド不要'),
+        icon: '✅',
+        color: '#28a745'
+      })
+    } else {
+      badges.push({
+        type: 'guide-required',
+        text: t('Guide Required', '需要嚮導', 'ガイド必須'),
+        icon: '❌',
+        color: '#ffc107'
+      })
+    }
+    
+    // Check for author visited
+    if (selfGuided.includes('👤') || selfGuided.includes('Author visited') || selfGuided.includes('作者已到訪') || selfGuided.includes('著者訪問済み')) {
+      badges.push({
+        type: 'author-visited',
+        text: t('Author Visited', '作者已到訪', '著者訪問済み'),
+        icon: '👤',
+        color: '#136a8a'
+      })
+    }
+    
+    return badges
+  }
+
+  const badges = parseBadges(trail.selfGuided)
 
   return (
     <div className="trail-card">
@@ -72,27 +101,6 @@ const TrailCard = ({ trail }) => {
 
         <div className="detail-row">
           <div className="detail-item">
-            <span className="detail-icon">🚶</span>
-            <div className="detail-content">
-              <span className="detail-label">{t('Guide Required', '嚮導需求', 'ガイド要否')}</span>
-              <div 
-                className="guide-badge"
-                style={{ 
-                  backgroundColor: getDifficultyColor(trail.selfGuided),
-                  color: 'white',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '12px',
-                  fontSize: '0.8rem',
-                  display: 'inline-block'
-                }}
-                dangerouslySetInnerHTML={{ __html: trail.selfGuided }} 
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="detail-row">
-          <div className="detail-item">
             <span className="detail-icon">📍</span>
             <div className="detail-content">
               <span className="detail-label">{t('Start & End Points', '起終點', 'スタート・ゴール')}</span>
@@ -106,10 +114,24 @@ const TrailCard = ({ trail }) => {
             <span className="detail-icon">🌟</span>
             <div className="detail-content">
               <span className="detail-label">{t('Highlights', '重點特色', 'ハイライト')}</span>
-              <div className="detail-value">{trail.highlights}</div>
+              <div className="detail-value" dangerouslySetInnerHTML={{ __html: trail.highlights }} />
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Trail Badges at Bottom */}
+      <div className="trail-badges">
+        {badges.map((badge, index) => (
+          <div 
+            key={index}
+            className={`trail-badge trail-badge-${badge.type}`}
+            style={{ backgroundColor: badge.color }}
+          >
+            <span className="badge-icon">{badge.icon}</span>
+            <span className="badge-text">{badge.text}</span>
+          </div>
+        ))}
       </div>
     </div>
   )

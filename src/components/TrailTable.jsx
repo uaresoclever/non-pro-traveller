@@ -28,7 +28,7 @@ const TrailTable = () => {
               <td>{trail.distance}</td>
               <td dangerouslySetInnerHTML={{ __html: trail.selfGuided }} />
               <td dangerouslySetInnerHTML={{ __html: trail.startEnd }} />
-              <td>{trail.highlights}</td>
+              <td dangerouslySetInnerHTML={{ __html: trail.highlights }} />
               <td dangerouslySetInnerHTML={{ __html: trail.rating }} />
             </tr>
           ))}

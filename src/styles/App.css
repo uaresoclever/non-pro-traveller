@@ -1875,3 +1875,75 @@
     align-self: flex-end;
   }
 }
+
+/* Trail Badges at Bottom */
+.trail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.trail-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trail-badge-no-guide {
+  background: #28a745;
+}
+
+.trail-badge-guide-required {
+  background: #ffc107;
+  color: #333;
+}
+
+.trail-badge-author-visited {
+  background: #136a8a;
+}
+
+.badge-icon {
+  font-size: 0.9rem;
+}
+
+.badge-text {
+  white-space: nowrap;
+}
+
+/* Mobile Responsive for Trail Badges */
+@media (max-width: 768px) {
+  .trail-badges {
+    gap: 0.4rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+  }
+  
+  .trail-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .badge-icon {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trail-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .trail-badge {
+    padding: 0.35rem 0.7rem;
+  }
+}
