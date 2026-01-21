@@ -73,8 +73,8 @@ const TrailCard = ({ trail }) => {
       })
     }
     
-    // Check for beginner choice
-    if (selfGuided.includes('🌟') || selfGuided.includes('Beginner Choice') || selfGuided.includes('新手首選') || selfGuided.includes('初心者おすすめ')) {
+    // Check for beginner choice (automatically add for Trail 1)
+    if (trail.no === '1' || selfGuided.includes('🌟') || selfGuided.includes('Beginner Choice') || selfGuided.includes('新手首選') || selfGuided.includes('初心者おすすめ')) {
       badges.push({
         type: 'beginner-choice',
         text: t('Beginner Choice', '新手首選', '初心者おすすめ'),

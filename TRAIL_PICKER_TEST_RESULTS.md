@@ -1,41 +1,52 @@
 # Trail Picker Logic Test Results
 
 ## Trail Characteristics
-- **Trail 1**: Beginner, Short (45-60min), Self-guided, First-time friendly
-- **Trail 2**: Beginner, Medium (2hrs), Self-guided, Some experience
-- **Trail 3**: Moderate, Medium (2.5-3hrs), Guide required, Some experience  
-- **Trail 4**: Moderate, Medium (1.5-2hrs), Guide required, Some experience
-- **Trail 5**: Challenging, Long (3hrs), Guide required, Experienced
-- **Trail 6**: Challenging, Long (6hrs), Guide required, Experienced
-- **Trail 7**: Beginner, Short (1.5hrs), Self-guided, First-time friendly
+- **Trail 1**: Beginner, Short (45-60min), Self-guided, Min: First-time
+- **Trail 2**: Beginner, Medium (2hrs), Self-guided, Min: First-time  
+- **Trail 3**: Moderate, Medium (2.5-3hrs), Guide required, Min: Some experience
+- **Trail 4**: Moderate, Medium (1.5-2hrs), Guide required, Min: Some experience
+- **Trail 5**: Challenging, Long (3hrs), Guide required, Min: Experienced
+- **Trail 6**: Challenging, Long (6hrs), Guide required, Min: Experienced
+- **Trail 7**: Beginner, Short (1.5hrs), Self-guided, Min: First-time
 
-## NEW REQUIREMENT: ALL 4 FILTERS MUST BE SELECTED
+## NEW LOGIC: Experience Level Flexibility
 
-Users must select one option from each of the 4 categories:
-1. **Difficulty Level** (Beginner/Moderate/Challenging)
-2. **Available Time** (1-2 hours/2-4 hours/4+ hours)  
-3. **Guide Preference** (Self-guided only/Guided tours OK/Either is fine)
-4. **Hiking Experience** (First time hiker/Some experience/Very experienced)
+**More experienced hikers can do easier trails:**
+- **First-time hikers**: Can only do trails requiring "First-time" experience
+- **Some experience**: Can do "First-time" AND "Some experience" trails  
+- **Very experienced**: Can do ALL trails (any experience level)
+
+This makes sense because:
+- Experienced hikers can easily handle beginner trails
+- But beginners shouldn't attempt advanced trails
 
 ## Expected Results by Complete Filter Combination
 
-### Perfect Matches (Score 4/4)
+### Beginner Difficulty Examples
 
 #### Beginner + Short + Self-guided + First-time
 - **Expected**: Trails 1, 7 (both score 4/4)
-- **Reasoning**: Both trails match all 4 criteria perfectly
 
-#### Beginner + Medium + Self-guided + Some experience  
-- **Expected**: Trail 2 (score 4/4)
-- **Reasoning**: Perfect match for all criteria
+#### Beginner + Short + Self-guided + Some experience  
+- **Expected**: Trails 1, 7 (both score 4/4)
+- **Reasoning**: Experienced hikers can do easier trails
+
+#### Beginner + Short + Self-guided + Very experienced
+- **Expected**: Trails 1, 7 (both score 4/4)  
+- **Reasoning**: Very experienced hikers can do any trail
+
+### Moderate Difficulty Examples
+
+#### Moderate + Medium + Guided + First-time
+- **Expected**: No results
+- **Reasoning**: First-time hikers can't do moderate trails
 
 #### Moderate + Medium + Guided + Some experience
 - **Expected**: Trails 3, 4 (both score 4/4)
-- **Reasoning**: Both trails match all 4 criteria perfectly
 
-#### Challenging + Long + Guided + Experienced
-- **Expected**: Trails 5, 6 (both score 4/4)
-- **Reasoning**: Both trails match all 4 criteria perfectly
+#### Moderate + Medium + Guided + Very experienced  
+- **Expected**: Trails 3, 4 (both score 4/4)
+- **Reasoning**: Experienced hikers can do moderate trails
 
 ### Partial Matches with "Either is fine" Guide Option
 

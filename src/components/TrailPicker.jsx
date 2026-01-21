@@ -63,13 +63,13 @@ const TrailPicker = () => {
     
     // Define trail characteristics for proper filtering
     const trailCharacteristics = {
-      '1': { difficulty: 'beginner', time: 'short', guide: 'self', experience: 'first-time' },
-      '2': { difficulty: 'beginner', time: 'medium', guide: 'self', experience: 'some' },
-      '3': { difficulty: 'moderate', time: 'medium', guide: 'guided', experience: 'some' },
-      '4': { difficulty: 'moderate', time: 'medium', guide: 'guided', experience: 'some' },
-      '5': { difficulty: 'challenging', time: 'long', guide: 'guided', experience: 'experienced' },
-      '6': { difficulty: 'challenging', time: 'long', guide: 'guided', experience: 'experienced' },
-      '7': { difficulty: 'beginner', time: 'short', guide: 'self', experience: 'first-time' }
+      '1': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' },
+      '2': { difficulty: 'beginner', time: 'medium', guide: 'self', minExperience: 'first-time' },
+      '3': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
+      '4': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
+      '5': { difficulty: 'challenging', time: 'long', guide: 'guided', minExperience: 'experienced' },
+      '6': { difficulty: 'challenging', time: 'long', guide: 'guided', minExperience: 'experienced' },
+      '7': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' }
     }
     
     let recommendations = []
@@ -124,16 +124,31 @@ const TrailPicker = () => {
         }
       }
       
-      if (isMatch && selectedFilters.experience !== characteristics.experience) {
-        isMatch = false
-      } else if (isMatch) {
-        score += 1
-        if (selectedFilters.experience === 'first-time') {
-          reasons.push(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
-        } else if (selectedFilters.experience === 'some') {
-          reasons.push(t('Good for intermediate hikers', '適合中級健行者', '中級ハイカーに適している'))
-        } else if (selectedFilters.experience === 'experienced') {
-          reasons.push(t('Perfect for experienced hikers', '經驗豐富健行者的完美選擇', '経験豊富なハイカーに最適'))
+      if (isMatch) {
+        // Experience level check - more experienced hikers can do easier trails
+        const experienceOrder = { 'first-time': 1, 'some': 2, 'experienced': 3 }
+        const userExperience = experienceOrder[selectedFilters.experience]
+        const trailMinExperience = experienceOrder[characteristics.minExperience]
+        
+        if (userExperience >= trailMinExperience) {
+          score += 1
+          if (selectedFilters.experience === 'first-time') {
+            reasons.push(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
+          } else if (selectedFilters.experience === 'some') {
+            if (characteristics.minExperience === 'first-time') {
+              reasons.push(t('Easy trail for your experience level', '以您的經驗來說很簡單', 'あなたの経験レベルには簡単'))
+            } else {
+              reasons.push(t('Good match for your experience', '符合您的經驗水平', 'あなたの経験にマッチ'))
+            }
+          } else if (selectedFilters.experience === 'experienced') {
+            if (characteristics.minExperience === 'experienced') {
+              reasons.push(t('Perfect challenge for experienced hikers', '經驗豐富者的完美挑戰', '経験豊富なハイカーに最適'))
+            } else {
+              reasons.push(t('Relaxing trail for your skill level', '以您的技能水平來說很輕鬆', 'あなたのスキルレベルには楽な道'))
+            }
+          }
+        } else {
+          isMatch = false
         }
       }
       

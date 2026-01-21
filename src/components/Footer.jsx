@@ -39,10 +39,17 @@ const Footer = () => {
             {t('Follow us on Instagram', '在 Instagram 關注我們', 'Instagramでフォロー')}
           </span>
         </a>
+        <p className="instagram-description">
+          {t(
+            "Even if we're too lazy to update this website, you can still message us there! 😄",
+            "即使我們懶得更新這個網站，你仍然可以在那裡聯繫我們！😄",
+            "このサイトの更新をサボっていても、そこでメッセージできます！😄"
+          )}
+        </p>
       </div>
       
       <div className="version-info">
-        <span className="version-number">v1.0.0</span>
+        <span className="version-number">{__APP_VERSION__}</span>
       </div>
       
       <div className="credits">
