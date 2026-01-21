@@ -1,7 +1,7 @@
 // Google Analytics 4 utility functions
 // Replace 'GA_MEASUREMENT_ID' with your actual Google Analytics measurement ID
 
-export const GA_MEASUREMENT_ID = 'G-WEJHS1NV3Q' // Your Google Analytics measurement ID
+export const GA_MEASUREMENT_ID = 'G-CPCZTVNXFQ' // Your Google Analytics measurement ID
 
 // Initialize Google Analytics
 export const initGA = () => {
