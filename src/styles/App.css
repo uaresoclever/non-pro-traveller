@@ -1201,3 +1201,118 @@
     justify-content: center;
   }
 }
+
+/* Park Description Section */
+.park-description {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-left: 4px solid #136a8a;
+}
+
+.park-description h3 {
+  color: #136a8a;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.description-content p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.wildlife-highlights {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.wildlife-highlights h4 {
+  color: #267871;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.wildlife-highlights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wildlife-highlights li {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.wildlife-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.wildlife-highlights strong {
+  color: #136a8a;
+}
+
+.best-time-info {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.best-time-info h4 {
+  color: #267871;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.best-time-info p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Mobile Responsive for Park Description */
+@media (max-width: 768px) {
+  .park-description {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .park-description h3 {
+    font-size: 1.2rem;
+  }
+  
+  .description-content p {
+    font-size: 0.95rem;
+  }
+  
+  .wildlife-highlights,
+  .best-time-info {
+    padding: 1.25rem;
+  }
+  
+  .wildlife-highlights h4,
+  .best-time-info h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .park-description {
+    padding: 1.25rem;
+  }
+  
+  .wildlife-highlights li {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+}

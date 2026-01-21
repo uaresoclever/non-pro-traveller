@@ -44,6 +44,66 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
             )}
           </p>
 
+          {/* Park Description Section */}
+          <div className="park-description">
+            <h3>{t('About Khao Yai National Park', '關於考艾國家公園', 'カオヤイ国立公園について')}</h3>
+            <div className="description-content">
+              <p>
+                {t(
+                  "Established in 1962 as Thailand's first national park, Khao Yai is widely regarded as the best national park in Thailand for wildlife viewing. Located primarily in Nakhon Ratchasima Province and extending into Prachinburi, Saraburi, and Nakhon Nayok provinces, the park covers an impressive 2,168 km² of diverse ecosystems.",
+                  "考艾國家公園成立於1962年，是泰國第一個國家公園，被廣泛認為是泰國觀賞野生動物的最佳國家公園。主要位於呵叻府，並延伸至北柳府、沙拉武里府和那空那育府，公園佔地2,168平方公里，擁有多樣化的生態系統。",
+                  "1962年にタイ初の国立公園として設立されたカオヤイは、野生動物観察においてタイ最高の国立公園として広く認められています。主にナコーンラーチャシーマー県に位置し、プラチンブリー県、サラブリー県、ナコーンナーヨック県にまたがり、2,168km²の多様な生態系を誇ります。"
+                )}
+              </p>
+              
+              <p>
+                {t(
+                  "As part of the UNESCO World Heritage Dong Phayayen-Khao Yai Forest Complex, the park features elevations ranging from 400 to 1,000 meters above sea level, with Khao Rom peak reaching 1,351 meters. The diverse landscape encompasses rainforests, evergreen forests, and grasslands, creating perfect habitats for an incredible variety of wildlife.",
+                  "作為聯合國教科文組織世界遺產東帕雅延-考艾森林綜合體的一部分，公園海拔從400米到1,000米不等，考艾羅姆峰高達1,351米。多樣化的地貌包括雨林、常綠森林和草原，為各種野生動物創造了完美的棲息地。",
+                  "ユネスコ世界遺産ドンパヤーイェン・カオヤイ森林群の一部として、公園は海抜400〜1,000メートルの標高を持ち、カオロム峰は1,351メートルに達します。熱帯雨林、常緑樹林、草原からなる多様な景観は、驚くべき野生動物の完璧な生息地を作り出しています。"
+                )}
+              </p>
+
+              <div className="wildlife-highlights">
+                <h4>{t('Wildlife Highlights', '野生動物亮點', '野生動物のハイライト')}</h4>
+                <ul>
+                  <li>
+                    <strong>{t('Mammals', '哺乳動物', '哺乳類')}:</strong> {t(
+                      'Asian elephants, sun bears, Asian black bears, gaurs, northern pig-tailed macaques, white-handed gibbons, sambar deer, and barking deer',
+                      '亞洲象、馬來熊、亞洲黑熊、野牛、北豬尾獼猴、白手長臂猿、水鹿和赤麂',
+                      'アジアゾウ、マレーグマ、ツキノワグマ、ガウル、ブタオザル、シロテテナガザル、サンバー、キョン'
+                    )}
+                  </li>
+                  <li>
+                    <strong>{t('Birds', '鳥類', '鳥類')}:</strong> {t(
+                      'Over 440 bird species including great hornbills, Oriental pied hornbills, and rare species like rufous-tailed robins',
+                      '超過440種鳥類，包括大犀鳥、東方斑犀鳥，以及稀有的棕尾鴝等物種',
+                      'オオサイチョウ、シロクロサイチョウ、希少なアカオジョウビタキなど440種以上の鳥類'
+                    )}
+                  </li>
+                  <li>
+                    <strong>{t('Reptiles', '爬蟲類', '爬虫類')}:</strong> {t(
+                      'Over 85 reptile species including three python species, various pit vipers, and Chinese water dragons',
+                      '超過85種爬蟲類，包括三種蟒蛇、各種竹葉青蛇和中國水龍',
+                      'ニシキヘビ3種、各種ハブ、チュウゴクミズトカゲなど85種以上の爬虫類'
+                    )}
+                  </li>
+                </ul>
+              </div>
+
+              <div className="best-time-info">
+                <h4>{t('Best Time to Visit', '最佳參觀時間', 'ベスト訪問時期')}</h4>
+                <p>
+                  {t(
+                    "November to February offers the most comfortable weather with cooler temperatures (average 22°C during the day, 9-10°C at night) and dry conditions. The rainy season runs from May to October with high humidity and peak rainfall in September.",
+                    "11月至2月提供最舒適的天氣，氣溫較涼爽（白天平均22°C，夜間9-10°C）且乾燥。雨季從5月持續到10月，濕度高，9月降雨量最大。",
+                    "11月から2月は最も快適な天候で、涼しい気温（日中平均22°C、夜間9-10°C）と乾燥した条件が楽しめます。雨季は5月から10月で、湿度が高く、9月に最も降雨量が多くなります。"
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Add journey metadata */}
           {khaoyaiJourney && (
             <div className="journey-details">
@@ -125,20 +185,20 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 <ul className="links-list">
                   <li>
                     <a 
-                      href="https://www.dnp.go.th/parkreserve/khaoyai" 
+                      href="https://khaoyainationalpark.com/en" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      onClick={() => handleExternalLinkClick('https://www.dnp.go.th/parkreserve/khaoyai', 'Khao Yai Official Website')}
+                      onClick={() => handleExternalLinkClick('https://khaoyainationalpark.com/en', 'Khao Yai Official Website')}
                     >
                       🏛️ {t('Khao Yai National Park Official Website', '考艾國家公園官方網站', 'カオヤイ国立公園公式サイト')}
                     </a>
                   </li>
                   <li>
                     <a 
-                      href="https://nps.dnp.go.th/" 
+                      href="https://www.thainationalparks.com/" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      onClick={() => handleExternalLinkClick('https://nps.dnp.go.th/', 'Thailand National Parks Service')}
+                      onClick={() => handleExternalLinkClick('https://www.thainationalparks.com/', 'Thailand National Parks')}
                     >
                       🌳 {t('Thailand National Parks Service', '泰國國家公園服務', 'タイ国立公園サービス')}
                     </a>
@@ -166,8 +226,13 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 <h4>{t('Transportation', '交通資訊', '交通情報')}</h4>
                 <ul className="links-list">
                   <li>
-                    <a href="https://www.rentalcars.com/en/city/th/nakhon-ratchasima/" target="_blank" rel="noopener noreferrer">
-                      🚗 {t('Car Rental Options', '租車選擇', 'レンタカーオプション')}
+                    <a 
+                      href="https://khaoyainationalpark.com/en/plan-your-visit/getting-here" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://khaoyainationalpark.com/en/plan-your-visit/getting-here', 'Getting to Khao Yai Guide')}
+                    >
+                      🚗 {t('How to Get to Khao Yai (Official Guide)', '如何前往考艾（官方指南）', 'カオヤイへの行き方（公式ガイド）')}
                     </a>
                   </li>
                   <li>
@@ -182,20 +247,20 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 <h4>{t('Weather & Planning', '天氣與規劃', '天気・計画')}</h4>
                 <ul className="links-list">
                   <li>
-                    <a href="https://weather.com/weather/today/l/Khao+Yai+National+Park+Thailand" target="_blank" rel="noopener noreferrer">
-                      🌤️ {t('Current Weather Forecast', '當前天氣預報', '現在の天気予報')}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.timeanddate.com/weather/thailand/nakhon-ratchasima" target="_blank" rel="noopener noreferrer">
-                      📅 {t('Best Time to Visit Guide', '最佳參觀時間指南', 'ベスト訪問時期ガイド')}
+                    <a 
+                      href="https://www.timeanddate.com/weather/@1594694/ext" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://www.timeanddate.com/weather/@1594694/ext', 'Khao Yai Weather Forecast')}
+                    >
+                      🌤️📅 {t('Khao Yai Weather Forecast & Best Time to Visit', '考艾天氣預報與最佳參觀時間', 'カオヤイ天気予報・ベスト訪問時期')}
                     </a>
                   </li>
                 </ul>
               </div>
 
               <div className="link-category">
-                <h4>{t('Safety & Emergency', '安全與緊急', '安全・緊急')}</h4>
+                <h4>{t('In An Emergency - Useful Calls', '緊急情況 - 實用電話', '緊急時 - 便利な電話番号')}</h4>
                 <ul className="links-list">
                   <li>
                     <a href="tel:1669" className="emergency-link">
@@ -203,8 +268,13 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.tourismthailand.org/About-Thailand/Safety-Tips" target="_blank" rel="noopener noreferrer">
-                      🛡️ {t('Thailand Travel Safety Tips', '泰國旅遊安全提示', 'タイ旅行安全のヒント')}
+                    <a 
+                      href="https://www.tourismthailand.org/Plan-Your-Trip/Useful-Call" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://www.tourismthailand.org/Plan-Your-Trip/Useful-Call', 'Thailand Emergency Contacts')}
+                    >
+                      📞 {t('Thailand Emergency & Useful Contact Numbers', '泰國緊急與實用聯絡電話', 'タイ緊急・便利な連絡先')}
                     </a>
                   </li>
                 </ul>
@@ -214,12 +284,22 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 <h4>{t('Local Services', '當地服務', 'ローカルサービス')}</h4>
                 <ul className="links-list">
                   <li>
-                    <a href="https://goo.gl/maps/KhaoYaiVisitorCenter" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://maps.app.goo.gl/QemcoPtPPhLqghzA6" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://maps.app.goo.gl/QemcoPtPPhLqghzA6', 'Visitor Center Location')}
+                    >
                       📍 {t('Visitor Center Location (Google Maps)', '遊客中心位置 (Google地圖)', 'ビジターセンター位置 (Googleマップ)')}
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com/khaoyainationalpark" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://www.facebook.com/KhaoYaiNationalPark1962/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => handleExternalLinkClick('https://www.facebook.com/KhaoYaiNationalPark1962/', 'Khao Yai Facebook')}
+                    >
                       📱 {t('Khao Yai National Park Facebook', '考艾國家公園Facebook', 'カオヤイ国立公園Facebook')}
                     </a>
                   </li>
