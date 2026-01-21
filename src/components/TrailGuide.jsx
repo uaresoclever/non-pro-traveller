@@ -195,8 +195,6 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
           {/* Trail Picker - Interactive Trail Recommendation */}
           <TrailPicker />
           
-          <TrailGrid />
-
           {/* Trail Overview Map & Important Information */}
           <div className="trail-overview-section">
             <h3>{t('Trail Overview & Important Information', '步道總覽與重要資訊', 'トレイル概要・重要情報')}</h3>
