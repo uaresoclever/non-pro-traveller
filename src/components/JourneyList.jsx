@@ -63,15 +63,24 @@ const JourneyList = ({ onJourneySelect, initialFilters = {}, onTagClick }) => {
 
   return (
     <div className="journey-list-container">
-      <div className="journey-list-header">
-        <h2>{t('All Journeys', '所有旅程', 'すべての旅')}</h2>
-        <p className="journey-count">
-          {t(
-            `${publishedJourneys.length} journey${publishedJourneys.length !== 1 ? 's' : ''} found`,
-            `找到 ${publishedJourneys.length} 個旅程`,
-            `${publishedJourneys.length}つの旅が見つかりました`
-          )}
-        </p>
+      <div className="journey-list-hero">
+        <div className="hero-content">
+          <h1>{t('All Journeys', '所有旅程', 'すべての旅')}</h1>
+          <p className="hero-subtitle">
+            {t(
+              'Discover amazing travel experiences from around the world',
+              '探索來自世界各地的精彩旅行體驗',
+              '世界中の素晴らしい旅行体験を発見'
+            )}
+          </p>
+          <div className="journey-count-badge">
+            {t(
+              `${publishedJourneys.length} journey${publishedJourneys.length !== 1 ? 's' : ''} available`,
+              `${publishedJourneys.length} 個旅程可供選擇`,
+              `${publishedJourneys.length}つの旅が利用可能`
+            )}
+          </div>
+        </div>
       </div>
 
       <JourneyFilter 

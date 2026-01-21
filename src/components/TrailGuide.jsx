@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import TrailGrid from './TrailGrid'
 import { trackTagClick, trackExternalLink } from '../utils/analytics'
@@ -6,6 +6,7 @@ import { journeys } from '../data/journeys'
 
 const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
   const { currentLang, t } = useLanguage()
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
 
   const handleTagClick = (tag) => {
     // Track tag click
@@ -19,6 +20,10 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
   const handleExternalLinkClick = (url, linkText) => {
     // Track external link click
     trackExternalLink(url, linkText)
+  }
+
+  const toggleDescription = () => {
+    setIsDescriptionExpanded(!isDescriptionExpanded)
   }
 
   // If no specific journey is provided, show the default Khao Yai guide
@@ -44,64 +49,76 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
             )}
           </p>
 
-          {/* Park Description Section */}
+          {/* Park Description Section - Collapsible */}
           <div className="park-description">
-            <h3>{t('About Khao Yai National Park', '關於考艾國家公園', 'カオヤイ国立公園について')}</h3>
-            <div className="description-content">
-              <p>
-                {t(
-                  "Established in 1962 as Thailand's first national park, Khao Yai is widely regarded as the best national park in Thailand for wildlife viewing. Located primarily in Nakhon Ratchasima Province and extending into Prachinburi, Saraburi, and Nakhon Nayok provinces, the park covers an impressive 2,168 km² of diverse ecosystems.",
-                  "考艾國家公園成立於1962年，是泰國第一個國家公園，被廣泛認為是泰國觀賞野生動物的最佳國家公園。主要位於呵叻府，並延伸至北柳府、沙拉武里府和那空那育府，公園佔地2,168平方公里，擁有多樣化的生態系統。",
-                  "1962年にタイ初の国立公園として設立されたカオヤイは、野生動物観察においてタイ最高の国立公園として広く認められています。主にナコーンラーチャシーマー県に位置し、プラチンブリー県、サラブリー県、ナコーンナーヨック県にまたがり、2,168km²の多様な生態系を誇ります。"
+            <div className="description-header" onClick={toggleDescription}>
+              <h3>{t('About Khao Yai National Park', '關於考艾國家公園', 'カオヤイ国立公園について')}</h3>
+              <button className="collapse-btn">
+                {isDescriptionExpanded ? '▼' : '▶'} {t(
+                  isDescriptionExpanded ? 'Show less' : 'Want to read more?',
+                  isDescriptionExpanded ? '收起' : '想了解更多？',
+                  isDescriptionExpanded ? '閉じる' : 'もっと読みたい？'
                 )}
-              </p>
-              
-              <p>
-                {t(
-                  "As part of the UNESCO World Heritage Dong Phayayen-Khao Yai Forest Complex, the park features elevations ranging from 400 to 1,000 meters above sea level, with Khao Rom peak reaching 1,351 meters. The diverse landscape encompasses rainforests, evergreen forests, and grasslands, creating perfect habitats for an incredible variety of wildlife.",
-                  "作為聯合國教科文組織世界遺產東帕雅延-考艾森林綜合體的一部分，公園海拔從400米到1,000米不等，考艾羅姆峰高達1,351米。多樣化的地貌包括雨林、常綠森林和草原，為各種野生動物創造了完美的棲息地。",
-                  "ユネスコ世界遺産ドンパヤーイェン・カオヤイ森林群の一部として、公園は海抜400〜1,000メートルの標高を持ち、カオロム峰は1,351メートルに達します。熱帯雨林、常緑樹林、草原からなる多様な景観は、驚くべき野生動物の完璧な生息地を作り出しています。"
-                )}
-              </p>
-
-              <div className="wildlife-highlights">
-                <h4>{t('Wildlife Highlights', '野生動物亮點', '野生動物のハイライト')}</h4>
-                <ul>
-                  <li>
-                    <strong>{t('Mammals', '哺乳動物', '哺乳類')}:</strong> {t(
-                      'Asian elephants, sun bears, Asian black bears, gaurs, northern pig-tailed macaques, white-handed gibbons, sambar deer, and barking deer',
-                      '亞洲象、馬來熊、亞洲黑熊、野牛、北豬尾獼猴、白手長臂猿、水鹿和赤麂',
-                      'アジアゾウ、マレーグマ、ツキノワグマ、ガウル、ブタオザル、シロテテナガザル、サンバー、キョン'
-                    )}
-                  </li>
-                  <li>
-                    <strong>{t('Birds', '鳥類', '鳥類')}:</strong> {t(
-                      'Over 440 bird species including great hornbills, Oriental pied hornbills, and rare species like rufous-tailed robins',
-                      '超過440種鳥類，包括大犀鳥、東方斑犀鳥，以及稀有的棕尾鴝等物種',
-                      'オオサイチョウ、シロクロサイチョウ、希少なアカオジョウビタキなど440種以上の鳥類'
-                    )}
-                  </li>
-                  <li>
-                    <strong>{t('Reptiles', '爬蟲類', '爬虫類')}:</strong> {t(
-                      'Over 85 reptile species including three python species, various pit vipers, and Chinese water dragons',
-                      '超過85種爬蟲類，包括三種蟒蛇、各種竹葉青蛇和中國水龍',
-                      'ニシキヘビ3種、各種ハブ、チュウゴクミズトカゲなど85種以上の爬虫類'
-                    )}
-                  </li>
-                </ul>
-              </div>
-
-              <div className="best-time-info">
-                <h4>{t('Best Time to Visit', '最佳參觀時間', 'ベスト訪問時期')}</h4>
+              </button>
+            </div>
+            
+            {isDescriptionExpanded && (
+              <div className="description-content">
                 <p>
                   {t(
-                    "November to February offers the most comfortable weather with cooler temperatures (average 22°C during the day, 9-10°C at night) and dry conditions. The rainy season runs from May to October with high humidity and peak rainfall in September.",
-                    "11月至2月提供最舒適的天氣，氣溫較涼爽（白天平均22°C，夜間9-10°C）且乾燥。雨季從5月持續到10月，濕度高，9月降雨量最大。",
-                    "11月から2月は最も快適な天候で、涼しい気温（日中平均22°C、夜間9-10°C）と乾燥した条件が楽しめます。雨季は5月から10月で、湿度が高く、9月に最も降雨量が多くなります。"
+                    "Established in 1962 as Thailand's first national park, Khao Yai is widely regarded as the best national park in Thailand for wildlife viewing. Located primarily in Nakhon Ratchasima Province and extending into Prachinburi, Saraburi, and Nakhon Nayok provinces, the park covers an impressive 2,168 km² of diverse ecosystems.",
+                    "考艾國家公園成立於1962年，是泰國第一個國家公園，被廣泛認為是泰國觀賞野生動物的最佳國家公園。主要位於呵叻府，並延伸至北柳府、沙拉武里府和那空那育府，公園佔地2,168平方公里，擁有多樣化的生態系統。",
+                    "1962年にタイ初の国立公園として設立されたカオヤイは、野生動物観察においてタイ最高の国立公園として広く認められています。主にナコーンラーチャシーマー県に位置し、プラチンブリー県、サラブリー県、ナコーンナーヨック県にまたがり、2,168km²の多様な生態系を誇ります。"
                   )}
                 </p>
+                
+                <p>
+                  {t(
+                    "As part of the UNESCO World Heritage Dong Phayayen-Khao Yai Forest Complex, the park features elevations ranging from 400 to 1,000 meters above sea level, with Khao Rom peak reaching 1,351 meters. The diverse landscape encompasses rainforests, evergreen forests, and grasslands, creating perfect habitats for an incredible variety of wildlife.",
+                    "作為聯合國教科文組織世界遺產東帕雅延-考艾森林綜合體的一部分，公園海拔從400米到1,000米不等，考艾羅姆峰高達1,351米。多樣化的地貌包括雨林、常綠森林和草原，為各種野生動物創造了完美的棲息地。",
+                    "ユネスコ世界遺産ドンパヤーイェン・カオヤイ森林群の一部として、公園は海抜400〜1,000メートルの標高を持ち、カオロム峰は1,351メートルに達します。熱帯雨林、常緑樹林、草原からなる多様な景観は、驚くべき野生動物の完璧な生息地を作り出しています。"
+                  )}
+                </p>
+
+                <div className="wildlife-highlights">
+                  <h4>{t('Wildlife Highlights', '野生動物亮點', '野生動物のハイライト')}</h4>
+                  <ul>
+                    <li>
+                      <strong>{t('Mammals', '哺乳動物', '哺乳類')}:</strong> {t(
+                        'Asian elephants, sun bears, Asian black bears, gaurs, northern pig-tailed macaques, white-handed gibbons, sambar deer, and barking deer',
+                        '亞洲象、馬來熊、亞洲黑熊、野牛、北豬尾獼猴、白手長臂猿、水鹿和赤麂',
+                        'アジアゾウ、マレーグマ、ツキノワグマ、ガウル、ブタオザル、シロテテナガザル、サンバー、キョン'
+                      )}
+                    </li>
+                    <li>
+                      <strong>{t('Birds', '鳥類', '鳥類')}:</strong> {t(
+                        'Over 440 bird species including great hornbills, Oriental pied hornbills, and rare species like rufous-tailed robins',
+                        '超過440種鳥類，包括大犀鳥、東方斑犀鳥，以及稀有的棕尾鴝等物種',
+                        'オオサイチョウ、シロクロサイチョウ、希少なアカオジョウビタキなど440種以上の鳥類'
+                      )}
+                    </li>
+                    <li>
+                      <strong>{t('Reptiles', '爬蟲類', '爬虫類')}:</strong> {t(
+                        'Over 85 reptile species including three python species, various pit vipers, and Chinese water dragons',
+                        '超過85種爬蟲類，包括三種蟒蛇、各種竹葉青蛇和中國水龍',
+                        'ニシキヘビ3種、各種ハブ、チュウゴクミズトカゲなど85種以上の爬虫類'
+                      )}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="best-time-info">
+                  <h4>{t('Best Time to Visit', '最佳參觀時間', 'ベスト訪問時期')}</h4>
+                  <p>
+                    {t(
+                      "November to February offers the most comfortable weather with cooler temperatures (average 22°C during the day, 9-10°C at night) and dry conditions. The rainy season runs from May to October with high humidity and peak rainfall in September.",
+                      "11月至2月提供最舒適的天氣，氣溫較涼爽（白天平均22°C，夜間9-10°C）且乾燥。雨季從5月持續到10月，濕度高，9月降雨量最大。",
+                      "11月から2月は最も快適な天候で、涼しい気温（日中平均22°C、夜間9-10°C）と乾燥した条件が楽しめます。雨季は5月から10月で、湿度が高く、9月に最も降雨量が多くなります。"
+                    )}
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Add journey metadata */}
@@ -175,6 +192,61 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
           )}
           
           <TrailGrid />
+
+          {/* Trail Overview Map & Important Information */}
+          <div className="trail-overview-section">
+            <h3>{t('Trail Overview & Important Information', '步道總覽與重要資訊', 'トレイル概要・重要情報')}</h3>
+            
+            <div className="trail-map-container">
+              <div className="map-placeholder">
+                <div className="map-icon">🗺️</div>
+                <h4>{t('Interactive Trail Map', '互動式步道地圖', 'インタラクティブトレイルマップ')}</h4>
+                <p>
+                  {t(
+                    'For detailed trail maps and GPS coordinates, visit the official Khao Yai hiking page',
+                    '詳細步道地圖和GPS座標，請造訪考艾官方健行頁面',
+                    '詳細なトレイルマップとGPS座標については、カオヤイ公式ハイキングページをご覧ください'
+                  )}
+                </p>
+                <a 
+                  href="https://khaoyainationalpark.com/en/plan-your-visit/thing-to-do/hiking" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="map-link-btn"
+                  onClick={() => handleExternalLinkClick('https://khaoyainationalpark.com/en/plan-your-visit/thing-to-do/hiking', 'Official Trail Map')}
+                >
+                  {t('View Official Trail Map', '查看官方步道地圖', '公式トレイルマップを見る')} 🔗
+                </a>
+              </div>
+            </div>
+
+            <div className="important-info-grid">
+              <div className="info-card timing">
+                <h4>⏰ {t('Trail Timing', '步道時間', 'トレイル時間')}</h4>
+                <ul>
+                  <li><strong>{t('Trails 1, 2, 3, 4, 5, 7', '步道 1, 2, 3, 4, 5, 7', 'トレイル 1, 2, 3, 4, 5, 7')}:</strong> {t('Start between 8:00 AM - 2:00 PM', '上午8點至下午2點間出發', '午前8時〜午後2時の間に出発')}</li>
+                  <li><strong>{t('Trail 6 (Long Trail)', '步道 6（長程步道）', 'トレイル 6（ロングトレイル）')}:</strong> {t('Must start before 10:00 AM', '必須在上午10點前出發', '午前10時前に出発必須')}</li>
+                </ul>
+              </div>
+
+              <div className="info-card seasonal">
+                <h4>📅 {t('Seasonal Closures', '季節性關閉', '季節的閉鎖')}</h4>
+                <ul>
+                  <li><strong>{t('Trail 6 Closure', '步道 6 關閉', 'トレイル 6 閉鎖')}:</strong> {t('July 1 - August 31 (Rainy Season)', '7月1日至8月31日（雨季）', '7月1日〜8月31日（雨季）')}</li>
+                  <li><strong>{t('Stream Crossing', '溪流穿越', '川渡り')}:</strong> {t('Trail 5 may be impassable during heavy rains', '步道 5 在大雨期間可能無法通行', 'トレイル 5 は大雨時通行不可の場合あり')}</li>
+                </ul>
+              </div>
+
+              <div className="info-card safety">
+                <h4>🛡️ {t('Safety Guidelines', '安全指南', '安全ガイドライン')}</h4>
+                <ul>
+                  <li>{t('Bring packed lunch for Trail 6 (8km, 6 hours)', '步道 6 請攜帶便當（8公里，6小時）', 'トレイル 6 は弁当持参（8km、6時間）')}</li>
+                  <li>{t('Follow trail markers to avoid getting lost', '遵循步道標記避免迷路', 'トレイルマーカーに従って迷子を避ける')}</li>
+                  <li>{t('Mandatory guide required for Trails 3, 4, 5, 6', '步道 3, 4, 5, 6 必須有嚮導', 'トレイル 3, 4, 5, 6 はガイド必須')}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           {/* Useful Links Section */}
           <div className="useful-links-section">

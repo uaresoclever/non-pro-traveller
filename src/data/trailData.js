@@ -4,6 +4,7 @@ export const trailData = {
       no: "1",
       name: "Visitor Center – <strong>Kong Kaew Waterfall</strong> Trail",
       distance: "~1.2 km (loop), 45–60 minutes",
+      type: "loop",
       selfGuided: '<span class="badge-easy">✅ No guide needed</span>',
       startEnd: "Start: Behind Visitor Center suspension bridge (ample parking)<br>End: Return to same Visitor Center location",
       highlights: "Close-up tropical rainforest + dry evergreen forest, agarwood trees, gibbon calls, birdwatching; endpoint small Kong Kaew waterfall + suspension bridge photo spot.",
@@ -21,7 +22,7 @@ export const trailData = {
     {
       no: "3",
       name: "<strong>Km 33 – Nong Pak Chi</strong> Trail<br><small>90th Anniversary Thai‑Switzerland Friendship Trail</small>",
-      distance: "~3.3–4.2 km one way, 2.5–3 hours",
+      distance: "4.2 km one way, 2.5–3 hours",
       selfGuided: '<span class="badge-guide">❌ Guide required</span>',
       startEnd: "Start: Road marker Km 33 entrance (roadside parking)<br>End: Km 35, near Nong Pak Chi Observation Tower (usually picked up by guide vehicle)",
       highlights: "Through mature dry forest, secondary forest and grasslands, popular wildlife viewing: elephants, gaur, gibbons, hornbills; final Nong Pak Chi observation tower overlooking grasslands + pond.",
@@ -30,7 +31,7 @@ export const trailData = {
     {
       no: "4",
       name: "<strong>Dong Tiw – Sai Sorn Reservoir</strong> Trail",
-      distance: "~2.7–2.8 km one way, 1.5–2 hours",
+      distance: "2.7 km one way, 1.5–2 hours",
       selfGuided: '<span class="badge-guide">❌ Guide required</span>',
       startEnd: "Start: Thanarat Road roadside (~200m west of Visitor Center, near Sai Sorn)<br>End: Sai Sorn Reservoir viewpoint (parking available, famous sunrise/sunset spot)",
       highlights: "Through dry evergreen and secondary forests, deer, monkeys and birds along the way; endpoint Sai Sorn reservoir classic sunrise/sunset viewpoint.",

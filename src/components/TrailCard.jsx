@@ -23,10 +23,32 @@ const TrailCard = ({ trail }) => {
     return match ? match[1] : ''
   }
 
+  const getTrailTypeIcon = (distance) => {
+    // Determine trail type from distance description
+    if (distance.includes('loop') || distance.includes('環狀') || distance.includes('around lake') || distance.includes('circular')) {
+      return { icon: '↻', type: 'loop' }
+    }
+    return { icon: '→', type: 'one-way' }
+  }
+
+  const getTrailTypeLabel = (distance) => {
+    const typeInfo = getTrailTypeIcon(distance)
+    if (typeInfo.type === 'loop') {
+      return t('Loop Trail', '環狀步道', 'ループトレイル')
+    }
+    return t('One-way Trail', '單程步道', '片道トレイル')
+  }
+
   return (
     <div className="trail-card">
       <div className="trail-header">
-        <div className="trail-number">#{trail.no}</div>
+        <div className="trail-info-left">
+          <div className="trail-number">#{trail.no}</div>
+          <div className="trail-type">
+            <span className="trail-type-icon">{getTrailTypeIcon(trail.distance).icon}</span>
+            <span className="trail-type-label">{getTrailTypeLabel(trail.distance)}</span>
+          </div>
+        </div>
         <div className="trail-rating">
           <span className="stars">{getRatingStars(trail.rating)}</span>
           <span className="rating-text">{getRatingText(trail.rating)}</span>
