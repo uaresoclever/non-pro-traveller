@@ -283,49 +283,137 @@
   margin: 0;
 }
 
-/* Mobile Responsive */
+/* Useful Links Section */
+.useful-links-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid #e9ecef;
+}
+
+.useful-links-section h3 {
+  color: #136a8a;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.link-category {
+  background: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.link-category h4 {
+  color: #267871;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 0.75rem;
+}
+
+.links-list li:last-child {
+  margin-bottom: 0;
+}
+
+.links-list a {
+  color: #136a8a;
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.links-list a:hover {
+  background: #f1f6fb;
+  color: #0d5269;
+  transform: translateX(2px);
+}
+
+.emergency-link {
+  background: #fff3cd !important;
+  border: 1px solid #ffeaa7 !important;
+  color: #856404 !important;
+  font-weight: 500;
+}
+
+.emergency-link:hover {
+  background: #ffeaa7 !important;
+  color: #533f03 !important;
+}
+
+.links-disclaimer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.links-disclaimer p {
+  margin: 0;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Mobile Responsive for Links */
 @media (max-width: 768px) {
-  .trail-grid {
+  .links-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   
-  .trail-card {
-    padding: 1.25rem;
+  .useful-links-section {
+    padding: 1.5rem;
   }
   
-  .trail-grid-header h3 {
-    font-size: 1.5rem;
+  .link-category {
+    padding: 1rem;
   }
   
-  .trail-grid-description {
-    font-size: 1rem;
+  .useful-links-section h3 {
+    font-size: 1.3rem;
   }
   
-  .legend-items {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .trail-grid-footer {
-    padding: 1.25rem;
+  .links-list a {
+    font-size: 0.85rem;
+    padding: 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
-  .trail-header {
+  .useful-links-section {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-list a {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
-  }
-  
-  .trail-rating {
-    text-align: left;
-  }
-  
-  .detail-icon {
-    font-size: 1rem;
-    margin-right: 0.5rem;
+    gap: 0.25rem;
   }
 }
 
