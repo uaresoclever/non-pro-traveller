@@ -2,6 +2,7 @@ import React from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import TrailGrid from './TrailGrid'
 import { trackTagClick } from '../utils/analytics'
+import { journeys } from '../data/journeys'
 
 const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
   const { currentLang, t } = useLanguage()
@@ -17,6 +18,9 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
 
   // If no specific journey is provided, show the default Khao Yai guide
   if (!journey) {
+    // Get the Khao Yai journey data for publish date and other info
+    const khaoyaiJourney = journeys.find(j => j.id === 'khao-yai-hiking')
+    
     return (
       <section className="journeys">
         <div className="journey-card">
@@ -34,6 +38,76 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
               "タイ最古の国立公園の最高のハイキングトレイルの包括的なガイド"
             )}
           </p>
+
+          {/* Add journey metadata */}
+          {khaoyaiJourney && (
+            <div className="journey-details">
+              <div className="detail-item">
+                <span className="detail-label">{t('Country', '國家', '国')}:</span>
+                <span className="detail-value">
+                  {khaoyaiJourney.country.flag} {khaoyaiJourney.country.name[currentLang]}
+                </span>
+              </div>
+
+              <div className="detail-item">
+                <span className="detail-label">{t('Duration', '時長', '期間')}:</span>
+                <span className="detail-value">
+                  {khaoyaiJourney.duration.min === khaoyaiJourney.duration.max 
+                    ? `${khaoyaiJourney.duration.min} ${t('day', '天', '日')}${khaoyaiJourney.duration.min > 1 ? 's' : ''}`
+                    : `${khaoyaiJourney.duration.min}-${khaoyaiJourney.duration.max} ${t('days', '天', '日間')}`
+                  }
+                </span>
+              </div>
+
+              <div className="detail-item">
+                <span className="detail-label">{t('Best Time', '最佳時間', 'ベストシーズン')}:</span>
+                <span className="detail-value">{khaoyaiJourney.bestTime[currentLang]}</span>
+              </div>
+
+              {khaoyaiJourney.budget && (
+                <div className="detail-item">
+                  <span className="detail-label">{t('Budget', '預算', '予算')}:</span>
+                  <span className="detail-value">{khaoyaiJourney.budget[currentLang]}</span>
+                </div>
+              )}
+
+              {khaoyaiJourney.publishDate && (
+                <div className="detail-item">
+                  <span className="detail-label">{t('Published', '發布日期', '公開日')}:</span>
+                  <span className="detail-value">
+                    {new Date(khaoyaiJourney.publishDate).toLocaleDateString(
+                      currentLang === 'ja' ? 'ja-JP' : 
+                      currentLang === 'zh' ? 'zh-TW' : 'en-US',
+                      { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                      }
+                    )}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Add tags section */}
+          {khaoyaiJourney && (
+            <div className="journey-tags">
+              <h4>{t('Tags', '標籤', 'タグ')}:</h4>
+              <div className="tags-container">
+                {khaoyaiJourney.tags[currentLang].map((tag, index) => (
+                  <span 
+                    key={index} 
+                    className="tag clickable-tag"
+                    onClick={() => handleTagClick(tag)}
+                    title={t('Click to filter by this tag', '點擊以此標籤篩選', 'このタグでフィルター')}
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
           
           <TrailGrid />
           
