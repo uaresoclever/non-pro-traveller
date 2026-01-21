@@ -109,16 +109,16 @@ const JourneyList = ({ onJourneySelect }) => {
       {/* No Results */}
       {publishedJourneys.length === 0 && draftJourneys.length === 0 && (
         <div className="no-results">
-          <h3>{t('No journeys found', '找不到旅程')}</h3>
-          <p>{t('Try adjusting your filters or search terms', '嘗試調整篩選條件或搜尋詞')}</p>
+          <h3>{t('No journeys found', '找不到旅程', '旅が見つかりません')}</h3>
+          <p>{t('Try adjusting your filters or search terms', '嘗試調整篩選條件或搜尋詞', 'フィルターや検索条件を調整してみてください')}</p>
         </div>
       )}
 
       {/* Only drafts found */}
       {publishedJourneys.length === 0 && draftJourneys.length > 0 && (
         <div className="no-results">
-          <h3>{t('No published journeys match your search', '沒有已發布的旅程符合您的搜尋')}</h3>
-          <p>{t('But there are some exciting adventures coming soon!', '但有一些令人興奮的冒險即將推出！')}</p>
+          <h3>{t('No published journeys match your search', '沒有已發布的旅程符合您的搜尋', '検索に一致する公開された旅はありません')}</h3>
+          <p>{t('But there are some exciting adventures coming soon!', '但有一些令人興奮的冒險即將推出！', 'でも、エキサイティングな冒険が近日公開予定です！')}</p>
         </div>
       )}
     </div>
