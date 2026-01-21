@@ -7,7 +7,7 @@
     - Code & Technical Implementation: Kiro AI assistance
     - Design & User Experience: Human-AI collaboration
     
-    Built with: HTML5, CSS3, Vanilla JavaScript
+    Built with: React, Vite, CSS3
     Deployed on: Netlify
     
     Making travel dreams come to life through code! ✈️
@@ -137,60 +137,9 @@
       }
     }
     </script>
-    
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <h1 class="nav-title" data-en="Oh! A Non-Professional Traveller LOL" data-zh="非專業旅人冒險">Oh! A Non-Professional Traveller LOL</h1>
-            <div class="language-toggle">
-                <button id="lang-en" class="lang-btn active">EN</button>
-                <button id="lang-zh" class="lang-btn">中文</button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="main-content">
-        <section class="hero">
-            <h1 data-en="Oh! A Non-Professional Traveller LOL" data-zh="非專業旅人冒險" lang="en">Oh! A Non-Professional Traveller LOL</h1>
-            <p data-en="Authentic travel experiences from a non-professional perspective" data-zh="來自非專業角度的真實旅行體驗" lang="en">Authentic travel experiences from a non-professional perspective</p>
-        </section>
-
-        <section class="journeys">
-            <div class="journey-card">
-                <h2 data-en="Khao Yai National Park Hiking Trails" data-zh="考艾國家公園健行步道" lang="en">Khao Yai National Park Hiking Trails</h2>
-                <p data-en="A comprehensive guide to the best hiking trails in Thailand's oldest national park" data-zh="泰國最古老國家公園最佳健行步道完整指南" lang="en">A comprehensive guide to the best hiking trails in Thailand's oldest national park</p>
-                
-                <div class="trail-table-wrapper">
-                    <table class="trail-table">
-                        <thead>
-                            <tr>
-                                <th data-en="No." data-zh="編號">No.</th>
-                                <th data-en="Trail Name" data-zh="英文官方路名 / 常用稱呼">Trail Name</th>
-                                <th data-en="Distance / Time" data-zh="大約距離 / 時間">Distance / Time</th>
-                                <th data-en="Self-Guided" data-zh="可否自行行走">Self-Guided</th>
-                                <th data-en="Start / End Point" data-zh="起點 / 終點（是否易泊車）">Start / End Point</th>
-                                <th data-en="Highlights" data-zh="主要觀光重點">Highlights</th>
-                                <th data-en="Driving Rating" data-zh="自駕便利評分*">Driving Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody id="trail-data">
-                            <!-- Trail data will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p data-en="© 2026 DC & Miyako. Sharing adventures around the world." data-zh="© 2026 DC & Miyako。分享世界各地的冒險。">© 2026 DC & Miyako. Sharing adventures around the world.</p>
-        <div class="credits">
-            <p data-en="Website built with ❤️ using Kiro AI - Making travel dreams come to life through code" data-zh="網站由 Kiro AI 用心打造 ❤️ - 透過程式碼實現旅行夢想">Website built with ❤️ using Kiro AI - Making travel dreams come to life through code</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

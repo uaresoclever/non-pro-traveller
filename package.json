@@ -1,0 +1,30 @@
+{
+  "name": "non-pro-traveller",
+  "version": "1.0.0",
+  "description": "Oh! A Non-Professional Traveller LOL - A bilingual travel website showcasing authentic hiking adventures",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uaresoclever/non-pro-traveller.git"
+  },
+  "keywords": ["travel", "hiking", "thailand", "khao-yai", "bilingual", "react"],
+  "author": "DC & Miyako",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uaresoclever/non-pro-traveller/issues"
+  },
+  "homepage": "https://nonprotraveller.netlify.app",
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite": "^7.3.1"
+  }
+}
