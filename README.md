@@ -17,7 +17,7 @@ Visit: **https://nonprotraveller.netlify.app**
 
 ## 🛠 Built With
 
-- **Content & Travel Experiences**: Human creativity and real adventures
+- **Content & Travel Experiences**: DC & Miyako's real adventures and insights
 - **Code & Technical Implementation**: [Kiro AI](https://kiro.ai) assistance
 - **Technologies**: HTML5, CSS3, Vanilla JavaScript
 - **Deployment**: Netlify with GitHub integration
