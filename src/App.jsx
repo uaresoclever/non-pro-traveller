@@ -61,11 +61,7 @@ function App() {
           {currentView === 'home' && (
             <>
               <Hero onExploreClick={handleViewAllJourneys} />
-              <TrailGuide 
-                journey={journeys.find(j => j.id === 'khao-yai-hiking')} 
-                onViewAllClick={handleViewAllJourneys} 
-                onTagClick={handleTagClick} 
-              />
+              <TrailGuide onViewAllClick={handleViewAllJourneys} onTagClick={handleTagClick} />
             </>
           )}
           
