@@ -52,10 +52,10 @@ const TrailPicker = () => {
     // Step 1: Time-based filtering (CORRECTED)
     if (answers.time === 'short') {
       console.log("✅ Time is short (1-2 hours)")
-      recommendedTrailNos = ['1', '7'] // Trail 1: 45-60min, Trail 7: 1.5hrs
+      recommendedTrailNos = ['1', '4', '7'] // Trail 1: 45-60min, Trail 4: 1.5-2hrs, Trail 7: 1.5hrs
     } else if (answers.time === 'medium') {
       console.log("✅ Time is medium (2-3 hours)")
-      recommendedTrailNos = ['2', '3', '4', '5'] // Trail 2: 2hrs, Trail 3: 2.5-3hrs, Trail 4: 1.5-2hrs, Trail 5: 3hrs
+      recommendedTrailNos = ['2', '3', '5'] // Trail 2: 2hrs, Trail 3: 2.5-3hrs, Trail 5: 3hrs
     } else if (answers.time === 'long') {
       console.log("✅ Time is long (6+ hours ONLY)")
       recommendedTrailNos = ['6'] // ONLY Trail 6: 6 hours - TRUE full day
