@@ -257,7 +257,7 @@ const TrailPicker = () => {
                   {recommendedTrails.map((trail, index) => (
                     <div key={trail.no} className="recommendation-card">
                       <div className="recommendation-header">
-                        <div className="recommendation-rank">#{index + 1}</div>
+                        <div className="recommendation-rank">#{trail.no}</div>
                         <div className="recommendation-info">
                           <h5>{trail.name.replace(/<[^>]*>/g, '')}</h5>
                         </div>
