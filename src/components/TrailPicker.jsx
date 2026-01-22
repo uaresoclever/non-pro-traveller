@@ -42,26 +42,16 @@ const TrailPicker = () => {
   const getRecommendedTrails = () => {
     const data = trailData[currentLang]
     
-    console.log('=== TRAIL PICKER DEBUG ===')
-    console.log('Current answers:', answers)
-    console.log('Current language:', currentLang)
-    
     // Simple mapping based on answers
     let recommendedTrailNos = []
     
     if (answers.time === 'short') {
-      console.log('✅ Time is short')
       if (answers.experience === 'beginner') {
-        console.log('✅ Experience is beginner')
         recommendedTrailNos = ['1', '2', '7'] // Easy short trails (Trail 2 is 2hrs = fits in 1-2hr range)
-        console.log('Set initial recommendations:', recommendedTrailNos)
       } else {
-        console.log('Experience is not beginner:', answers.experience)
         recommendedTrailNos = ['1', '2', '7'] // Still recommend easy ones for short time
-        console.log('Set initial recommendations:', recommendedTrailNos)
       }
     } else if (answers.time === 'medium') {
-      console.log('Time is medium')
       if (answers.experience === 'beginner') {
         recommendedTrailNos = ['2'] // Medium beginner trail
       } else {
@@ -71,44 +61,25 @@ const TrailPicker = () => {
           recommendedTrailNos = ['3', '4', '2'] // Include guided options
         }
       }
-      console.log('Set initial recommendations:', recommendedTrailNos)
     } else if (answers.time === 'long') {
-      console.log('Time is long')
       if (answers.experience === 'experienced') {
         recommendedTrailNos = ['5', '6'] // Challenging long trails
       } else {
         recommendedTrailNos = ['2', '3'] // Easier long options
       }
-      console.log('Set initial recommendations:', recommendedTrailNos)
     }
-
-    console.log('Before guide filter:', recommendedTrailNos)
-    console.log('Guide preference:', answers.guide)
 
     // Filter out trails that don't match guide preference
     if (answers.guide === 'self') {
-      console.log('Applying self-guide filter - keeping only [1,2,7]')
       recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no))
-      console.log('After self-guide filter:', recommendedTrailNos)
     } else if (answers.guide === 'guided') {
-      console.log('Applying guided filter - keeping only [3,4,5,6]')
       recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no))
-      console.log('After guided filter:', recommendedTrailNos)
-    } else {
-      console.log('No guide filter applied (guide =', answers.guide, ')')
     }
-
-    console.log('Final trail numbers:', recommendedTrailNos)
 
     // Get trail data and add reasons
     const recommendations = recommendedTrailNos.map(no => {
       const trail = data.find(t => t.no === no)
-      if (!trail) {
-        console.log('❌ Trail not found:', no)
-        return null
-      }
-      
-      console.log(`✅ Found trail ${no}:`, trail.name.replace(/<[^>]*>/g, ''))
+      if (!trail) return null
       
       const reasons = []
       
@@ -136,12 +107,6 @@ const TrailPicker = () => {
         reasons
       }
     }).filter(Boolean)
-
-    console.log('Final recommendations count:', recommendations.length)
-    recommendations.forEach((trail, index) => {
-      console.log(`${index + 1}. Trail #${trail.no}: ${trail.name.replace(/<[^>]*>/g, '')}`)
-    })
-    console.log('=== END TRAIL PICKER DEBUG ===')
 
     return recommendations.slice(0, 3)
   }
