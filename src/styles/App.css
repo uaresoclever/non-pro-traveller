@@ -338,6 +338,55 @@
   font-size: 0.8rem !important;
 }
 
+/* Trail Badges */
+.trail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.trail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  cursor: default;
+}
+
+.trail-badge .badge-icon {
+  font-size: 0.9rem;
+}
+
+.trail-badge .badge-text {
+  font-weight: 500;
+}
+
+/* Specific badge type styles */
+.trail-badge-no-guide {
+  background-color: #28a745 !important;
+}
+
+.trail-badge-guide-required {
+  background-color: #ffc107 !important;
+  color: #333 !important;
+}
+
+.trail-badge-author-visited {
+  background-color: #136a8a !important;
+}
+
+.trail-badge-beginner-choice {
+  background-color: #e91e63 !important;
+}
+
 .trail-grid-footer {
   background: #f8f9fa;
   border-radius: 12px;
