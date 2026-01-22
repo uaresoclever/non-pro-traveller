@@ -47,33 +47,33 @@ const TrailPicker = () => {
     
     if (answers.time === 'short') {
       if (answers.experience === 'beginner') {
-        recommendedTrailNos = ['1', '2', '7'] // Easy short trails (Trail 2 is 2hrs = fits in 1-2hr range)
+        recommendedTrailNos = ['1', '2', '7'] // Easy short trails
       } else {
-        recommendedTrailNos = ['1', '2', '7'] // Still recommend easy ones for short time
+        recommendedTrailNos = ['1', '2', '4', '7'] // All short trails for experienced
       }
     } else if (answers.time === 'medium') {
       if (answers.experience === 'beginner') {
-        recommendedTrailNos = ['2'] // Medium beginner trail
+        recommendedTrailNos = ['2', '3'] // Easier medium trails
       } else {
         if (answers.guide === 'self') {
-          recommendedTrailNos = ['2'] // Self-guided medium
+          recommendedTrailNos = ['2'] // Only Trail 2 is self-guided medium
         } else {
-          recommendedTrailNos = ['3', '4', '2'] // Include guided options
+          recommendedTrailNos = ['3', '5'] // Guided medium trails
         }
       }
     } else if (answers.time === 'long') {
       if (answers.experience === 'experienced') {
-        recommendedTrailNos = ['5', '6'] // Challenging long trails
+        recommendedTrailNos = ['6'] // Only Trail 6 is truly long (6 hours)
       } else {
-        recommendedTrailNos = ['2', '3'] // Easier long options
+        recommendedTrailNos = ['3', '5'] // Medium trails as easier "long" options
       }
     }
 
     // Filter out trails that don't match guide preference
     if (answers.guide === 'self') {
-      recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no))
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no)) // Self-guided: 1, 2, 7
     } else if (answers.guide === 'guided') {
-      recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no))
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no)) // Guided: 3, 4, 5, 6
     }
 
     // Get trail data and add reasons
