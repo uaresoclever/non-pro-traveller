@@ -65,7 +65,7 @@ const TrailPicker = () => {
       if (answers.experience === 'experienced') {
         recommendedTrailNos = ['6'] // Only Trail 6 is truly long (6 hours)
       } else {
-        recommendedTrailNos = ['3', '5'] // Medium trails as easier "long" options
+        recommendedTrailNos = ['5', '6'] // Trail 5 (3hrs) and 6 (6hrs) for long time
       }
     }
 
