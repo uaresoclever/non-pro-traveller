@@ -42,44 +42,72 @@ const TrailPicker = () => {
   const getRecommendedTrails = () => {
     const data = trailData[currentLang]
     
-    // Simple mapping based on answers
+    console.log("=== TRAIL PICKER DEBUG ===")
+    console.log("Current answers:", answers)
+    console.log("Current language:", currentLang)
+    
+    // Define trail characteristics based on official data
+    const trailCharacteristics = {
+      '1': { time: 'short', experience: ['beginner', 'some', 'experienced'], guide: 'self' },
+      '2': { time: 'medium', experience: ['beginner', 'some', 'experienced'], guide: 'self' },
+      '3': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' },
+      '4': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' },
+      '5': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' }, // 3 hours = medium, not long
+      '6': { time: 'long', experience: ['some', 'experienced'], guide: 'guided' }, // 6 hours = truly long
+      '7': { time: 'short', experience: ['beginner', 'some', 'experienced'], guide: 'self' }
+    }
+    
+    // Start with all trails and filter based on answers
     let recommendedTrailNos = []
     
+    // Step 1: Filter by time
     if (answers.time === 'short') {
-      if (answers.experience === 'beginner') {
-        recommendedTrailNos = ['1', '2', '7'] // Easy short trails
-      } else {
-        recommendedTrailNos = ['1', '2', '4', '7'] // All short trails for experienced
-      }
+      console.log("✅ Time is short")
+      recommendedTrailNos = ['1', '7'] // Only trails 1 and 7 are short (1-2 hours)
     } else if (answers.time === 'medium') {
-      if (answers.experience === 'beginner') {
-        recommendedTrailNos = ['2', '3'] // Easier medium trails
-      } else {
-        if (answers.guide === 'self') {
-          recommendedTrailNos = ['2'] // Only Trail 2 is self-guided medium
-        } else {
-          recommendedTrailNos = ['3', '5'] // Guided medium trails
-        }
-      }
+      console.log("✅ Time is medium")
+      recommendedTrailNos = ['2', '3', '4', '5'] // Trails 2, 3, 4, 5 are medium (2-3 hours)
     } else if (answers.time === 'long') {
-      if (answers.experience === 'experienced') {
-        recommendedTrailNos = ['6'] // Only Trail 6 is truly long (6 hours)
-      } else {
-        recommendedTrailNos = ['5', '6'] // Trail 5 (3hrs) and 6 (6hrs) for long time
-      }
+      console.log("✅ Time is long")
+      recommendedTrailNos = ['6'] // Only Trail 6 is truly long (6+ hours)
     }
-
-    // Filter out trails that don't match guide preference
+    
+    console.log("After time filter:", recommendedTrailNos)
+    
+    // Step 2: Filter by experience
+    recommendedTrailNos = recommendedTrailNos.filter(no => {
+      const trail = trailCharacteristics[no]
+      const isExperienceMatch = trail.experience.includes(answers.experience)
+      console.log(`Trail ${no} experience check: ${trail.experience} includes ${answers.experience}? ${isExperienceMatch}`)
+      return isExperienceMatch
+    })
+    
+    console.log("After experience filter:", recommendedTrailNos)
+    
+    // Step 3: Filter by guide preference
     if (answers.guide === 'self') {
-      recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no)) // Self-guided: 1, 2, 7
+      console.log("Guide preference: self")
+      console.log("Applying self-guide filter - keeping only [1,2,7]")
+      recommendedTrailNos = recommendedTrailNos.filter(no => trailCharacteristics[no].guide === 'self')
     } else if (answers.guide === 'guided') {
-      recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no)) // Guided: 3, 4, 5, 6
+      console.log("Guide preference: guided")
+      console.log("Applying guided filter - keeping only [3,4,5,6]")
+      recommendedTrailNos = recommendedTrailNos.filter(no => trailCharacteristics[no].guide === 'guided')
     }
+    // If 'any', don't filter by guide preference
+    
+    console.log("After guide filter:", recommendedTrailNos)
+    console.log("Final trail numbers:", recommendedTrailNos)
 
     // Get trail data and add reasons
     const recommendations = recommendedTrailNos.map(no => {
       const trail = data.find(t => t.no === no)
-      if (!trail) return null
+      if (!trail) {
+        console.log(`❌ Trail ${no} not found in data`)
+        return null
+      }
+      
+      console.log(`✅ Found trail ${no}: ${trail.name.replace(/<[^>]*>/g, '')}`)
       
       const reasons = []
       
@@ -94,8 +122,10 @@ const TrailPicker = () => {
       
       if (answers.experience === 'beginner') {
         reasons.push(t('Beginner friendly', '新手友善', '初心者向け'))
+      } else if (answers.experience === 'some') {
+        reasons.push(t('Good for your experience level', '適合你的經驗水平', 'あなたの経験レベルに適している'))
       } else if (answers.experience === 'experienced') {
-        reasons.push(t('Good challenge for experienced hikers', '對有經驗健行者的好挑戰', '経験豊富なハイカーに良いチャレンジ'))
+        reasons.push(t('Suitable for experienced hikers', '適合有經驗的健行者', '経験豊富なハイカーに適している'))
       }
       
       if (trail.no === '1') {
@@ -107,6 +137,12 @@ const TrailPicker = () => {
         reasons
       }
     }).filter(Boolean)
+
+    console.log("Final recommendations count:", recommendations.length)
+    recommendations.forEach((trail, index) => {
+      console.log(`${index + 1}. Trail #${trail.no}: ${trail.name.replace(/<[^>]*>/g, '')}`)
+    })
+    console.log("=== END TRAIL PICKER DEBUG ===")
 
     return recommendations.slice(0, 3)
   }
