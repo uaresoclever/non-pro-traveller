@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { LanguageProvider } from './hooks/useLanguage'
+import { journeys } from './data/journeys'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TrailGuide from './components/TrailGuide'
@@ -60,7 +61,11 @@ function App() {
           {currentView === 'home' && (
             <>
               <Hero onExploreClick={handleViewAllJourneys} />
-              <TrailGuide onViewAllClick={handleViewAllJourneys} onTagClick={handleTagClick} />
+              <TrailGuide 
+                journey={journeys.find(j => j.id === 'khao-yai-hiking')} 
+                onViewAllClick={handleViewAllJourneys} 
+                onTagClick={handleTagClick} 
+              />
             </>
           )}
           
