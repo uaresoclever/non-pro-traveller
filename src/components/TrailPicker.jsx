@@ -46,55 +46,52 @@ const TrailPicker = () => {
     console.log("Current answers:", answers)
     console.log("Current language:", currentLang)
     
-    // Define trail characteristics based on official data
-    const trailCharacteristics = {
-      '1': { time: 'short', experience: ['beginner', 'some', 'experienced'], guide: 'self' },
-      '2': { time: 'medium', experience: ['beginner', 'some', 'experienced'], guide: 'self' },
-      '3': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' },
-      '4': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' },
-      '5': { time: 'medium', experience: ['some', 'experienced'], guide: 'guided' }, // 3 hours = medium, not long
-      '6': { time: 'long', experience: ['some', 'experienced'], guide: 'guided' }, // 6 hours = truly long
-      '7': { time: 'short', experience: ['beginner', 'some', 'experienced'], guide: 'self' }
-    }
-    
-    // Start with all trails and filter based on answers
+    // Simple mapping based on answers - FIXED LOGIC
     let recommendedTrailNos = []
     
-    // Step 1: Filter by time
+    // Step 1: Time-based filtering (CORRECTED)
     if (answers.time === 'short') {
-      console.log("✅ Time is short")
-      recommendedTrailNos = ['1', '7'] // Only trails 1 and 7 are short (1-2 hours)
+      console.log("✅ Time is short (1-2 hours)")
+      recommendedTrailNos = ['1', '7'] // Trail 1: 45-60min, Trail 7: 1.5hrs
     } else if (answers.time === 'medium') {
-      console.log("✅ Time is medium")
-      recommendedTrailNos = ['2', '3', '4', '5'] // Trails 2, 3, 4, 5 are medium (2-3 hours)
+      console.log("✅ Time is medium (2-3 hours)")
+      recommendedTrailNos = ['2', '3', '4', '5'] // Trail 2: 2hrs, Trail 3: 2.5-3hrs, Trail 4: 1.5-2hrs, Trail 5: 3hrs
     } else if (answers.time === 'long') {
-      console.log("✅ Time is long")
-      recommendedTrailNos = ['6'] // Only Trail 6 is truly long (6+ hours)
+      console.log("✅ Time is long (6+ hours ONLY)")
+      recommendedTrailNos = ['6'] // ONLY Trail 6: 6 hours - TRUE full day
     }
     
     console.log("After time filter:", recommendedTrailNos)
     
-    // Step 2: Filter by experience
+    // Step 2: Experience filtering
     recommendedTrailNos = recommendedTrailNos.filter(no => {
-      const trail = trailCharacteristics[no]
-      const isExperienceMatch = trail.experience.includes(answers.experience)
-      console.log(`Trail ${no} experience check: ${trail.experience} includes ${answers.experience}? ${isExperienceMatch}`)
-      return isExperienceMatch
+      // Experience requirements (simplified)
+      const experienceMap = {
+        '1': ['beginner', 'some', 'experienced'], // Easy for everyone
+        '2': ['beginner', 'some', 'experienced'], // Easy for everyone  
+        '3': ['some', 'experienced'], // Requires some experience
+        '4': ['some', 'experienced'], // Requires some experience
+        '5': ['some', 'experienced'], // Requires some experience
+        '6': ['some', 'experienced'], // Requires some experience (long but not super difficult)
+        '7': ['beginner', 'some', 'experienced']  // Easy for everyone
+      }
+      
+      const isMatch = experienceMap[no].includes(answers.experience)
+      console.log(`Trail ${no} experience check: needs ${experienceMap[no]}, user has ${answers.experience} = ${isMatch}`)
+      return isMatch
     })
     
     console.log("After experience filter:", recommendedTrailNos)
     
-    // Step 3: Filter by guide preference
+    // Step 3: Guide preference filtering
     if (answers.guide === 'self') {
-      console.log("Guide preference: self")
-      console.log("Applying self-guide filter - keeping only [1,2,7]")
-      recommendedTrailNos = recommendedTrailNos.filter(no => trailCharacteristics[no].guide === 'self')
+      console.log("Guide preference: self-guided only")
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no)) // Only self-guided trails
     } else if (answers.guide === 'guided') {
-      console.log("Guide preference: guided")
-      console.log("Applying guided filter - keeping only [3,4,5,6]")
-      recommendedTrailNos = recommendedTrailNos.filter(no => trailCharacteristics[no].guide === 'guided')
+      console.log("Guide preference: guided only")
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no)) // Only guided trails
     }
-    // If 'any', don't filter by guide preference
+    // If 'any', keep all trails
     
     console.log("After guide filter:", recommendedTrailNos)
     console.log("Final trail numbers:", recommendedTrailNos)
