@@ -47,9 +47,9 @@ const TrailPicker = () => {
     
     if (answers.time === 'short') {
       if (answers.experience === 'beginner') {
-        recommendedTrailNos = ['1', '7'] // Easy short trails
+        recommendedTrailNos = ['1', '2', '7'] // Easy short trails (Trail 2 is 2hrs = fits in 1-2hr range)
       } else {
-        recommendedTrailNos = ['1', '7'] // Still recommend easy ones for short time
+        recommendedTrailNos = ['1', '2', '7'] // Still recommend easy ones for short time
       }
     } else if (answers.time === 'medium') {
       if (answers.experience === 'beginner') {
