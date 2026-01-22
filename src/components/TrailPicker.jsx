@@ -4,214 +4,141 @@ import { trailData } from '../data/trailData'
 
 const TrailPicker = () => {
   const { currentLang, t } = useLanguage()
-  const [selectedFilters, setSelectedFilters] = useState({
-    difficulty: '',
-    time: '',
-    guide: '',
-    experience: ''
-  })
+  const [currentStep, setCurrentStep] = useState(0)
+  const [answers, setAnswers] = useState({})
   const [showResults, setShowResults] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const filterOptions = {
-    difficulty: {
-      label: t('Difficulty Level', '難度等級', '難易度レベル'),
+  const questions = [
+    {
+      id: 'time',
+      question: t('How much time do you have?', '你有多少時間？', 'どのくらい時間がありますか？'),
       options: [
-        { value: 'beginner', label: t('Beginner Friendly', '新手友善', '初心者向け') },
-        { value: 'moderate', label: t('Moderate', '中等', '中級') },
-        { value: 'challenging', label: t('Challenging', '具挑戰性', '上級') }
+        { value: 'short', label: t('1-2 hours (Quick hike)', '1-2小時（快速健行）', '1-2時間（クイックハイク）'), emoji: '⚡' },
+        { value: 'medium', label: t('2-3 hours (Half day)', '2-3小時（半日）', '2-3時間（半日）'), emoji: '🌅' },
+        { value: 'long', label: t('3+ hours (Full day)', '3小時以上（全日）', '3時間以上（一日）'), emoji: '🌄' }
       ]
     },
-    time: {
-      label: t('Available Time', '可用時間', '利用可能時間'),
+    {
+      id: 'experience',
+      question: t('What\'s your hiking experience?', '你的健行經驗如何？', 'ハイキング経験はどうですか？'),
       options: [
-        { value: 'short', label: t('1-2 hours', '1-2小時', '1-2時間') },
-        { value: 'medium', label: t('2-4 hours', '2-4小時', '2-4時間') },
-        { value: 'long', label: t('4+ hours', '4小時以上', '4時間以上') }
+        { value: 'beginner', label: t('First time / Beginner', '初次 / 新手', '初回 / 初心者'), emoji: '🌱' },
+        { value: 'some', label: t('Some experience', '有些經驗', '少し経験あり'), emoji: '🥾' },
+        { value: 'experienced', label: t('Very experienced', '很有經驗', '非常に経験豊富'), emoji: '🏔️' }
       ]
     },
-    guide: {
-      label: t('Guide Preference', '嚮導偏好', 'ガイド希望'),
+    {
+      id: 'guide',
+      question: t('Do you prefer a guide?', '你偏好嚮導嗎？', 'ガイドを希望しますか？'),
       options: [
-        { value: 'self', label: t('Self-guided only', '僅自助', 'セルフガイドのみ') },
-        { value: 'guided', label: t('Guided tours OK', '嚮導團可以', 'ガイドツアーOK') },
-        { value: 'any', label: t('Either is fine', '都可以', 'どちらでも') }
-      ]
-    },
-    experience: {
-      label: t('Hiking Experience', '健行經驗', 'ハイキング経験'),
-      options: [
-        { value: 'first-time', label: t('First time hiker', '初次健行', '初回ハイカー') },
-        { value: 'some', label: t('Some experience', '有些經驗', '少し経験あり') },
-        { value: 'experienced', label: t('Very experienced', '很有經驗', '非常に経験豊富') }
+        { value: 'self', label: t('I want to explore on my own', '我想自己探索', '自分で探索したい'), emoji: '🚶' },
+        { value: 'guided', label: t('I\'d like a guide to show me around', '我想要嚮導帶領', 'ガイドに案内してもらいたい'), emoji: '👥' },
+        { value: 'any', label: t('Either is fine with me', '都可以', 'どちらでも大丈夫'), emoji: '🤷' }
       ]
     }
-  }
+  ]
 
   const getRecommendedTrails = () => {
     const data = trailData[currentLang]
     
-    // Check if ALL filters are selected (all 4 criteria must be chosen)
-    const allFiltersSelected = selectedFilters.difficulty && 
-                              selectedFilters.time && 
-                              selectedFilters.guide && 
-                              selectedFilters.experience
+    // Simple mapping based on answers
+    let recommendedTrailNos = []
     
-    if (!allFiltersSelected) {
-      return [] // No recommendations if not all filters selected
-    }
-    
-    // Define trail characteristics for proper filtering
-    const trailCharacteristics = {
-      '1': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' },
-      '2': { difficulty: 'beginner', time: 'medium', guide: 'self', minExperience: 'first-time' }, // 2 hours = medium
-      '3': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
-      '4': { difficulty: 'moderate', time: 'medium', guide: 'guided', minExperience: 'some' },
-      '5': { difficulty: 'challenging', time: 'long', guide: 'guided', minExperience: 'experienced' },
-      '6': { difficulty: 'challenging', time: 'long', guide: 'guided', minExperience: 'experienced' },
-      '7': { difficulty: 'beginner', time: 'short', guide: 'self', minExperience: 'first-time' }
-    }
-    
-    let recommendations = []
-    
-    // Filter trails based on selected criteria
-    data.forEach(trail => {
-      const characteristics = trailCharacteristics[trail.no]
-      let score = 0
-      let reasons = []
-      let isMatch = true
-      
-      if (!characteristics) {
-        return
-      }
-      
-      // Check each filter - trail must match ALL selected filters
-      if (selectedFilters.difficulty !== characteristics.difficulty) {
-        isMatch = false
+    if (answers.time === 'short') {
+      if (answers.experience === 'beginner') {
+        recommendedTrailNos = ['1', '7'] // Easy short trails
       } else {
-        score += 1
-        if (selectedFilters.difficulty === 'beginner') {
-          reasons.push(t('Perfect for beginners', '非常適合新手', '初心者に最適'))
-        } else if (selectedFilters.difficulty === 'moderate') {
-          reasons.push(t('Good moderate challenge', '適度挑戰', '適度なチャレンジ'))
-        } else if (selectedFilters.difficulty === 'challenging') {
-          reasons.push(t('Challenging adventure', '具挑戰性冒險', 'チャレンジングな冒険'))
-        }
+        recommendedTrailNos = ['1', '7'] // Still recommend easy ones for short time
       }
-      
-      if (isMatch && selectedFilters.time !== characteristics.time) {
-        isMatch = false
-      } else if (isMatch) {
-        score += 1
-        if (selectedFilters.time === 'short') {
-          reasons.push(t('Quick hike (1-2 hours)', '快速健行（1-2小時）', 'クイックハイク（1-2時間）'))
-        } else if (selectedFilters.time === 'medium') {
-          reasons.push(t('Perfect timing (2-4 hours)', '完美時間（2-4小時）', '完璧なタイミング（2-4時間）'))
-        } else if (selectedFilters.time === 'long') {
-          reasons.push(t('Full day adventure (4+ hours)', '全日冒險（4小時以上）', '一日冒険（4時間以上）'))
-        }
-      }
-      
-      if (isMatch) {
-        if (selectedFilters.guide === 'any') {
-          score += 1
-          reasons.push(t('Flexible guide options', '靈活嚮導選擇', '柔軟なガイドオプション'))
-        } else if (selectedFilters.guide !== characteristics.guide) {
-          isMatch = false
+    } else if (answers.time === 'medium') {
+      if (answers.experience === 'beginner') {
+        recommendedTrailNos = ['2'] // Medium beginner trail
+      } else {
+        if (answers.guide === 'self') {
+          recommendedTrailNos = ['2'] // Self-guided medium
         } else {
-          score += 1
-          if (selectedFilters.guide === 'self') {
-            reasons.push(t('Self-guided available', '可自助', 'セルフガイド可能'))
-          } else if (selectedFilters.guide === 'guided') {
-            reasons.push(t('Professional guide included', '專業嚮導', 'プロガイド付き'))
-          }
+          recommendedTrailNos = ['3', '4', '2'] // Include guided options
         }
       }
+    } else if (answers.time === 'long') {
+      if (answers.experience === 'experienced') {
+        recommendedTrailNos = ['5', '6'] // Challenging long trails
+      } else {
+        recommendedTrailNos = ['2', '3'] // Easier long options
+      }
+    }
+
+    // Filter out trails that don't match guide preference
+    if (answers.guide === 'self') {
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['1', '2', '7'].includes(no))
+    } else if (answers.guide === 'guided') {
+      recommendedTrailNos = recommendedTrailNos.filter(no => ['3', '4', '5', '6'].includes(no))
+    }
+
+    // Get trail data and add reasons
+    const recommendations = recommendedTrailNos.map(no => {
+      const trail = data.find(t => t.no === no)
+      if (!trail) return null
       
-      if (isMatch) {
-        // Experience level check - more experienced hikers can do easier trails
-        const experienceOrder = { 'first-time': 1, 'some': 2, 'experienced': 3 }
-        const userExperience = experienceOrder[selectedFilters.experience]
-        const trailMinExperience = experienceOrder[characteristics.minExperience]
-        
-        if (userExperience >= trailMinExperience) {
-          score += 1
-          if (selectedFilters.experience === 'first-time') {
-            reasons.push(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
-          } else if (selectedFilters.experience === 'some') {
-            if (characteristics.minExperience === 'first-time') {
-              reasons.push(t('Easy trail for your experience level', '以您的經驗來說很簡單', 'あなたの経験レベルには簡単'))
-            } else {
-              reasons.push(t('Good match for your experience', '符合您的經驗水平', 'あなたの経験にマッチ'))
-            }
-          } else if (selectedFilters.experience === 'experienced') {
-            if (characteristics.minExperience === 'experienced') {
-              reasons.push(t('Perfect challenge for experienced hikers', '經驗豐富者的完美挑戰', '経験豊富なハイカーに最適'))
-            } else {
-              reasons.push(t('Relaxing trail for your skill level', '以您的技能水平來說很輕鬆', 'あなたのスキルレベルには楽な道'))
-            }
-          }
-        } else {
-          isMatch = false
-        }
+      const reasons = []
+      
+      // Add reasons based on answers
+      if (answers.time === 'short') {
+        reasons.push(t('Perfect for your time limit', '符合你的時間限制', 'あなたの時間制限に最適'))
+      } else if (answers.time === 'medium') {
+        reasons.push(t('Good half-day adventure', '很好的半日冒險', '良い半日の冒険'))
+      } else {
+        reasons.push(t('Full day experience', '全日體驗', '一日体験'))
       }
       
-      // Add special reasons for specific trails
-      if (trail.no === '1' && isMatch) {
-        // Only add if not already present to avoid duplicates
-        const hasBeginnerReason = reasons.some(reason => 
-          reason.includes(t('Perfect for beginners', '非常適合新手', '初心者に最適')) ||
-          reason.includes(t('Perfect for first-time hikers', '非常適合初次健行者', '初回ハイカーに最適'))
-        )
-        if (!hasBeginnerReason) {
-          reasons.push(t('Author tested & beginner choice', '作者測試且新手首選', '著者テスト済み・初心者おすすめ'))
-        }
+      if (answers.experience === 'beginner') {
+        reasons.push(t('Beginner friendly', '新手友善', '初心者向け'))
+      } else if (answers.experience === 'experienced') {
+        reasons.push(t('Good challenge for experienced hikers', '對有經驗健行者的好挑戰', '経験豊富なハイカーに良いチャレンジ'))
       }
       
-      if (isMatch && score > 0) {
-        recommendations.push({
-          ...trail,
-          score,
-          maxScore: 4, // Always 4 since all filters are required
-          reasons
-        })
+      if (trail.no === '1') {
+        reasons.push(t('Author tested & recommended', '作者測試推薦', '著者テスト済み推奨'))
       }
-    })
+      
+      return {
+        ...trail,
+        reasons
+      }
+    }).filter(Boolean)
 
-    // Sort by score (highest first), then by trail number
-    return recommendations
-      .sort((a, b) => {
-        if (b.score !== a.score) return b.score - a.score
-        return parseInt(a.no) - parseInt(b.no)
-      })
-      .slice(0, 3)
+    return recommendations.slice(0, 3)
   }
 
-  const handleFilterChange = (category, value) => {
-    setSelectedFilters(prev => ({
-      ...prev,
-      [category]: value
-    }))
+  const handleAnswer = (value) => {
+    const newAnswers = { ...answers, [questions[currentStep].id]: value }
+    setAnswers(newAnswers)
+    
+    if (currentStep < questions.length - 1) {
+      setCurrentStep(currentStep + 1)
+    } else {
+      setShowResults(true)
+    }
   }
 
-  const handleGetRecommendations = () => {
-    setShowResults(true)
-  }
-
-  const resetFilters = () => {
-    setSelectedFilters({
-      difficulty: '',
-      time: '',
-      guide: '',
-      experience: ''
-    })
+  const resetPicker = () => {
+    setCurrentStep(0)
+    setAnswers({})
     setShowResults(false)
+  }
+
+  const goBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1)
+      setShowResults(false)
+    }
   }
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded)
     if (!isExpanded) {
-      setShowResults(false)
+      resetPicker()
     }
   }
 
@@ -230,12 +157,12 @@ const TrailPicker = () => {
             </svg>
           </div>
           <div className="picker-text">
-            <h3>{t('AI Trail Picker', 'AI 步道選擇器', 'AI トレイルピッカー')}</h3>
+            <h3>{t('Trail Finder', '步道尋找器', 'トレイルファインダー')}</h3>
             <p className="picker-subtitle">
               {t(
-                "Don't know which trail to pick? Let AI give you a hand!",
-                "不知道選哪條步道？讓AI幫你一把！",
-                "どのトレイルを選べばいいかわからない？AIにお任せください！"
+                "Answer 3 simple questions to find your perfect trail!",
+                "回答3個簡單問題找到完美步道！",
+                "3つの簡単な質問に答えて完璧なトレイルを見つけよう！"
               )}
             </p>
           </div>
@@ -244,8 +171,8 @@ const TrailPicker = () => {
           <span className={`expand-icon ${isExpanded ? 'expanded' : ''}`}>▼</span>
           <span className="expand-text">
             {isExpanded ? 
-              t('Hide Picker', '隱藏選擇器', 'ピッカーを隠す') : 
-              t('Try AI Picker', '試試AI選擇器', 'AIピッカーを試す')
+              t('Hide Finder', '隱藏尋找器', 'ファインダーを隠す') : 
+              t('Find My Trail', '找我的步道', '私のトレイルを探す')
             }
           </span>
         </button>
@@ -253,51 +180,42 @@ const TrailPicker = () => {
 
       {isExpanded && (
         <div className="trail-picker-content">
-          <div className="trail-picker-filters">
-            {Object.entries(filterOptions).map(([category, config]) => (
-              <div key={category} className="filter-group">
-                <label className="filter-label">{config.label}</label>
-                <div className="filter-options">
-                  {config.options.map(option => (
+          {!showResults ? (
+            <div className="question-wizard">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}></div>
+              </div>
+              
+              <div className="question-step">
+                <div className="step-number">
+                  {t('Question', '問題', '質問')} {currentStep + 1} / {questions.length}
+                </div>
+                
+                <h4 className="question-text">{questions[currentStep].question}</h4>
+                
+                <div className="answer-options">
+                  {questions[currentStep].options.map(option => (
                     <button
                       key={option.value}
-                      className={`filter-option ${selectedFilters[category] === option.value ? 'active' : ''}`}
-                      onClick={() => handleFilterChange(category, option.value)}
+                      className="answer-option"
+                      onClick={() => handleAnswer(option.value)}
                     >
-                      {option.label}
+                      <span className="option-emoji">{option.emoji}</span>
+                      <span className="option-text">{option.label}</span>
                     </button>
                   ))}
                 </div>
+                
+                {currentStep > 0 && (
+                  <button className="back-btn" onClick={goBack}>
+                    ← {t('Back', '返回', '戻る')}
+                  </button>
+                )}
               </div>
-            ))}
-          </div>
-
-          <div className="trail-picker-actions">
-            <button 
-              className="get-recommendations-btn"
-              onClick={handleGetRecommendations}
-              disabled={!selectedFilters.difficulty || !selectedFilters.time || !selectedFilters.guide || !selectedFilters.experience}
-            >
-              {t('Get My Trail Recommendations', '獲取我的步道推薦', '私のトレイル推奨を取得')}
-            </button>
-            <button className="reset-btn" onClick={resetFilters}>
-              {t('Reset', '重置', 'リセット')}
-            </button>
-          </div>
-
-          {(!selectedFilters.difficulty || !selectedFilters.time || !selectedFilters.guide || !selectedFilters.experience) && (
-            <div className="no-filters-message">
-              <p>{t(
-                '👆 Please select one option from each category above to get accurate trail recommendations!',
-                '👆 請從上方每個類別中選擇一個選項以獲得準確的步道推薦！',
-                '👆 正確なトレイル推奨を取得するには、上記の各カテゴリから1つのオプションを選択してください！'
-              )}</p>
             </div>
-          )}
-
-          {showResults && (
+          ) : (
             <div className="trail-recommendations">
-              <h4>{t('🌟 Recommended Trails for You', '🌟 為您推薦的步道', '🌟 あなたにおすすめのトレイル')}</h4>
+              <h4>{t('🌟 Perfect Trails for You!', '🌟 為你推薦的完美步道！', '🌟 あなたにぴったりのトレイル！')}</h4>
               
               {recommendedTrails.length > 0 ? (
                 <div className="recommendations-list">
@@ -307,11 +225,6 @@ const TrailPicker = () => {
                         <div className="recommendation-rank">#{index + 1}</div>
                         <div className="recommendation-info">
                           <h5>{trail.name.replace(/<[^>]*>/g, '')}</h5>
-                          <div className="recommendation-meta">
-                            <span className="recommendation-score">
-                              {t('Match Score', '匹配分數', 'マッチスコア')}: {trail.score}/{trail.maxScore}
-                            </span>
-                          </div>
                         </div>
                       </div>
                       
@@ -331,10 +244,6 @@ const TrailPicker = () => {
                            trail.selfGuided.includes('🧭') ? '🧭 ' + t('Guide required', '需要嚮導', 'ガイド必要') : 
                            trail.selfGuided}
                         </span>
-                        <span className="detail-item">
-                          {trail.type === 'loop' ? '↻ ' + t('Loop trail', '環狀步道', 'ループトレイル') : 
-                           '→ ' + t('One-way trail', '單程步道', '片道トレイル')}
-                        </span>
                       </div>
                     </div>
                   ))}
@@ -342,12 +251,16 @@ const TrailPicker = () => {
               ) : (
                 <div className="no-recommendations">
                   <p>{t(
-                    'No trails match your selected criteria. Please try different filter combinations or check out Trail #1 - our beginner favorite!',
-                    '沒有步道符合您選擇的條件。請嘗試不同的篩選組合或查看步道#1 - 我們的新手最愛！',
-                    '選択した条件に一致するトレイルがありません。異なるフィルターの組み合わせを試すか、トレイル#1をチェックしてください - 初心者のお気に入りです！'
+                    'Hmm, let me recommend Trail #1 - it\'s perfect for everyone!',
+                    '嗯，讓我推薦步道#1 - 它適合所有人！',
+                    'うーん、トレイル#1をお勧めします - 誰にでも最適です！'
                   )}</p>
                 </div>
               )}
+              
+              <button className="reset-btn" onClick={resetPicker}>
+                {t('Start Over', '重新開始', 'やり直す')}
+              </button>
             </div>
           )}
         </div>
