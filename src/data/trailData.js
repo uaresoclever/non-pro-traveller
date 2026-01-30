@@ -59,7 +59,7 @@ export const trailData = {
       no: "7",
       name: "<strong>Sai Sorn Reservoir Nature Trail</strong><br><small>Thai‑American Friendship Trail</small>",
       distance: "~2 km around lake, 1.5 hours",
-      selfGuided: '<span class="badge-easy">✅ Self-walkable</span>',
+      selfGuided: '<span class="badge-easy">✅ Self-walkable</span> <span class="badge-easy">👤 Author visited</span>',
       startEnd: "Start: Sai Sorn Reservoir parking<br>End: Complete loop back to same parking",
       highlights: "Around Sai Sorn reservoir highlands, overlooking reservoir and mountain views, popular easy trail for sunrise/sunset viewing, reflections, and birdwatching.",
       rating: '<div class="rating">★★★★★<br><small>Most stress-free driving + beautiful scenery</small></div>'
@@ -124,7 +124,7 @@ export const trailData = {
       no: "7",
       name: "<strong>Sai Sorn Reservoir Nature Trail</strong><br><small>Thai‑American Friendship Trail</small>",
       distance: "約 2 km 環湖，1.5 小時",
-      selfGuided: '<span class="badge-easy">✅ 可自行走</span>',
+      selfGuided: '<span class="badge-easy">✅ 可自行走</span> <span class="badge-easy">👤 作者已到訪</span>',
       startEnd: "起：Sai Sorn Reservoir 停車場<br>終：環湖一圈回到同一停車場",
       highlights: "圍繞 Sai Sorn 水庫高地，可俯瞰水庫與山景，是睇日出／日落、影倒影、觀鳥的熱門輕鬆步道。",
       rating: '<div class="rating">★★★★★<br><small>自駕最無壓力＋景靚</small></div>'
@@ -189,7 +189,7 @@ export const trailData = {
       no: "7",
       name: "<strong>サイソーン貯水池ネイチャートレイル</strong><br><small>タイ・アメリカ友好トレイル</small>",
       distance: "約2km湖周り、1.5時間",
-      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span>',
+      selfGuided: '<span class="badge-easy">✅ セルフウォーク可能</span> <span class="badge-easy">👤 著者訪問済み</span>',
       startEnd: "開始：サイソーン貯水池駐車場<br>終了：一周して同じ駐車場に戻る",
       highlights: "サイソーン貯水池高地周辺、貯水池と山の景色を見下ろす、日の出/日の入り観賞、反射、バードウォッチングの人気の簡単トレイル。",
       rating: '<div class="rating">★★★★★<br><small>最もストレスフリーな運転＋美しい景色</small></div>'
