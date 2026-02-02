@@ -150,6 +150,73 @@
 </head>
 <body>
     <div id="root"></div>
+    
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Weather Widget Script - Load after React app -->
+    <script>
+      // Wait for React app to mount, then load weather widget
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          // Load the weather widget script
+          if (!document.getElementById('weatherwidget-io-js')) {
+            var script = document.createElement('script');
+            script.id = 'weatherwidget-io-js';
+            script.src = 'https://weatherwidget.io/js/widget.min.js';
+            script.async = true;
+            
+            script.onload = function() {
+              console.log('Weather widget script loaded after page load');
+              
+              // Set up periodic scanning for new widgets
+              var scanInterval = setInterval(function() {
+                var widgets = document.querySelectorAll('.weatherwidget-io');
+                var hasUnprocessed = false;
+                
+                widgets.forEach(function(widget) {
+                  if (!widget.querySelector('iframe') && !widget.dataset.processed) {
+                    hasUnprocessed = true;
+                    widget.dataset.processed = 'true';
+                    console.log('Processing weather widget...');
+                    
+                    // Try to trigger widget initialization
+                    if (window.weatherwidget) {
+                      if (typeof window.weatherwidget.init === 'function') {
+                        window.weatherwidget.init();
+                      }
+                      if (typeof window.weatherwidget.scan === 'function') {
+                        window.weatherwidget.scan();
+                      }
+                    }
+                  }
+                });
+                
+                // Stop scanning if all widgets are processed
+                if (!hasUnprocessed && widgets.length > 0) {
+                  var allProcessed = true;
+                  widgets.forEach(function(widget) {
+                    if (!widget.querySelector('iframe')) {
+                      allProcessed = false;
+                    }
+                  });
+                  
+                  if (allProcessed) {
+                    clearInterval(scanInterval);
+                    console.log('All weather widgets processed');
+                  }
+                }
+              }, 500);
+              
+              // Stop scanning after 30 seconds to prevent infinite loop
+              setTimeout(function() {
+                clearInterval(scanInterval);
+              }, 30000);
+            };
+            
+            document.head.appendChild(script);
+          }
+        }, 1000);
+      });
+    </script>
 </body>
 </html>

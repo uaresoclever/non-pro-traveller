@@ -11,9 +11,9 @@
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 1400px; /* Increased from 1200px for more space */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.4rem; /* Reduced from 2rem (30% reduction) */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,23 +135,23 @@
 
 /* Main content */
 .main-content {
-  max-width: 1200px;
+  max-width: 1400px; /* Increased from 1200px for more space */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.4rem; /* Reduced from 2rem (30% reduction) */
   flex: 1;
 }
 
 /* Hero section */
 .hero {
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 6rem 1.4rem; /* Reduced from 2rem (30% reduction) */
   background: linear-gradient(
     135deg,
-    rgba(19, 106, 138, 0.85) 0%,
-    rgba(38, 120, 113, 0.85) 50%,
-    rgba(45, 143, 71, 0.85) 100%
+    rgba(19, 106, 138, 0.3) 0%,
+    rgba(38, 120, 113, 0.3) 50%,
+    rgba(45, 143, 71, 0.3) 100%
   ),
-  url('/non-pro-traveller/images/khao-yai-cover.jpg') center/cover;
+  url('/images/khao-yai/photo1.jpg') center/cover;
   border-radius: 12px;
   margin-bottom: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -169,9 +169,9 @@
   bottom: 0;
   background: linear-gradient(
     45deg,
-    rgba(19, 106, 138, 0.1) 0%,
-    rgba(38, 120, 113, 0.1) 50%,
-    rgba(45, 143, 71, 0.1) 100%
+    rgba(19, 106, 138, 0.05) 0%,
+    rgba(38, 120, 113, 0.05) 50%,
+    rgba(45, 143, 71, 0.05) 100%
   );
   z-index: 1;
 }
@@ -197,6 +197,21 @@
 .trail-grid-container {
   margin: 2rem 0;
   cursor: default;
+}
+
+/* Mobile Responsive for Trail Grid Container */
+@media (max-width: 768px) {
+  .trail-grid-container {
+    margin: 1rem 0;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trail-grid-container {
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+  }
 }
 
 .trail-grid-header {
@@ -226,6 +241,46 @@
   margin-bottom: 2rem;
 }
 
+/* Mobile Responsive for Trail Grid */
+@media (max-width: 768px) {
+  .trail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .trail-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .journey-layout {
+    overflow-x: hidden !important;
+  }
+  
+  .journey-main-content {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .trail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  
+  .trail-card {
+    padding: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
 .trail-card {
   background: white;
   border-radius: 12px;
@@ -246,6 +301,8 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .trail-number {
@@ -270,6 +327,8 @@
   padding: 0.3rem 0.6rem;
   border-radius: 15px;
   border: 1px solid rgba(19, 106, 138, 0.15);
+  flex-shrink: 0;
+  min-width: fit-content;
 }
 
 .trail-type-icon {
@@ -282,7 +341,10 @@
   font-size: 0.75rem;
   color: #136a8a;
   font-weight: 500;
-  white-space: nowrap;
+  white-space: nowrap; /* Keep it on one line */
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .trail-rating {
@@ -1508,9 +1570,10 @@
 
 /* Journey List */
 .journey-list-container {
-  max-width: 1200px;
+  max-width: 1400px; /* Increased from 1200px for more space */
   margin: 0 auto;
   cursor: default;
+  padding: 0 1.4rem; /* Added reduced padding for consistency */
 }
 
 .journey-list-header {
@@ -1811,13 +1874,14 @@
 /* Journey List Hero Section */
 .journey-list-hero {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 1.4rem; /* Reduced from 2rem (30% reduction) */
   background: linear-gradient(
     135deg,
-    rgba(19, 106, 138, 0.9) 0%,
-    rgba(38, 120, 113, 0.9) 50%,
-    rgba(45, 143, 71, 0.9) 100%
-  );
+    rgba(19, 106, 138, 0.3) 0%,
+    rgba(38, 120, 113, 0.3) 50%,
+    rgba(45, 143, 71, 0.3) 100%
+  ),
+  url('/images/khao-yai/photo1.jpg') center/cover;
   border-radius: 12px;
   margin-bottom: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -2196,7 +2260,7 @@
 }
 
 .trail-picker-content {
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 1.4rem 2rem 1.4rem; /* Reduced from 2rem (30% reduction) */
   animation: slideDown 0.4s ease-out;
 }
 
@@ -2850,5 +2914,792 @@
   
   .photo-item:active {
     transform: scale(0.98);
+  }
+}
+
+/* Temple Content Styles */
+.temple-content {
+  margin-top: 2rem;
+}
+
+.temple-description,
+.author-experience,
+.temple-info,
+.temple-activities,
+.temple-facilities,
+.temple-tips,
+.related-journeys {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #136a8a;
+}
+
+.temple-description h3,
+.author-experience h3,
+.temple-info h3,
+.temple-activities h3,
+.temple-facilities h3,
+.temple-tips h3,
+.related-journeys h3 {
+  color: #136a8a;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.temple-description p,
+.author-experience p {
+  color: #444;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.temple-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.special-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.feature-tag {
+  background: #136a8a;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.activities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.activity-tag {
+  background: white;
+  border: 2px solid #136a8a;
+  color: #136a8a;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.facility-item.available {
+  border-left: 4px solid #28a745;
+}
+
+.facility-item.not-available {
+  border-left: 4px solid #dc3545;
+  opacity: 0.7;
+}
+
+.facility-icon {
+  font-size: 1.2rem;
+}
+
+.facility-name {
+  flex: 1;
+  font-weight: 500;
+  color: #333;
+}
+
+.facility-status {
+  font-size: 1.1rem;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 3px solid #ffc107;
+  line-height: 1.6;
+}
+
+.tip-item:last-child {
+  margin-bottom: 0;
+}
+
+.tip-icon {
+  font-size: 1.1rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.related-journey-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid #e9ecef;
+  margin-bottom: 1rem;
+}
+
+.related-journey-card:last-child {
+  margin-bottom: 0;
+}
+
+.related-journey-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: #136a8a;
+}
+
+.related-journey-card h4 a {
+  color: #136a8a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.related-journey-card h4 a:hover {
+  color: #0f5a75;
+  text-decoration: underline;
+}
+
+.related-journey-card p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive for Temple Content */
+@media (max-width: 768px) {
+  .temple-description,
+  .author-experience,
+  .temple-info,
+  .temple-activities,
+  .temple-facilities,
+  .temple-tips,
+  .related-journeys {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .facilities-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .activities-list {
+    gap: 0.5rem;
+  }
+  
+  .activity-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .special-features {
+    gap: 0.4rem;
+  }
+  
+  .feature-tag {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .temple-description,
+  .author-experience,
+  .temple-info,
+  .temple-activities,
+  .temple-facilities,
+  .temple-tips,
+  .related-journeys {
+    padding: 1rem;
+  }
+  
+  .temple-description h3,
+  .author-experience h3,
+  .temple-info h3,
+  .temple-activities h3,
+  .temple-facilities h3,
+  .temple-tips h3,
+  .related-journeys h3 {
+    font-size: 1.1rem;
+  }
+  
+  .activities-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .activity-tag {
+    justify-content: center;
+  }
+  
+  .tip-item {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+}
+/* Journey Layout with Sidebar */
+.journey-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 0.7rem; /* Reduced from 1rem (30% reduction) */
+}
+
+.journey-main-content {
+  min-width: 0; /* Prevent overflow */
+}
+
+.journey-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+  color: #136a8a;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+/* Weather Widget Styles */
+.weather-widget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 120px;
+}
+
+.weather-widget-container .weatherwidget-io {
+  width: 100% !important;
+  max-width: 280px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  display: block !important;
+  transition: all 0.3s ease !important;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%) !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  padding: 1rem !important;
+  position: relative !important;
+}
+
+.weather-widget-container .weatherwidget-io:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Style the weather widget before it loads */
+.weather-widget-container .weatherwidget-io::before {
+  content: "🌤️ " !important;
+  font-size: 1.1em !important;
+}
+
+/* Ensure the weather widget iframe fits properly and looks good */
+.weather-widget-container iframe {
+  width: 100% !important;
+  max-width: 280px !important;
+  height: auto !important;
+  min-height: 120px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  background: white !important;
+}
+
+/* Override any default styling from the external widget */
+.weather-widget-container .weatherwidget-io * {
+  border-radius: 12px !important;
+}
+
+/* Cross-browser compatibility fixes */
+.weather-widget-container .weatherwidget-io,
+.weather-widget-container iframe {
+  -webkit-border-radius: 12px !important;
+  -moz-border-radius: 12px !important;
+  border-radius: 12px !important;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Ensure proper display in Safari */
+@supports (-webkit-appearance: none) {
+  .weather-widget-container .weatherwidget-io {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+  }
+}
+
+/* Force better rendering in all browsers */
+.weather-widget-container {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Mobile Responsive for Weather Widget */
+@media (max-width: 768px) {
+  .weather-widget-container {
+    margin: 1rem 0;
+  }
+  
+  .custom-weather-widget {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .weather-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .weather-temp {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-weather-widget {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .weather-header h4 {
+    font-size: 1rem;
+  }
+  
+  .weather-temp {
+    font-size: 1.6rem;
+  }
+  
+  .weather-item {
+    font-size: 0.85rem;
+  }
+}
+
+/* Custom Weather Widget - Beautiful Design */
+.custom-weather-widget {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.3);
+  width: 100%;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto; /* Center the widget */
+}
+
+/* Override sidebar background for weather widget */
+.sidebar-section .weather-widget-container {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.sidebar-section .custom-weather-widget {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.custom-weather-widget::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.weather-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.weather-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.weather-icon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.weather-desc {
+  font-weight: 500;
+}
+
+.weather-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.weather-footer .weather-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+  padding-bottom: 2px;
+}
+
+.weather-footer .weather-link:hover {
+  border-bottom-color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Weather Widget Loading and Fallback Styles */
+.weather-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e0e0e0;
+  border-top: 2px solid #136a8a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.weather-fallback {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  width: 100%;
+  max-width: 280px;
+  display: none; /* Hide this since we're using the custom widget */
+}
+
+.weather-fallback-content h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.weather-fallback-content p {
+  margin: 0 0 0.5rem 0;
+}
+
+.weather-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease;
+  padding-bottom: 2px;
+}
+
+.weather-link:hover {
+  border-bottom-color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Quick Info Styles */
+.quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+.info-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-content strong {
+  display: block;
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-content p {
+  margin: 0;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Mobile Responsive for Journey Layout */
+@media (max-width: 1024px) {
+  .journey-layout {
+    grid-template-columns: 1fr 250px;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .sidebar-section {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .journey-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .journey-sidebar {
+    order: -1; /* Show sidebar above main content on mobile */
+  }
+  
+  .sidebar-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-layout {
+    padding: 0 0.5rem;
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .sidebar-section {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .journey-main-content {
+    padding: 0;
+  }
+  
+  .journey-card {
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  .journey-details {
+    gap: 0.75rem;
+  }
+  
+  .detail-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-layout {
+    padding: 0 0.5rem;
+  }
+  
+  .quick-info {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .info-item {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+  
+  .info-content strong {
+    font-size: 0.85rem;
+  }
+  
+  .info-content p {
+    font-size: 0.8rem;
+  }
+}
+
+/* EMERGENCY MOBILE FIX - Force responsive behavior */
+@media screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box !important;
+  }
+  
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  
+  .trail-grid-container .trail-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 0 2rem 0 !important;
+  }
+  
+  .trail-grid-container .trail-grid .trail-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+  
+  .journey-layout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .journey-main-content,
+  .journey-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    min-width: 0 !important;
+  }
+}
+
+/* ULTRA SPECIFIC MOBILE FIX */
+@media screen and (max-width: 768px) {
+  div.trail-grid-container div.trail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  div.trail-grid-container div.trail-grid div.trail-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .journey-layout {
+    padding: 0 0.5rem !important;
+  }
+  
+  .trail-grid {
+    gap: 0.75rem !important;
+  }
+  
+  .trail-card {
+    padding: 0.75rem !important;
   }
 }

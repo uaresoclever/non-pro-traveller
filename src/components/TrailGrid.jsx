@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import { trailData } from '../data/trailData'
 import TrailCard from './TrailCard'
@@ -6,6 +6,33 @@ import TrailCard from './TrailCard'
 const TrailGrid = () => {
   const { currentLang, t } = useLanguage()
   const data = trailData[currentLang]
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const gridStyle = isMobile ? {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '1rem',
+    width: '100%',
+    maxWidth: '100%',
+    padding: '0',
+    margin: '0 0 2rem 0'
+  } : {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+    gap: '1.5rem',
+    marginBottom: '2rem'
+  }
 
   return (
     <div className="trail-grid-container">
@@ -20,7 +47,7 @@ const TrailGrid = () => {
         </p>
       </div>
 
-      <div className="trail-grid">
+      <div className="trail-grid" style={gridStyle}>
         {data.map((trail, index) => (
           <TrailCard key={index} trail={trail} />
         ))}
