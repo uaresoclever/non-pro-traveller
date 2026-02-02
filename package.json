@@ -1,6 +1,6 @@
 {
   "name": "non-pro-traveller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Oh! A Non-Professional Traveller - A bilingual travel website showcasing authentic hiking adventures",
   "type": "module",
   "scripts": {
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/uaresoclever/non-pro-traveller/issues"
   },
-  "homepage": "https://nonprotraveller.netlify.app",
+  "homepage": "https://uaresoclever.github.io/non-pro-traveller/",
   "dependencies": {
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
