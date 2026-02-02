@@ -1,7 +1,7 @@
 {
   "name": "non-pro-traveller",
   "version": "1.0.0",
-  "description": "Oh! A Non-Professional Traveller LOL - A bilingual travel website showcasing authentic hiking adventures",
+  "description": "Oh! A Non-Professional Traveller - A bilingual travel website showcasing authentic hiking adventures",
   "type": "module",
   "scripts": {
     "dev": "vite",

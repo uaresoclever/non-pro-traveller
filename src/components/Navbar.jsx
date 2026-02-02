@@ -20,7 +20,7 @@ const Navbar = ({ onHomeClick, onJourneysClick, currentView }) => {
           </div>
           <h1 className="nav-title" onClick={onHomeClick} style={{ cursor: 'pointer' }}>
             {t(
-              "Oh! A Non-Professional Traveller LOL",
+              "Oh! A Non-Professional Traveller",
               "非專業旅人冒險",
               "ノンプロ旅行者の冒険"
             )}

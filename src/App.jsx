@@ -29,7 +29,7 @@ function App() {
     setInitialFilters({})
     
     // Track page view
-    trackPageView('Home - Oh! A Non-Professional Traveller LOL', window.location.href)
+    trackPageView('Home - Oh! A Non-Professional Traveller', window.location.href)
   }
 
   const handleViewAllJourneys = (filters = {}) => {
@@ -37,12 +37,12 @@ function App() {
     setInitialFilters(filters)
     
     // Track page view
-    trackPageView('All Journeys - Oh! A Non-Professional Traveller LOL', window.location.href)
+    trackPageView('All Journeys - Oh! A Non-Professional Traveller', window.location.href)
   }
 
   // Track initial page load
   useEffect(() => {
-    trackPageView('Home - Oh! A Non-Professional Traveller LOL', window.location.href)
+    trackPageView('Home - Oh! A Non-Professional Traveller', window.location.href)
   }, [])
 
   const handleTagClick = (tag) => {

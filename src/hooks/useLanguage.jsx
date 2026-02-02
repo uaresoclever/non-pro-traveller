@@ -33,7 +33,7 @@ export const LanguageProvider = ({ children }) => {
     
     // Update page title
     const titles = {
-      'en': 'Oh! A Non-Professional Traveller LOL - Khao Yai National Park Hiking Guide',
+      'en': 'Oh! A Non-Professional Traveller - Khao Yai National Park Hiking Guide',
       'zh': '非專業旅人冒險 - 考艾國家公園健行指南',
       'ja': 'ノンプロ旅行者の冒険 - カオヤイ国立公園ハイキングガイド'
     }

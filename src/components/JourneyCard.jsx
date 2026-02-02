@@ -49,21 +49,30 @@ const JourneyCard = ({ journey, onClick, onTagClick }) => {
   }
 
   return (
-    <div className="journey-card" onClick={handleCardClick}>
-      <div className="journey-card-header">
-        <div className="journey-meta">
-          <span className="country-flag">{journey.country.flag}</span>
-          <span className="country-name">{journey.country.name[currentLang]}</span>
-          <span className="category-icon">{getCategoryIcon(journey.category)}</span>
-        </div>
-        {journey.featured && (
-          <span className="featured-badge">
-            ⭐ {t('Featured', '精選', '注目')}
-          </span>
-        )}
-      </div>
-
+    <div className={`journey-card ${journey.coverImage ? 'journey-card-with-image' : ''}`} onClick={handleCardClick}>
+      {journey.coverImage && (
+        <img 
+          src={journey.coverImage} 
+          alt={journey.title[currentLang]}
+          className="journey-cover-image"
+          loading="lazy"
+        />
+      )}
+      
       <div className="journey-card-content">
+        <div className="journey-card-header">
+          <div className="journey-meta">
+            <span className="country-flag">{journey.country.flag}</span>
+            <span className="country-name">{journey.country.name[currentLang]}</span>
+            <span className="category-icon">{getCategoryIcon(journey.category)}</span>
+          </div>
+          {journey.featured && (
+            <span className="featured-badge">
+              ⭐ {t('Featured', '精選', '注目')}
+            </span>
+          )}
+        </div>
+
         <h3 className="journey-title">{journey.title[currentLang]}</h3>
         <p className="journey-description">{journey.description[currentLang]}</p>
 

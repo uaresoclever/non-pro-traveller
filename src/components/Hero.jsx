@@ -6,13 +6,6 @@ const Hero = ({ onExploreClick }) => {
 
   return (
     <section className="hero">
-      <h1>
-        {t(
-          "Oh! A Non-Professional Traveller LOL",
-          "非專業旅人冒險",
-          "ノンプロ旅行者の冒険"
-        )}
-      </h1>
       <p>
         {t(
           "Authentic travel experiences from a non-professional perspective",

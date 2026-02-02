@@ -68,6 +68,70 @@ export const journeys = [
     
     coverImage: '/images/khao-yai-cover.jpg',
     
+    // Photo gallery for this journey
+    photos: [
+      {
+        url: '/images/khao-yai/photo1.jpg',
+        thumbnail: '/images/khao-yai/photo1.jpg',
+        caption: {
+          en: 'Trail 1 - Beautiful waterfall scenery, perfect for beginners',
+          zh: '步道1 - 美麗的瀑布風景，非常適合初學者',
+          ja: 'トレイル1 - 美しい滝の風景、初心者に最適'
+        },
+        location: {
+          en: 'Trail 1 - Waterfall Trail',
+          zh: '步道1 - 瀑布步道',
+          ja: 'トレイル1 - 滝トレイル'
+        },
+        date: '2024-12-15'
+      },
+      {
+        url: '/images/khao-yai/photo2.jpg',
+        thumbnail: '/images/khao-yai/photo2.jpg',
+        caption: {
+          en: 'Trail 1 - Amazing forest views and natural beauty',
+          zh: '步道1 - 令人驚嘆的森林景觀和自然美景',
+          ja: 'トレイル1 - 素晴らしい森の景色と自然の美しさ'
+        },
+        location: {
+          en: 'Trail 1 - Waterfall Trail',
+          zh: '步道1 - 瀑布步道',
+          ja: 'トレイル1 - 滝トレイル'
+        },
+        date: '2024-12-15'
+      },
+      {
+        url: '/images/khao-yai/photo3.jpg',
+        thumbnail: '/images/khao-yai/photo3.jpg',
+        caption: {
+          en: 'Trail 1 - Stunning hiking trail experience through the forest',
+          zh: '步道1 - 穿越森林的絕美健行步道體驗',
+          ja: 'トレイル1 - 森を通る素晴らしいハイキングトレイル体験'
+        },
+        location: {
+          en: 'Trail 1 - Waterfall Trail',
+          zh: '步道1 - 瀑布步道',
+          ja: 'トレイル1 - 滝トレイル'
+        },
+        date: '2024-12-15'
+      },
+      {
+        url: '/images/khao-yai/photo4.jpg',
+        thumbnail: '/images/khao-yai/photo4.jpg',
+        caption: {
+          en: 'Trail 1 - Memorable moments from our waterfall adventure',
+          zh: '步道1 - 瀑布冒險的難忘時刻',
+          ja: 'トレイル1 - 滝アドベンチャーの思い出深い瞬間'
+        },
+        location: {
+          en: 'Trail 1 - Waterfall Trail',
+          zh: '步道1 - 瀑布步道',
+          ja: 'トレイル1 - 滝トレイル'
+        },
+        date: '2024-12-15'
+      }
+    ],
+    
     content: {
       type: 'hiking_trails',
       data: {
@@ -181,7 +245,41 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/tokyo-food-cover.jpg',
+    coverImage: '/images/tokyo-food-cover.svg',
+    
+    // Photo gallery for this journey
+    photos: [
+      {
+        url: '/images/tokyo/ramen-shop.svg',
+        thumbnail: '/images/tokyo/thumbs/ramen-shop.svg',
+        caption: {
+          en: 'Authentic ramen shop in Shibuya - the perfect comfort food',
+          zh: '澀谷的正宗拉麵店 - 完美的療癒美食',
+          ja: '渋谷の本格ラーメン店 - 完璧なコンフォートフード'
+        },
+        location: {
+          en: 'Shibuya District',
+          zh: '澀谷區',
+          ja: '渋谷区'
+        },
+        date: null
+      },
+      {
+        url: '/images/tokyo/sushi-counter.svg',
+        thumbnail: '/images/tokyo/thumbs/sushi-counter.svg',
+        caption: {
+          en: 'Fresh sushi at Tsukiji Outer Market - a must-try experience',
+          zh: '築地場外市場的新鮮壽司 - 必試體驗',
+          ja: '築地場外市場の新鮮な寿司 - 必須体験'
+        },
+        location: {
+          en: 'Tsukiji Outer Market',
+          zh: '築地場外市場',
+          ja: '築地場外市場'
+        },
+        date: null
+      }
+    ],
     
     content: {
       type: 'food_tour',
@@ -259,7 +357,41 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/bali-beach-cover.jpg',
+    coverImage: '/images/bali-beach-cover.svg',
+    
+    // Photo gallery for this journey
+    photos: [
+      {
+        url: '/images/bali/sunset-beach.svg',
+        thumbnail: '/images/bali/thumbs/sunset-beach.svg',
+        caption: {
+          en: 'Spectacular sunset at Tanah Lot - magical golden hour',
+          zh: '海神廟的壯觀日落 - 神奇的黃金時刻',
+          ja: 'タナロットの壮大な夕日 - 魔法のゴールデンアワー'
+        },
+        location: {
+          en: 'Tanah Lot Temple',
+          zh: '海神廟',
+          ja: 'タナロット寺院'
+        },
+        date: null
+      },
+      {
+        url: '/images/bali/surfing-waves.svg',
+        thumbnail: '/images/bali/thumbs/surfing-waves.svg',
+        caption: {
+          en: 'Perfect waves for surfing at Uluwatu Beach',
+          zh: '烏魯瓦圖海灘的完美衝浪浪花',
+          ja: 'ウルワツビーチの完璧なサーフィン波'
+        },
+        location: {
+          en: 'Uluwatu Beach',
+          zh: '烏魯瓦圖海灘',
+          ja: 'ウルワツビーチ'
+        },
+        date: null
+      }
+    ],
     
     content: {
       type: 'beach_hopping',

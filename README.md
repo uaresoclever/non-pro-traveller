@@ -1,4 +1,4 @@
-# Oh! A Non-Professional Traveller LOL | 非專業旅人冒險
+# Oh! A Non-Professional Traveller | 非專業旅人冒險
 
 A bilingual travel website showcasing authentic hiking adventures, starting with Khao Yai National Park in Thailand.
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import TrailGrid from './TrailGrid'
 import TrailPicker from './TrailPicker'
+import PhotoGallery from './PhotoGallery'
 import { trackTagClick, trackExternalLink } from '../utils/analytics'
 import { journeys } from '../data/journeys'
 
@@ -190,6 +191,14 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Photo Gallery */}
+          {khaoyaiJourney && khaoyaiJourney.photos && khaoyaiJourney.photos.length > 0 && (
+            <PhotoGallery 
+              photos={khaoyaiJourney.photos}
+              title={t('Journey Photos', '旅程照片', '旅の写真')}
+            />
           )}
           
           {/* Trail Picker - Interactive Trail Recommendation */}
@@ -515,6 +524,14 @@ const TrailGuide = ({ journey, onBackClick, onTagClick, onViewAllClick }) => {
             ))}
           </div>
         </div>
+
+        {/* Photo Gallery */}
+        {journey.photos && journey.photos.length > 0 && (
+          <PhotoGallery 
+            photos={journey.photos}
+            title={t('Journey Photos', '旅程照片', '旅の写真')}
+          />
+        )}
         
         {journey.content?.type === 'hiking_trails' && <TrailGrid />}
       </div>
