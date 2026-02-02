@@ -245,13 +245,13 @@ export const journeys = [
     publishDate: '2026-02-02',
     lastUpdated: '2026-02-02',
     
-    coverImage: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+    coverImage: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
     
     // Photo gallery for this journey
     photos: [
       {
-        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
-        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
         caption: {
           en: 'Wat Pa Phu Hai Long - Perfect sunrise viewing spot with peaceful temple atmosphere',
           zh: '帕普海龍寺 - 完美的日出觀賞點，擁有寧靜的寺廟氛圍',
@@ -265,8 +265,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
-        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
+        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
+        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
         caption: {
           en: 'Beautiful temple architecture with stunning sunrise mountain views',
           zh: '美麗的寺廟建築配上壯麗的日出山景',
@@ -280,8 +280,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
-        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
+        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
+        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
         caption: {
           en: 'Temple grounds offering tranquility and spiritual reflection',
           zh: '寺廟庭院提供寧靜和心靈反思',
@@ -295,8 +295,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
-        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
+        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
+        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
         caption: {
           en: 'Sacred temple details and traditional Thai Buddhist architecture',
           zh: '神聖的寺廟細節和傳統泰式佛教建築',
@@ -310,8 +310,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
-        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
+        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
+        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
         caption: {
           en: 'Memorable moments from our peaceful temple visit',
           zh: '我們寧靜寺廟參訪的難忘時刻',
