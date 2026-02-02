@@ -102,10 +102,10 @@ export const journeyTemplate = {
   lastUpdated: '2026-01-21',
   
   // Media
-  coverImage: '/images/khao-yai-cover.jpg',
+  coverImage: '/non-pro-traveller/images/khao-yai-cover.jpg',
   gallery: [
-    '/images/khao-yai-1.jpg',
-    '/images/khao-yai-2.jpg'
+    '/non-pro-traveller/images/khao-yai-1.jpg',
+    '/non-pro-traveller/images/khao-yai-2.jpg'
   ],
   
   // Journey-specific data (flexible structure)
