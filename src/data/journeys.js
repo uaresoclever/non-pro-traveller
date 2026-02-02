@@ -66,13 +66,13 @@ export const journeys = [
     publishDate: '2026-01-21',
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/khao-yai-cover.jpg',
+    coverImage: '/non-pro-traveller/images/khao-yai-cover.jpg',
     
     // Photo gallery for this journey
     photos: [
       {
-        url: '/images/khao-yai/photo1.jpg',
-        thumbnail: '/images/khao-yai/photo1.jpg',
+        url: '/non-pro-traveller/images/khao-yai/photo1.jpg',
+        thumbnail: '/non-pro-traveller/images/khao-yai/photo1.jpg',
         caption: {
           en: 'Trail 1 - Beautiful waterfall scenery, perfect for beginners',
           zh: '步道1 - 美麗的瀑布風景，非常適合初學者',
@@ -86,8 +86,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai/photo2.jpg',
-        thumbnail: '/images/khao-yai/photo2.jpg',
+        url: '/non-pro-traveller/images/khao-yai/photo2.jpg',
+        thumbnail: '/non-pro-traveller/images/khao-yai/photo2.jpg',
         caption: {
           en: 'Trail 1 - Amazing forest views and natural beauty',
           zh: '步道1 - 令人驚嘆的森林景觀和自然美景',
@@ -101,8 +101,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai/photo3.jpg',
-        thumbnail: '/images/khao-yai/photo3.jpg',
+        url: '/non-pro-traveller/images/khao-yai/photo3.jpg',
+        thumbnail: '/non-pro-traveller/images/khao-yai/photo3.jpg',
         caption: {
           en: 'Trail 1 - Stunning hiking trail experience through the forest',
           zh: '步道1 - 穿越森林的絕美健行步道體驗',
@@ -116,8 +116,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/images/khao-yai/photo4.jpg',
-        thumbnail: '/images/khao-yai/photo4.jpg',
+        url: '/non-pro-traveller/images/khao-yai/photo4.jpg',
+        thumbnail: '/non-pro-traveller/images/khao-yai/photo4.jpg',
         caption: {
           en: 'Trail 1 - Memorable moments from our waterfall adventure',
           zh: '步道1 - 瀑布冒險的難忘時刻',
@@ -245,7 +245,7 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/tokyo-food-cover.jpg',
+    coverImage: '/non-pro-traveller/images/tokyo-food-cover.jpg',
     
     // Photo gallery for this journey
     photos: [],
@@ -326,7 +326,7 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/bali-beach-cover.jpg',
+    coverImage: '/non-pro-traveller/images/bali-beach-cover.jpg',
     
     // Photo gallery for this journey
     photos: [],
