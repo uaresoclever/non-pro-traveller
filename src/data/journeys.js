@@ -245,41 +245,10 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/tokyo-food-cover.svg',
+    coverImage: '/images/tokyo-food-cover.jpg',
     
     // Photo gallery for this journey
-    photos: [
-      {
-        url: '/images/tokyo/ramen-shop.svg',
-        thumbnail: '/images/tokyo/thumbs/ramen-shop.svg',
-        caption: {
-          en: 'Authentic ramen shop in Shibuya - the perfect comfort food',
-          zh: '澀谷的正宗拉麵店 - 完美的療癒美食',
-          ja: '渋谷の本格ラーメン店 - 完璧なコンフォートフード'
-        },
-        location: {
-          en: 'Shibuya District',
-          zh: '澀谷區',
-          ja: '渋谷区'
-        },
-        date: null
-      },
-      {
-        url: '/images/tokyo/sushi-counter.svg',
-        thumbnail: '/images/tokyo/thumbs/sushi-counter.svg',
-        caption: {
-          en: 'Fresh sushi at Tsukiji Outer Market - a must-try experience',
-          zh: '築地場外市場的新鮮壽司 - 必試體驗',
-          ja: '築地場外市場の新鮮な寿司 - 必須体験'
-        },
-        location: {
-          en: 'Tsukiji Outer Market',
-          zh: '築地場外市場',
-          ja: '築地場外市場'
-        },
-        date: null
-      }
-    ],
+    photos: [],
     
     content: {
       type: 'food_tour',
@@ -357,41 +326,10 @@ export const journeys = [
     publishDate: null,
     lastUpdated: '2026-01-21',
     
-    coverImage: '/images/bali-beach-cover.svg',
+    coverImage: '/images/bali-beach-cover.jpg',
     
     // Photo gallery for this journey
-    photos: [
-      {
-        url: '/images/bali/sunset-beach.svg',
-        thumbnail: '/images/bali/thumbs/sunset-beach.svg',
-        caption: {
-          en: 'Spectacular sunset at Tanah Lot - magical golden hour',
-          zh: '海神廟的壯觀日落 - 神奇的黃金時刻',
-          ja: 'タナロットの壮大な夕日 - 魔法のゴールデンアワー'
-        },
-        location: {
-          en: 'Tanah Lot Temple',
-          zh: '海神廟',
-          ja: 'タナロット寺院'
-        },
-        date: null
-      },
-      {
-        url: '/images/bali/surfing-waves.svg',
-        thumbnail: '/images/bali/thumbs/surfing-waves.svg',
-        caption: {
-          en: 'Perfect waves for surfing at Uluwatu Beach',
-          zh: '烏魯瓦圖海灘的完美衝浪浪花',
-          ja: 'ウルワツビーチの完璧なサーフィン波'
-        },
-        location: {
-          en: 'Uluwatu Beach',
-          zh: '烏魯瓦圖海灘',
-          ja: 'ウルワツビーチ'
-        },
-        date: null
-      }
-    ],
+    photos: [],
     
     content: {
       type: 'beach_hopping',
