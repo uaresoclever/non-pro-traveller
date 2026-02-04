@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://uaresoclever.github.io/non-pro-traveller/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uaresoclever.github.io/non-pro-traveller/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://uaresoclever.github.io/non-pro-traveller/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://uaresoclever.github.io/non-pro-traveller/ja/" />
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-cover.jpg</image:loc>
+      <image:title>Khao Yai National Park</image:title>
+      <image:caption>Beautiful hiking trails in Thailand's first national park</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Khao Yai National Park Hiking Guide -->
+  <url>
+    <loc>https://uaresoclever.github.io/non-pro-traveller/journey/khao-yai-hiking</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uaresoclever.github.io/non-pro-traveller/journey/khao-yai-hiking" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://uaresoclever.github.io/non-pro-traveller/zh/journey/khao-yai-hiking" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://uaresoclever.github.io/non-pro-traveller/ja/journey/khao-yai-hiking" />
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai/photo1.jpg</image:loc>
+      <image:title>Khao Yai Hiking Trail 1 - Waterfall</image:title>
+      <image:caption>Beautiful waterfall scenery on Trail 1, perfect for beginners</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai/photo2.jpg</image:loc>
+      <image:title>Khao Yai Forest Views</image:title>
+      <image:caption>Amazing forest views and natural beauty</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai/photo3.jpg</image:loc>
+      <image:title>Khao Yai Hiking Experience</image:title>
+      <image:caption>Stunning hiking trail experience through the forest</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai/photo4.jpg</image:loc>
+      <image:title>Khao Yai Waterfall Adventure</image:title>
+      <image:caption>Memorable moments from waterfall adventure</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Wat Pa Phu Hai Long Temple Visit -->
+  <url>
+    <loc>https://uaresoclever.github.io/non-pro-traveller/journey/khao-yai-wat-pa-phu-hai-long</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uaresoclever.github.io/non-pro-traveller/journey/khao-yai-wat-pa-phu-hai-long" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://uaresoclever.github.io/non-pro-traveller/zh/journey/khao-yai-wat-pa-phu-hai-long" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://uaresoclever.github.io/non-pro-traveller/ja/journey/khao-yai-wat-pa-phu-hai-long" />
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg</image:loc>
+      <image:title>Wat Pa Phu Hai Long Temple</image:title>
+      <image:caption>Perfect sunrise viewing spot with peaceful temple atmosphere</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg</image:loc>
+      <image:title>Temple Architecture</image:title>
+      <image:caption>Beautiful temple architecture with stunning sunrise mountain views</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg</image:loc>
+      <image:title>Temple Grounds</image:title>
+      <image:caption>Temple grounds offering tranquility and spiritual reflection</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg</image:loc>
+      <image:title>Sacred Temple Details</image:title>
+      <image:caption>Sacred temple details and traditional Thai Buddhist architecture</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uaresoclever.github.io/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg</image:loc>
+      <image:title>Temple Visit Memories</image:title>
+      <image:caption>Memorable moments from peaceful temple visit</image:caption>
+    </image:image>
+  </url>
+
+  <!-- All Journeys Page -->
+  <url>
+    <loc>https://uaresoclever.github.io/non-pro-traveller/journeys</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uaresoclever.github.io/non-pro-traveller/journeys" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://uaresoclever.github.io/non-pro-traveller/zh/journeys" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://uaresoclever.github.io/non-pro-traveller/ja/journeys" />
+  </url>
+
+</urlset>
