@@ -6,6 +6,7 @@ import Hero from './components/Hero'
 import TrailGuide from './components/TrailGuide'
 import JourneyList from './components/JourneyList'
 import Footer from './components/Footer'
+import CookieConsent from './components/CookieConsent'
 import { trackPageView, trackJourneyView } from './utils/analytics'
 import './styles/App.css'
 
@@ -82,6 +83,7 @@ function App() {
           )}
         </main>
         <Footer />
+        <CookieConsent />
       </div>
     </LanguageProvider>
   )
