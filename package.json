@@ -6,13 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest --run"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uaresoclever/non-pro-traveller.git"
   },
-  "keywords": ["travel", "hiking", "thailand", "khao-yai", "bilingual", "react"],
+  "keywords": [
+    "travel",
+    "hiking",
+    "thailand",
+    "khao-yai",
+    "bilingual",
+    "react"
+  ],
   "author": "DC & Miyako",
   "license": "MIT",
   "bugs": {
@@ -24,7 +32,13 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.1.2",
-    "vite": "^7.3.1"
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^5.1.4",
+    "fast-check": "^4.5.3",
+    "jsdom": "^28.1.0",
+    "sharp": "^0.34.5",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
   }
 }

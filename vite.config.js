@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import imageOptimizer from './vite-plugin-image-optimizer.js'
 
 // Generate dynamic version based on current date and time
 const generateVersion = () => {
@@ -15,7 +16,7 @@ const generateVersion = () => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), imageOptimizer()],
   base: process.env.VITE_USE_CUSTOM_DOMAIN === 'true' ? '/' : (process.env.NODE_ENV === 'production' ? '/non-pro-traveller/' : '/'),
   define: {
     __APP_VERSION__: JSON.stringify(generateVersion())

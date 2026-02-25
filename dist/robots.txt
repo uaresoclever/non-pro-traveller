@@ -2,7 +2,27 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://nonprotraveller.netlify.app/sitemap.xml
+Sitemap: https://uaresoclever.github.io/non-pro-traveller/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to index images
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Block access to source maps and development files
+Disallow: /*.map$
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /robots.txt
+Allow: /sitemap.xml
 
 # Disallow admin or private areas (if any in future)
 # Disallow: /admin/
