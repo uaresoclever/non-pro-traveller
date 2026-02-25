@@ -66,13 +66,13 @@ export const journeys = [
     publishDate: '2026-01-21',
     lastUpdated: '2026-01-21',
     
-    coverImage: '/non-pro-traveller/images/khao-yai-cover.jpg',
+    coverImage: '/images/khao-yai-cover.jpg',
     
     // Photo gallery for this journey
     photos: [
       {
-        url: '/non-pro-traveller/images/khao-yai/photo1.jpg',
-        thumbnail: '/non-pro-traveller/images/khao-yai/photo1.jpg',
+        url: '/images/khao-yai/photo1.jpg',
+        thumbnail: '/images/khao-yai/photo1.jpg',
         caption: {
           en: 'Trail 1 - Beautiful waterfall scenery, perfect for beginners',
           zh: '步道1 - 美麗的瀑布風景，非常適合初學者',
@@ -86,8 +86,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai/photo2.jpg',
-        thumbnail: '/non-pro-traveller/images/khao-yai/photo2.jpg',
+        url: '/images/khao-yai/photo2.jpg',
+        thumbnail: '/images/khao-yai/photo2.jpg',
         caption: {
           en: 'Trail 1 - Amazing forest views and natural beauty',
           zh: '步道1 - 令人驚嘆的森林景觀和自然美景',
@@ -101,8 +101,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai/photo3.jpg',
-        thumbnail: '/non-pro-traveller/images/khao-yai/photo3.jpg',
+        url: '/images/khao-yai/photo3.jpg',
+        thumbnail: '/images/khao-yai/photo3.jpg',
         caption: {
           en: 'Trail 1 - Stunning hiking trail experience through the forest',
           zh: '步道1 - 穿越森林的絕美健行步道體驗',
@@ -116,8 +116,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai/photo4.jpg',
-        thumbnail: '/non-pro-traveller/images/khao-yai/photo4.jpg',
+        url: '/images/khao-yai/photo4.jpg',
+        thumbnail: '/images/khao-yai/photo4.jpg',
         caption: {
           en: 'Trail 1 - Memorable moments from our waterfall adventure',
           zh: '步道1 - 瀑布冒險的難忘時刻',
@@ -245,13 +245,13 @@ export const journeys = [
     publishDate: '2026-02-02',
     lastUpdated: '2026-02-02',
     
-    coverImage: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+    coverImage: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
     
     // Photo gallery for this journey
     photos: [
       {
-        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
-        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
+        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3286.jpeg',
         caption: {
           en: 'Wat Pa Phu Hai Long - Perfect sunrise viewing spot with peaceful temple atmosphere',
           zh: '帕普海龍寺 - 完美的日出觀賞點，擁有寧靜的寺廟氛圍',
@@ -265,8 +265,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
-        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
+        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
+        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3299.jpeg',
         caption: {
           en: 'Beautiful temple architecture with stunning sunrise mountain views',
           zh: '美麗的寺廟建築配上壯麗的日出山景',
@@ -280,8 +280,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
-        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
+        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
+        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3318.jpeg',
         caption: {
           en: 'Temple grounds offering tranquility and spiritual reflection',
           zh: '寺廟庭院提供寧靜和心靈反思',
@@ -295,8 +295,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
-        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
+        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
+        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3322.jpeg',
         caption: {
           en: 'Sacred temple details and traditional Thai Buddhist architecture',
           zh: '神聖的寺廟細節和傳統泰式佛教建築',
@@ -310,8 +310,8 @@ export const journeys = [
         date: '2024-12-15'
       },
       {
-        url: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
-        thumbnail: '/non-pro-traveller/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
+        url: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
+        thumbnail: '/images/khao-yai-WatPaPuHaiLong/KhaoYai_WatPaPuHaiLong_3323.jpeg',
         caption: {
           en: 'Memorable moments from our peaceful temple visit',
           zh: '我們寧靜寺廟參訪的難忘時刻',
