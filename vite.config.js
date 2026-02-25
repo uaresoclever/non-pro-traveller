@@ -16,7 +16,7 @@ const generateVersion = () => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/non-pro-traveller/' : '/',
+  base: process.env.VITE_USE_CUSTOM_DOMAIN === 'true' ? '/' : (process.env.NODE_ENV === 'production' ? '/non-pro-traveller/' : '/'),
   define: {
     __APP_VERSION__: JSON.stringify(generateVersion())
   },
@@ -27,5 +27,10 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    fileParallelism: false
   }
 })
