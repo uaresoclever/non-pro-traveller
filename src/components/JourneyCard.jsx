@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import { trackTagClick, trackJourneyCardClick } from '../utils/analytics'
+import LazyImage from './LazyImage'
 
 const JourneyCard = ({ journey, onClick, onTagClick }) => {
   const { currentLang, t } = useLanguage()
@@ -51,11 +52,10 @@ const JourneyCard = ({ journey, onClick, onTagClick }) => {
   return (
     <div className={`journey-card ${journey.coverImage ? 'journey-card-with-image' : ''}`} onClick={handleCardClick}>
       {journey.coverImage && (
-        <img 
+        <LazyImage 
           src={journey.coverImage} 
           alt={journey.title[currentLang]}
           className="journey-cover-image"
-          loading="lazy"
         />
       )}
       

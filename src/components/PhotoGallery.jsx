@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
+import LazyImage from './LazyImage'
 
 const PhotoGallery = ({ photos, title, className = '' }) => {
   const { currentLang, t } = useLanguage()
@@ -50,10 +51,9 @@ const PhotoGallery = ({ photos, title, className = '' }) => {
             className="photo-item"
             onClick={() => openLightbox(photo, index)}
           >
-            <img 
+            <LazyImage 
               src={photo.thumbnail || photo.url} 
               alt={photo.caption?.[currentLang] || photo.caption?.en || `Photo ${index + 1}`}
-              loading="lazy"
             />
             <div className="photo-overlay">
               <div className="photo-info">
